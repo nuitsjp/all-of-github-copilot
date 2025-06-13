@@ -58,3 +58,41 @@
 - デモ用のサンプルコード（シンプルなもの）
 - 機能一覧
 
+## 学習プラン
+
+発表前の準備として、GitHub Copilotの全機能を体系的に学習・検証します。
+
+### 学習方針
+- 1機能につき10-30分で完了する実践的な内容
+- VS Code + C#環境での実際の動作確認
+- 各機能の特徴・使用感・制限事項を記録
+- デモで使用するサンプルコードの準備
+
+### 学習スケジュール
+機能一覧に基づき、以下の順序で学習を進めます：
+
+1. **基本機能（Pro対応）** - 約3時間
+   - Code completion
+   - Copilot Chat
+   - Copilot in the CLI
+   - GitHub Copilot Extensions
+   - GitHub Models
+   - Copilot Edits
+   - Copilot custom instructions
+   - Copilot in GitHub Desktop
+
+2. **Pro+/Business/Enterprise機能** - 約4時間
+   - Copilot coding agent
+   - GitHub Copilot code review
+   - Copilot pull request summaries
+   - Copilot Workspace
+   - Copilot text completion
+   - Copilot Spaces
+   - Copilot knowledge bases（Enterprise限定）
+
+### 成果物
+- 各機能の学習ファイル（functionsディレクトリ）
+- デモ用サンプルコード
+- 機能比較・評価メモ
+- 発表用の実演シナリオ
+

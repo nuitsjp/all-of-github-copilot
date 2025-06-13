@@ -90,9 +90,8 @@
    - Copilot Spaces
    - Copilot knowledge bases（Enterprise限定）
 
-### 成果物
-- 各機能の学習ファイル（functionsディレクトリ）
-- デモ用サンプルコード
-- 機能比較・評価メモ
-- 発表用の実演シナリオ
+### 学習テキストの作成
 
+[doc](doc/) フォルダー下の機能別の概略説明文書をもとに[functions](functions/)ディレクトリに学習マニュアルを作成してください。
+
+docの下のファイルと同じ名前でfunctionsに学習マニュアルを作成してください。

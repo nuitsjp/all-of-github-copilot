@@ -1,24 +1,7 @@
-public static class Calculator
+public class Calculator
 {
-    public static int Add(int a, int b)
+    // 関数ヘッダーを入力してCopilotの提案を確認
+    public int CalculateDaysBetweenDates(DateTime begin, DateTime end)
     {
-        return a + b;
-    }
-
-    public static int Subtract(int a, int b)
-    {
-        return a - b;
-    }
-
-    public static int Multiply(int a, int b)
-    {
-        return a * b;
-    }
-
-    public static double Divide(int a, int b)
-    {
-        if (b == 0)
-            throw new DivideByZeroException("Cannot divide by zero.");
-        return (double)a / b;
     }
 }

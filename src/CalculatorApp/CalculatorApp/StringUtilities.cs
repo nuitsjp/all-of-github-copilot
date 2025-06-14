@@ -1,5 +1,8 @@
 namespace UtilityLibrary
 {
+    /// <summary>
+    /// 文字列操作に関するユーティリティ機能を提供するクラス
+    /// </summary>
     public class StringUtilities
     {
         public static bool IsNullOrEmpty(string input)

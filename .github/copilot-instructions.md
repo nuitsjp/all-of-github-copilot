@@ -13,9 +13,10 @@
 
 ### テスト要件
 - 新機能には必ず単体テストを追加
-- テストメソッド名: `MethodName_Scenario_ExpectedResult`
+- テストメソッド名は日本語で記述
 - Arrange-Act-Assert パターンを使用
 - xUnit, Shouldlyを使用
+- パラメーター違いのテストはTheory属性を使用
 
 ## プロジェクト構造
 - `src/`: メインアプリケーションコード

@@ -335,8 +335,7 @@ CONFLICT (content): Merge conflict in src/main.js
 Automatic merge failed; fix conflicts and then commit the result.
 
 # AIに解決方法を聞く（方法1：直接モデルを指定）
-$ git status | gh models run openai/gpt-4o "このマージコンフリクトを解決する手順を教えてください" \
-    --system-prompt "あなたはGitの専門家です。初心者にも分かりやすく説明してください"
+$ git status | gh models run openai/gpt-4o "このマージコンフリクトを解決する手順を教えてください" --system-prompt "あなたはGitの専門家です。初心者にも分かりやすく説明してください"
 
 # AIに解決方法を聞く（方法2：プロンプトファイルを使用）
 $ git status > conflict.txt

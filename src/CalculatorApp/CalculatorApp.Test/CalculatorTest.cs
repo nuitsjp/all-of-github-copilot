@@ -4,108 +4,66 @@ namespace CalculatorApp.Test;
 
 public class CalculatorTest
 {
-    [Fact]
-    public void Add_TwoPositiveNumbers_ReturnsSum()
+    [Theory]
+    [InlineData(2, 3, 5)]
+    [InlineData(int.MaxValue - 1, 1, int.MaxValue)]
+    public void Add_ValidInputs_ReturnsSum(int a, int b, int expected)
     {
         // Arrange
         var calculator = new Calculator();
 
         // Act
-        var result = calculator.Add(2, 3);
+        var result = calculator.Add(a, b);
 
         // Assert
-        result.ShouldBe(5);
+        result.ShouldBe(expected);
     }
 
-    [Fact]
-    public void Subtract_TwoPositiveNumbers_ReturnsDifference()
+    [Theory]
+    [InlineData(5, 3, 2)]
+    [InlineData(3, 5, -2)]
+    [InlineData(10, 0, 10)]
+    [InlineData(0, 7, -7)]
+    [InlineData(int.MinValue + 1, 1, int.MinValue)]
+    public void Subtract_ValidInputs_ReturnsDifference(int a, int b, int expected)
     {
         // Arrange
         var calculator = new Calculator();
 
         // Act
-        var result = calculator.Subtract(5, 3);
+        var result = calculator.Subtract(a, b);
 
         // Assert
-        result.ShouldBe(2);
+        result.ShouldBe(expected);
     }
 
-    [Fact]
-    public void Subtract_NegativeResult_ReturnsNegativeNumber()
+    [Theory]
+    [InlineData(4, 5, 20)]
+    [InlineData(5, 0, 0)]
+    public void Multiply_ValidInputs_ReturnsProduct(int a, int b, int expected)
     {
         // Arrange
         var calculator = new Calculator();
 
         // Act
-        var result = calculator.Subtract(3, 5);
+        var result = calculator.Multiply(a, b);
 
         // Assert
-        result.ShouldBe(-2);
+        result.ShouldBe(expected);
     }
 
-    [Fact]
-    public void Subtract_WithZero_ReturnsCorrectResult()
+    [Theory]
+    [InlineData(10, 2, 5)]
+    public void Divide_ValidInputs_ReturnsQuotient(int a, int b, int expected)
     {
         // Arrange
         var calculator = new Calculator();
 
         // Act
-        var result = calculator.Subtract(10, 0);
+        var result = calculator.Divide(a, b);
 
         // Assert
-        result.ShouldBe(10);
-    }
-
-    [Fact]
-    public void Subtract_ZeroFromNumber_ReturnsNegativeNumber()
-    {
-        // Arrange
-        var calculator = new Calculator();
-
-        // Act
-        var result = calculator.Subtract(0, 7);
-
-        // Assert
-        result.ShouldBe(-7);
-    }
-
-    [Fact]
-    public void Multiply_TwoPositiveNumbers_ReturnsProduct()
-    {
-        // Arrange
-        var calculator = new Calculator();
-
-        // Act
-        var result = calculator.Multiply(4, 5);
-
-        // Assert
-        result.ShouldBe(20);
-    }
-
-    [Fact]
-    public void Multiply_WithZero_ReturnsZero()
-    {
-        // Arrange
-        var calculator = new Calculator();
-
-        // Act
-        var result = calculator.Multiply(5, 0);
-
-        // Assert
-        result.ShouldBe(0);
-    }
-
-    [Fact]
-    public void Divide_ValidInputs_ReturnsQuotient()
-    {
-        // Arrange
-        var calculator = new Calculator();
-
-        // Act
-        var result = calculator.Divide(10, 2);
-
-        // Assert
-        result.ShouldBe(5);
+        result.ShouldBe(expected);
     }
 
     [Fact]
@@ -119,73 +77,53 @@ public class CalculatorTest
             .Message.ShouldBe("Cannot divide by zero");
     }
 
-    [Fact]
-    public void Add_OverflowCondition_ThrowsOverflowException()
+    [Theory]
+    [InlineData(int.MaxValue, 1, "Addition")]
+    public void Add_OverflowCondition_ThrowsOverflowException(int a, int b, string operation)
     {
         // Arrange
         var calculator = new Calculator();
 
         // Act & Assert
-        Should.Throw<OverflowException>(() => calculator.Add(int.MaxValue, 1))
-            .Message.ShouldBe($"Addition overflow: {int.MaxValue} + 1 exceeds int range");
+        Should.Throw<OverflowException>(() => calculator.Add(a, b))
+            .Message.ShouldBe($"{operation} overflow: {a} + {b} exceeds int range");
     }
 
-    [Fact]
-    public void Subtract_OverflowCondition_ThrowsOverflowException()
+    [Theory]
+    [InlineData(int.MinValue, 1, "Subtraction")]
+    public void Subtract_OverflowCondition_ThrowsOverflowException(int a, int b, string operation)
     {
         // Arrange
         var calculator = new Calculator();
 
         // Act & Assert
-        Should.Throw<OverflowException>(() => calculator.Subtract(int.MinValue, 1))
-            .Message.ShouldBe($"Subtraction overflow: {int.MinValue} - 1 exceeds int range");
+        Should.Throw<OverflowException>(() => calculator.Subtract(a, b))
+            .Message.ShouldBe($"{operation} overflow: {a} - {b} exceeds int range");
     }
 
-    [Fact]
-    public void Multiply_OverflowCondition_ThrowsOverflowException()
+    [Theory]
+    [InlineData(int.MaxValue, 2, "Multiplication")]
+    public void Multiply_OverflowCondition_ThrowsOverflowException(int a, int b, string operation)
     {
         // Arrange
         var calculator = new Calculator();
 
         // Act & Assert
-        Should.Throw<OverflowException>(() => calculator.Multiply(int.MaxValue, 2))
-            .Message.ShouldBe($"Multiplication overflow: {int.MaxValue} * 2 exceeds int range");
+        Should.Throw<OverflowException>(() => calculator.Multiply(a, b))
+            .Message.ShouldBe($"{operation} overflow: {a} * {b} exceeds int range");
     }
 
-    [Fact]
-    public void Divide_OverflowCondition_ThrowsOverflowException()
+    [Theory]
+    [InlineData(int.MinValue, -1, "Division")]
+    public void Divide_OverflowCondition_ThrowsOverflowException(int a, int b, string operation)
     {
         // Arrange
         var calculator = new Calculator();
 
         // Act & Assert
-        Should.Throw<OverflowException>(() => calculator.Divide(int.MinValue, -1))
-            .Message.ShouldBe($"Division overflow: {int.MinValue} / -1 exceeds int range");
+        Should.Throw<OverflowException>(() => calculator.Divide(a, b))
+            .Message.ShouldBe($"{operation} overflow: {a} / {b} exceeds int range");
     }
 
-    [Fact]
-    public void Add_LargeNumbers_WithinRange_ReturnsSum()
-    {
-        // Arrange
-        var calculator = new Calculator();
 
-        // Act
-        var result = calculator.Add(int.MaxValue - 1, 1);
-
-        // Assert
-        result.ShouldBe(int.MaxValue);
-    }
-
-    [Fact]
-    public void Subtract_LargeNumbers_WithinRange_ReturnsDifference()
-    {
-        // Arrange
-        var calculator = new Calculator();
-
-        // Act
-        var result = calculator.Subtract(int.MinValue + 1, 1);
-
-        // Assert
-        result.ShouldBe(int.MinValue);
-    }
 }

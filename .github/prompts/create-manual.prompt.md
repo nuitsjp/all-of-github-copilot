@@ -1,11 +1,12 @@
 ---
 mode: edit
+description: '学習教材の作成'
 ---
 ドキュメントに対応する学習教材を作成してください。
 
-- [docs](../../docs) フォルダーの下にMarkdownファイルを作成
+- [curriculum](../../curriculum) フォルダーの下にMarkdownファイルを作成
 - ファイル名は、ドキュメントのタイトルを小文字にして、スペースをハイフンに置き換えたもの
-- 例: `docs/05-using-copilot-code-review.md`
+- 例: `curriculum/05-using-copilot-code-review.md`
 - 日本語で記述
 - ドキュメントの内容を要約し、学習者が理解しやすいように構成
 - 対象機能の概要と目的を明確に記載

@@ -1,12 +1,18 @@
+# GitHub Copilot 用に個人用カスタム命令を追加する - GitHub Docs
+
+# GitHub Copilot 用に個人用カスタム命令を追加する
+
 個人の好みに合わせて GitHub Copilot Chat の応答をカスタマイズします。
+
+## この記事の内容
 
 メモ
 
 現在、個人用カスタム命令は GitHub Copilot Chat in GitHub でのみサポートされています。
 
-GitHub Copilot Chat の応答のカスタマイズに使用できる方法の概要については、「[About customizing GitHub Copilot Chat responses](https://docs.github.com/ja/copilot/customizing-copilot/about-customizing-github-copilot-chat-responses?tool=webui)」をご覧ください。
+GitHub Copilot Chat の応答のカスタマイズに使用できる方法の概要については、「[About customizing GitHub Copilot Chat responses](/ja/copilot/customizing-copilot/about-customizing-github-copilot-chat-responses?tool=webui)」をご覧ください。
 
-## [GitHub Copilot Chat に対する個人のカスタム指示について](https://docs.github.com/ja/copilot/customizing-copilot/adding-personal-custom-instructions-for-github-copilot#github-copilot-chat-%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8B%E5%80%8B%E4%BA%BA%E3%81%AE%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E6%8C%87%E7%A4%BA%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6)
+## [GitHub Copilot Chat に対する個人のカスタム指示について](#github-copilot-chat-に対する個人のカスタム指示について)
 
 GitHub Copilot Chat にカスタム指示を追加し、GitHub Web サイトでの会話全体で、個人の好みに合わせてカスタマイズされたチャットの応答を受け取ることができます。 たとえば、Copilot Chat に常に優先言語または特定のスタイルで応答させることができます。 追加できる命令の例を次に示します。
 
@@ -17,9 +23,9 @@ GitHub Copilot Chat にカスタム指示を追加し、GitHub Web サイトで�
 メモ
 
 -   It is possible for multiple types of custom instructions to apply to a conversation. Personal instructions take the highest priority, followed by repository instructions, with organization instructions prioritized last. However, all sets of relevant instructions are still combined and provided to Copilot Chat.
--   Whenever possible, you should avoid providing conflicting sets of instructions. If you are concerned about response quality, you can also choose to temporarily disable repository instructions. See [GitHub Copilot のリポジトリ カスタム命令を追加する](https://docs.github.com/ja/copilot/customizing-copilot/adding-repository-custom-instructions-for-github-copilot?tool=webui#enabling-or-disabling-repository-custom-instructions).
+-   Whenever possible, you should avoid providing conflicting sets of instructions. If you are concerned about response quality, you can also choose to temporarily disable repository instructions. See [GitHub Copilot のリポジトリ カスタム命令を追加する](/ja/copilot/customizing-copilot/adding-repository-custom-instructions-for-github-copilot?tool=webui#enabling-or-disabling-repository-custom-instructions).
 
-## [個人用カスタム命令を追加する](https://docs.github.com/ja/copilot/customizing-copilot/adding-personal-custom-instructions-for-github-copilot#adding-personal-custom-instructions)
+## [個人用カスタム命令を追加する](#adding-personal-custom-instructions)
 
 個人のカスタム命令は、チャット パネルまたはイマーシブ モードで追加できます。 両方のモードに同じ命令が適用されます。
 

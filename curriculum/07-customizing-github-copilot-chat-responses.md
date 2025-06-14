@@ -2,239 +2,339 @@
 
 ## 概要
 
-GitHub Copilot Chatは、コーディング規約やプロジェクト要件に合わせたレスポンスを生成できます。毎回のチャットプロンプトに同じ情報を繰り返し入力する代わりに、カスタム指示やプロンプトファイルを使用して、自動的にコンテキストを含めることができます。
+GitHub Copilot Chatは、チームの作業方法やプロジェクトの特性に合わせてカスタマイズできます。このチュートリアルでは、3つの主要なカスタマイズ方法を学習し、実際のシナリオで活用できるようになることを目指します。
 
 ## 学習目標
 
-このチュートリアルでは、以下の3つのカスタマイズ方法を実践的に学習します：
+このチュートリアルを完了すると、以下のことができるようになります：
 
-1. **カスタム指示（Custom Instructions）** - コード生成の共通ガイドラインを定義
-2. **プロンプトファイル（Prompt Files）** - 再利用可能なプロンプトを作成
-3. **カスタムチャットモード（Custom Chat Modes）** - チャットの動作方法を定義
+- リポジトリカスタム指示ファイルを作成し、プロジェクト全体のコーディング規約を適用する
+- インストラクションファイルを使用して、特定のタスクやファイルタイプに対する指示を定義する
+- プロンプトファイルを作成し、再利用可能なプロンプトテンプレートを管理する
+- 各カスタマイズ方法の使い分けを理解する
 
-## シナリオ：React TypeScriptプロジェクトの開発環境構築
+## 前提条件
 
-新しいReact TypeScriptプロジェクトで、チーム全体で統一されたコーディング規約とツールを使用したいとします。
+- Visual Studio Codeがインストールされていること
+- GitHub Copilot拡張機能が有効になっていること
+- Gitリポジトリの基本的な知識
 
-### ステップ1：リポジトリカスタム指示の作成
+## 1. リポジトリカスタム指示の設定
 
-まず、プロジェクト全体に適用される基本的なコーディング規約を定義します。
+### 概要
 
-1. プロジェクトのルートディレクトリに `.github` フォルダーを作成します
-2. `.github/copilot-instructions.md` ファイルを作成します
-3. 以下の内容を追加します：
+リポジトリカスタム指示は、プロジェクト全体に適用される一般的なルールや規約を定義するためのシンプルな方法です。
 
-```markdown
-# プロジェクトコーディング規約
+### 実践演習：基本的なリポジトリカスタム指示の作成
 
-## TypeScript/React開発規約
-- TypeScriptを全ての新規コードで使用
-- Reactコンポーネントは関数コンポーネント + Hooksを使用
-- 型定義にはinterfaceを優先的に使用
-- プライベートクラスメンバーにはアンダースコア(_)をプレフィックスとして使用
+1. **リポジトリに`.github`ディレクトリを作成**
+   ```bash
+   mkdir -p .github
+   ```
 
-## 命名規則
-- コンポーネント名、インターフェース、型エイリアス: PascalCase
-- 変数、関数、メソッド: camelCase  
-- 定数: ALL_CAPS
+2. **`copilot-instructions.md`ファイルを作成**
+   ```bash
+   touch .github/copilot-instructions.md
+   ```
 
-## エラーハンドリング
-- 非同期操作にはtry/catchブロックを使用
-- Reactコンポーネントには適切なエラーバウンダリを実装
-- エラーログには必ずコンテキスト情報を含める
+3. **基本的な指示を追加**
+   ```markdown
+   # プロジェクトのコーディング規約
 
-## 使用ツール
-- フォームステート管理: react-hook-form
-- バリデーション: yup
-- スタイリング: CSS Modules
-- テストフレームワーク: Jest + React Testing Library
-```
+   JavaScriptコードを生成する際は、以下の規約に従ってください：
+   - インデントにはタブを使用
+   - 文字列にはダブルクォートを使用
+   - 関数名はcamelCaseで記述
+   - コメントは日本語で記述
+   
+   テストコードを生成する際は、Jestフレームワークを使用してください。
+   ```
 
-### ステップ2：タスク別のインストラクションファイル作成
+4. **設定を有効化**
+   - VS Codeで `Ctrl+,` (設定を開く)
+   - `github.copilot.chat.codeGeneration.useInstructionFiles` を検索
+   - チェックボックスをオンにする
 
-特定のタスクに対する詳細な指示を別ファイルで管理します。
+5. **動作確認**
+   - Copilot Chatを開いて「新しい関数を作成して」と入力
+   - 生成されたコードが指示に従っているか確認
 
-1. `.github/instructions` フォルダーを作成します
-2. `typescript-react.instructions.md` ファイルを作成します：
+### チャレンジ課題
 
-```markdown
----
-applyTo: "**/*.ts,**/*.tsx"
-description: "TypeScriptとReact開発のための詳細なガイドライン"
----
-# TypeScriptとReact開発ガイドライン
+プロジェクトに合わせて、以下の指示を追加してみましょう：
+- エラーハンドリングの方法
+- 命名規則（変数、定数、クラスなど）
+- コメントの書き方
 
-[一般的なコーディング規約](../copilot-instructions.md)を全てのコードに適用してください。
+## 2. インストラクションファイルの活用
 
-## TypeScript固有のガイドライン
-- 関数型プログラミング原則を可能な限り適用
-- イミュータブルなデータを優先（const、readonly）
-- オプショナルチェイニング（?.）とnullish coalescing（??）演算子を使用
-- 型推論が可能な場合は明示的な型定義を省略
+### 概要
 
-## React固有のガイドライン  
-- カスタムフックは`use`プレフィックスで始める
-- コンポーネントは単一責任の原則に従い、小さく保つ
-- propsの型定義は必須
-- メモ化（React.memo、useMemo、useCallback）は適切に使用
-```
+インストラクションファイルは、より詳細で条件付きの指示を定義できる高度なカスタマイズ方法です。
 
-### ステップ3：再利用可能なプロンプトファイルの作成
+### 実践演習：タイプ別インストラクションファイルの作成
 
-よく使うタスクのためのプロンプトファイルを作成します。
+1. **インストラクションフォルダを作成**
+   ```bash
+   mkdir -p .github/instructions
+   ```
 
-1. `.github/prompts` フォルダーを作成します
-2. `create-react-form.prompt.md` ファイルを作成します：
+2. **TypeScript用インストラクションファイルを作成**
+   
+   ファイル名：`.github/instructions/typescript.instructions.md`
+   ```markdown
+   ---
+   applyTo: "**/*.ts,**/*.tsx"
+   description: "TypeScriptとReactのコーディング規約"
+   ---
+   
+   # TypeScriptコーディング標準
+   
+   ## 型定義
+   - インターフェースを優先的に使用
+   - 型エイリアスは共用体型や交差型に限定
+   - any型の使用は禁止
+   
+   ## React コンポーネント
+   - 関数コンポーネントとHooksを使用
+   - PropsはインターフェースとしてExportする
+   - コンポーネント名はPascalCase
+   
+   ## エラーハンドリング
+   - try-catchブロックで適切にエラーを処理
+   - カスタムエラークラスを使用
+   ```
 
-```markdown
----
-mode: 'agent'
-tools: ['codebase']
-description: 'React Hook Formを使用した新しいフォームコンポーネントを生成'
----
-# React フォームコンポーネントの生成
+3. **新しいインストラクションファイルを作成**
+   - VS Codeでコマンドパレット（`Ctrl+Shift+P`）を開く
+   - `Chat: New Instructions File`を実行
+   - 保存場所とファイル名を指定
 
-新しいReactフォームコンポーネントを生成します。
+4. **動作確認**
+   - TypeScriptファイルを開く
+   - Copilot Chatで「このファイルに新しい関数を追加」と入力
+   - 生成されたコードがTypeScript用の指示に従っているか確認
 
-## 要件
-- フォーム名とフィールドを指定してください（未指定の場合は確認します）
-- [typescript-react.instructions.md](../instructions/typescript-react.instructions.md)のガイドラインに従う
-- react-hook-formを使用したフォーム管理
-- yupを使用したバリデーション
-- TypeScript型定義を必ず含める
-- CSS Modulesでスタイリング
+### チャレンジ課題
 
-## 生成するファイル
-1. `components/${input:componentName}/${input:componentName}.tsx` - コンポーネント本体
-2. `components/${input:componentName}/${input:componentName}.module.css` - スタイル
-3. `components/${input:componentName}/${input:componentName}.test.tsx` - テストファイル
-4. `components/${input:componentName}/validation.ts` - バリデーションスキーマ
-```
+以下のシナリオに対応するインストラクションファイルを作成してみましょう：
+- APIエンドポイント用（`**/api/**/*.js`）
+- テストファイル用（`**/*.test.js`）
+- 設定ファイル用（`**/*.config.js`）
 
-### ステップ4：コードレビュー用プロンプトファイルの作成
+## 3. プロンプトファイルの作成と活用
 
-コードレビューを効率化するプロンプトファイルを作成します。
+### 概要
 
+プロンプトファイルは、再利用可能なプロンプトテンプレートを作成し、チーム全体で共有できる強力な機能です。
+
+### 実践演習：Reactフォームコンポーネント生成プロンプト
+
+1. **プロンプトフォルダを作成**
+   ```bash
+   mkdir -p .github/prompts
+   ```
+
+2. **Reactフォーム生成プロンプトを作成**
+   
+   ファイル名：`.github/prompts/react-form.prompt.md`
+   ```markdown
+   ---
+   mode: 'agent'
+   tools: ['codebase']
+   description: 'Reactフォームコンポーネントを生成'
+   ---
+   
+   # Reactフォームコンポーネントの生成
+   
+   以下の要件に従ってReactフォームコンポーネントを作成してください：
+   
+   ## フォーム名: ${input:formName:フォーム名を入力してください}
+   
+   ## 必要なフィールド:
+   ${input:fields:必要なフィールドをカンマ区切りで入力（例: name,email,age）}
+   
+   ## 要件:
+   - React Hook Formを使用
+   - TypeScriptで型定義を作成
+   - バリデーション付き
+   - Material-UIのコンポーネントを使用
+   - エラーメッセージの表示
+   - 送信ボタンとリセットボタンを含む
+   
+   ## 参照すべきカスタム指示:
+   [TypeScript規約](../instructions/typescript.instructions.md)
+   ```
+
+3. **プロンプトファイルの実行**
+   - コマンドパレット（`Ctrl+Shift+P`）を開く
+   - `Chat: Run Prompt`を実行
+   - 作成したプロンプトファイルを選択
+   - 必要な情報を入力
+
+4. **Chat入力での直接実行**
+   - Copilot Chatで `/react-form` と入力
+   - 追加情報を指定：`/react-form: formName=UserRegistration`
+
+### 実践演習：コードレビュー用プロンプト
+
+ファイル名：`.github/prompts/code-review.prompt.md`
 ```markdown
 ---
 mode: 'edit'
-description: 'TypeScript/Reactコードの包括的なレビュー'
+description: 'セキュリティ重視のコードレビュー'
 ---
-# コードレビューチェックリスト
 
-選択されたコードについて以下の観点でレビューを実行してください：
+# セキュリティ重視のコードレビュー
 
-## セキュリティ
-- [ ] ユーザー入力の適切なサニタイゼーション
-- [ ] XSS脆弱性のチェック
-- [ ] 機密情報のハードコーディングなし
+選択されたコードに対して、以下の観点でレビューを実施してください：
 
-## パフォーマンス  
-- [ ] 不要な再レンダリングの回避
-- [ ] 適切なメモ化の使用
-- [ ] 大きなリストでの仮想化検討
+## セキュリティチェック項目:
+- SQLインジェクション対策
+- XSS（クロスサイトスクリプティング）対策
+- 認証・認可の実装
+- 機密情報の取り扱い
+- 入力値検証
 
-## コード品質
-- [ ] プロジェクトのコーディング規約への準拠
-- [ ] 適切なエラーハンドリング
-- [ ] テストの存在と品質
-- [ ] TypeScript型の適切な使用
+## レビュー結果の形式:
+1. 発見された問題点をリスト化
+2. 各問題の深刻度（高・中・低）を記載
+3. 修正案を提示
+4. ベストプラクティスへの参照を含める
 
-改善提案と共に、具体的なコード例を提供してください。
+## 参照ファイル:
+${file}
 ```
 
-### ステップ5：VS Code設定でのカスタム指示
+### チャレンジ課題
 
-VS Codeの設定ファイルで、特定のタスク用の指示を定義します。
+以下のプロンプトファイルを作成してみましょう：
+- API テスト生成プロンプト
+- データベースマイグレーション作成プロンプト
+- ドキュメント生成プロンプト
 
-1. プロジェクトの `.vscode/settings.json` を作成または編集します：
+## 4. VS Code設定によるカスタマイズ
 
-```json
-{
-  "github.copilot.chat.codeGeneration.useInstructionFiles": true,
-  "github.copilot.chat.codeGeneration.instructions": [
-    {
-      "text": "常にTypeScriptの厳格モードを使用してください"
-    },
-    {
-      "file": ".github/instructions/typescript-react.instructions.md"
-    }
-  ],
-  "github.copilot.chat.testGeneration.instructions": [
-    {
-      "text": "JestとReact Testing Libraryを使用してテストを作成"
-    },
-    {
-      "text": "データ属性（data-testid）を使用して要素を選択"
-    }
-  ],
-  "github.copilot.chat.commitMessageGeneration.instructions": [
-    {
-      "text": "コミットメッセージは日本語で記述"
-    },
-    {
-      "text": "形式: <type>: <description>"
-    },
-    {
-      "text": "type: feat, fix, docs, style, refactor, test, chore"
-    }
-  ]
-}
-```
+### 概要
 
-## 実践演習
+VS Codeの設定を使用して、特定のタスクに対するカスタム指示を定義できます。
 
-### 演習1：フォームコンポーネントの生成
+### 実践演習：設定ファイルでのカスタム指示
 
-1. VS Codeでチャットビューを開きます
-2. `/create-react-form` と入力します
-3. フォーム名として「UserRegistration」を指定します
-4. 必要なフィールド（name, email, password）を指定します
-5. 生成されたコードがプロジェクトの規約に従っているか確認します
+1. **ワークスペース設定を開く**
+   - `.vscode/settings.json`を作成または開く
 
-### 演習2：コードレビューの実行
+2. **各種タスク用の指示を追加**
+   ```json
+   {
+     "github.copilot.chat.codeGeneration.instructions": [
+       {
+         "text": "生成されたコードには必ず「// AI生成」というコメントを追加"
+       },
+       {
+         "file": "coding-standards.instructions.md"
+       }
+     ],
+     "github.copilot.chat.testGeneration.instructions": [
+       {
+         "text": "テストケース名は日本語で記述し、describe-it形式を使用"
+       }
+     ],
+     "github.copilot.chat.commitMessageGeneration.instructions": [
+       {
+         "text": "コミットメッセージは日本語で記述し、[種別]: 内容 の形式を使用"
+       }
+     ]
+   }
+   ```
 
-1. 既存のReactコンポーネントを開きます
-2. コードを選択します
-3. チャットで `/code-review` プロンプトを実行します
-4. 提案された改善点を確認し、適用します
+3. **動作確認**
+   - コード生成、テスト生成、コミットメッセージ生成を試す
+   - それぞれの指示が適用されているか確認
 
-### 演習3：カスタム指示の効果測定
+## 5. 統合演習：プロジェクト全体のカスタマイズ
 
-1. カスタム指示なしでコードを生成してみます
-2. カスタム指示を有効にして同じタスクを実行します
-3. 生成されたコードの違いを比較します
+### シナリオ
 
-## トラブルシューティング
+新しいWebアプリケーションプロジェクトのために、包括的なカスタマイズ設定を作成します。
 
-### カスタム指示が適用されない場合
+### 手順
 
-1. `github.copilot.chat.codeGeneration.useInstructionFiles` 設定が `true` になっているか確認
-2. ファイルパスが正しいか確認（相対パスの基準点に注意）
-3. Front Matterの構文が正しいか確認
+1. **プロジェクト構造の作成**
+   ```
+   my-webapp/
+   ├── .github/
+   │   ├── copilot-instructions.md
+   │   ├── instructions/
+   │   │   ├── frontend.instructions.md
+   │   │   ├── backend.instructions.md
+   │   │   └── testing.instructions.md
+   │   └── prompts/
+   │       ├── create-component.prompt.md
+   │       ├── create-api-endpoint.prompt.md
+   │       └── security-review.prompt.md
+   └── .vscode/
+       └── settings.json
+   ```
 
-### プロンプトファイルが見つからない場合
+2. **各ファイルに適切な内容を追加**
 
-1. ファイル拡張子が `.prompt.md` になっているか確認
-2. `chat.promptFilesLocations` 設定を確認
-3. VS Codeを再起動してみる
+3. **チーム開発のワークフロー**
+   - 新機能開発時：`/create-component`プロンプトを使用
+   - APIエンドポイント追加時：`/create-api-endpoint`プロンプトを使用
+   - コードレビュー時：`/security-review`プロンプトを使用
 
 ## ベストプラクティス
 
-1. **指示は短く具体的に** - 各指示は単一の明確なステートメントにする
-2. **ファイルを分割** - トピックやタスクごとに指示を整理
-3. **バージョン管理** - 指示ファイルもGitで管理し、変更履歴を追跡
-4. **チームで共有** - プロジェクト全体で一貫性を保つ
-5. **定期的な見直し** - プロジェクトの進化に合わせて指示を更新
+1. **指示の書き方**
+   - 短く明確な文章を使用
+   - 矛盾する指示を避ける
+   - 具体的な例を含める
+
+2. **ファイルの整理**
+   - 目的別にファイルを分割
+   - 命名規則を統一
+   - ドキュメントを充実させる
+
+3. **チーム共有**
+   - リポジトリにコミット
+   - READMEに使用方法を記載
+   - 定期的に見直しと更新
+
+## トラブルシューティング
+
+### よくある問題と解決方法
+
+1. **カスタム指示が適用されない**
+   - 設定が有効になっているか確認
+   - ファイルパスが正しいか確認
+   - VS Codeを再起動
+
+2. **プロンプトファイルが見つからない**
+   - `chat.promptFilesLocations`設定を確認
+   - ファイルの拡張子が`.prompt.md`か確認
+
+3. **インストラクションファイルが特定のファイルに適用されない**
+   - `applyTo`のglob パターンを確認
+   - ファイルパスがパターンにマッチするか確認
 
 ## まとめ
 
-GitHub Copilot Chatのカスタマイズ機能を使用することで：
+このチュートリアルでは、GitHub Copilot Chatの3つの主要なカスタマイズ方法を学習しました：
 
-- プロジェクト固有のコーディング規約を自動的に適用
-- 繰り返しのタスクを効率化
-- チーム全体で一貫したコード品質を維持
-- 新しいメンバーのオンボーディングを簡素化
+1. **リポジトリカスタム指示** - プロジェクト全体の基本ルール
+2. **インストラクションファイル** - 条件付きの詳細な指示
+3. **プロンプトファイル** - 再利用可能なタスクテンプレート
 
-これらの機能を組み合わせることで、より生産的で一貫性のある開発環境を構築できます。
-```
+これらを組み合わせることで、チームの生産性を大幅に向上させることができます。
+
+## 次のステップ
+
+- カスタムチャットモードの作成方法を学ぶ
+- より高度なプロンプトファイルのテクニックを探求
+- チーム固有のベストプラクティスを確立
+
+## 参考リソース
+
+- [GitHub Copilot Chat カスタマイズドキュメント](https://docs.github.com/ja/copilot/customizing-copilot)
+- [VS Code Copilot カスタマイズガイド](https://code.visualstudio.com/docs/copilot/copilot-customization)

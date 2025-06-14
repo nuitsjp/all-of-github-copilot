@@ -27,14 +27,14 @@ GitHub Copilot coding agentの全機能を理解し、実際のプロジェク�
 8. **トラブルシューティング** - 問題解決方法
 
 ## 学習順序
-1. [基本概念とタスク割り当て](about-assigning-tasks-to-copilot.md) (30分)
-2. [機能有効化](enabling-copilot-coding-agent.md) (15分)
-3. [ベストプラクティス](best-practices-for-using-copilot-to-work-on-tasks.md) (45分)
-4. [Issue処理実践](using-copilot-to-work-on-an-issue.md) (60分)
-5. [Pull request作成実践](asking-copilot-to-create-a-pull-request.md) (30分)
-6. [エージェントログ活用](using-the-copilot-coding-agent-logs.md) (30分)
-7. [Pull requestレビュー](reviewing-a-pull-request-created-by-copilot.md) (30分)
-8. [トラブルシューティング](troubleshooting-copilot-coding-agent.md) (30分)
+1. [基本概念とタスク割り当て](03-coding-agent/about-assigning-tasks-to-copilot.md) (30分)
+2. [機能有効化](03-coding-agent/enabling-copilot-coding-agent.md) (15分)
+3. [ベストプラクティス](03-coding-agent/best-practices-for-using-copilot-to-work-on-tasks.md) (45分)
+4. [Issue処理実践](03-coding-agent/using-copilot-to-work-on-an-issue.md) (60分)
+5. [Pull request作成実践](03-coding-agent/asking-copilot-to-create-a-pull-request.md) (30分)
+6. [エージェントログ活用](03-coding-agent/using-the-copilot-coding-agent-logs.md) (30分)
+7. [Pull requestレビュー](03-coding-agent/reviewing-a-pull-request-created-by-copilot.md) (30分)
+8. [トラブルシューティング](03-coding-agent/troubleshooting-copilot-coding-agent.md) (30分)
 
 ## 事前準備
 ### 必要なアクセス権限

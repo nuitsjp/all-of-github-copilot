@@ -206,9 +206,27 @@ testData:
     expected: ブランチの作成にはgit branchコマンドを使用し...
 ```
 
+// ...existing code...
+
 ## ステップ7：本番環境への統合
 
 ### 7.1 GitHub Actionsでの使用
+
+**このセクションで実現すること：**
+GitHub Actionsワークフローから保存済みのプロンプト設定（`.prompt.yml`）を使って、AIモデルを自動的に呼び出す仕組みを構築します。これにより、Issueが作成されたときに自動的にAIがGitの使い方を回答するヘルプデスクのような機能を実装できます。
+
+**なぜこれが便利なのか：**
+- **24時間365日対応**: 人間のサポートを待たずに即座に回答
+- **一貫性のある品質**: 事前に調整したプロンプトで常に同じ品質の回答
+- **完全自動化**: 手動でAIに聞いてコピペする必要がない
+- **履歴の保存**: Issueとコメントとして記録が残る
+
+**実際の動作フロー：**
+1. ユーザーがタイトルに `[Git Help]` を含むIssueを作成
+2. GitHub Actionsが自動的に起動
+3. Issueの本文（質問内容）を取得
+4. 保存済みの `git-learning-assistant.prompt.yml` を使ってAIに質問を送信
+5. AIが生成した回答をIssueのコメントとして自動投稿
 
 `.github/workflows/git-help.yml`を作成：
 
@@ -219,22 +237,26 @@ on:
     types: [opened]
     
 permissions:
-  issues: write
-  contents: read
-  models: read
+  issues: write      # Issueにコメントを投稿するため
+  contents: read     # プロンプトファイルを読み取るため
+  models: read       # GitHub Modelsを使用するため
 
 jobs:
   provide_git_help:
     runs-on: ubuntu-latest
+    # タイトルに[Git Help]が含まれる場合のみ実行
     if: contains(github.event.issue.title, '[Git Help]')
     steps:
+      # リポジトリのコードをチェックアウト（プロンプトファイルを読み込むため）
       - uses: actions/checkout@v4
       
+      # GitHub Models拡張機能をインストール
       - name: Install gh-models extension
         run: gh extension install https://github.com/github/gh-models
         env:
           GH_TOKEN: ${{ github.token }}
           
+      # AIモデルを実行してGitの使い方を説明
       - name: Generate Git help
         run: |
           echo "${{ github.event.issue.body }}" | 
@@ -242,6 +264,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           
+      # AIの回答をIssueのコメントとして投稿
       - name: Post response
         run: |
           gh issue comment ${{ github.event.issue.number }} --body-file response.txt
@@ -249,15 +272,133 @@ jobs:
           GH_TOKEN: ${{ github.token }}
 ```
 
+**実際の使用例：**
+```
+Issue タイトル: [Git Help] リベースについて教えて
+Issue 本文: git rebaseの基本的な使い方と、mergeとの違いを教えてください
+
+↓ 自動的に以下のようなコメントが投稿される ↓
+
+AIアシスタント: 
+git rebaseは、コミット履歴を整理するための強力なツールです。
+
+## 基本的な使い方
+1. 現在のブランチを最新の状態に更新
+   ```bash
+   git rebase main
+   ```
+
+2. インタラクティブリベース（コミットの編集）
+   ```bash
+   git rebase -i HEAD~3
+   ```
+
+## mergeとの違い
+- **merge**: 履歴を保持したまま統合（マージコミットが作成される）
+- **rebase**: 履歴を書き換えて直線的にする（よりクリーンな履歴）
+
+...（以下、詳細な説明が続く）
+```
+
 ### 7.2 CLIでの使用
 
+**このセクションで実現すること：**
+コマンドラインから直接GitHub Modelsを呼び出し、保存済みのプロンプト設定を使ってAIに質問できるようにします。これにより、開発中にターミナルを離れることなくGitの使い方を調べられます。
+
+**なぜこれが便利なのか：**
+- **開発フローを中断しない**: ブラウザを開かずにターミナルで完結
+- **コマンドの出力を直接質問**: パイプを使って実際のGitコマンドの結果を基に質問
+- **スクリプトに組み込み可能**: 自動化ツールの一部として使用可能
+- **オフライン対応**: プロンプトファイルはローカルに保存されている
+
+**実際の動作フロー：**
+1. GitHub CLI拡張機能をインストール
+2. プロンプトファイルを指定してAIモデルを実行
+3. 結果がターミナルに直接表示される
+
 ```bash
-# 拡張機能のインストール
+# 拡張機能のインストール（初回のみ）
 gh extension install https://github.com/github/gh-models
 
-# プロンプトの実行
+# 基本的な使い方：単純な質問
 echo "リベースの使い方" | gh models run --file git-learning-assistant.prompt.yml
+
+# 実践的な使い方1：gitコマンドの結果を基に質問
+git status | gh models run --file git-learning-assistant.prompt.yml \
+  --prompt "このgit statusの結果を解説してください"
+
+# 実践的な使い方2：エラーメッセージの解決方法を聞く
+git rebase main 2>&1 | gh models run --file git-learning-assistant.prompt.yml \
+  --prompt "このエラーの解決方法を教えてください"
+
+# 実践的な使い方3：複雑なgit logの結果を要約
+git log --graph --oneline -10 | gh models run --file git-learning-assistant.prompt.yml \
+  --prompt "このコミット履歴を要約して、何が行われたか説明してください"
 ```
+
+**具体的な使用例：**
+```bash
+# シナリオ：マージコンフリクトが発生した場合
+$ git merge feature-branch
+Auto-merging src/main.js
+CONFLICT (content): Merge conflict in src/main.js
+Automatic merge failed; fix conflicts and then commit the result.
+
+# AIに解決方法を聞く
+$ git status | gh models run --file git-learning-assistant.prompt.yml \
+    --prompt "このマージコンフリクトを解決する手順を教えてください"
+
+# AIの回答：
+マージコンフリクトが src/main.js で発生しています。以下の手順で解決してください：
+
+1. コンフリクトが発生したファイルを開く
+   $ code src/main.js  # または好きなエディタで開く
+
+2. コンフリクトマーカーを探す
+   <<<<<<< HEAD
+   現在のブランチの内容
+   =======
+   マージしようとしているブランチの内容
+   >>>>>>> feature-branch
+
+3. どちらの変更を採用するか、または両方を組み合わせるか決定
+
+4. コンフリクトマーカーを削除して保存
+
+5. 変更をステージング
+   $ git add src/main.js
+
+6. マージを完了
+   $ git commit
+
+詳細な説明が必要な場合は、具体的なコンフリクト内容を共有してください。
+```
+
+**プロンプトファイルのカスタマイズ例：**
+開発チーム向けに特化したプロンプトファイルを作成することも可能：
+
+```yaml
+# team-git-helper.prompt.yml
+name: team-git-helper
+description: 開発チームのGit運用ルールに基づくアシスタント
+model: gpt-4o
+modelParameters:
+  temperature: 0.3
+  max_tokens: 1500
+messages:
+  - role: system
+    content: |
+      あなたは開発チームのGit運用をサポートするアシスタントです。
+      以下のチームルールに基づいて回答してください：
+      - feature/*、bugfix/*、hotfix/* のブランチ命名規則
+      - コミットメッセージは日本語で記述
+      - プルリクエスト前にrebaseで履歴を整理
+      - mainブランチへの直接pushは禁止
+  - role: user
+    content: "{{query}}"
+```
+
+これらの詳細な説明により、学習者は単にコマンドをコピペするだけでなく、何をしているのか、なぜそれが有用なのかを理解した上で実装できるようになります。
 
 ## ベストプラクティス
 

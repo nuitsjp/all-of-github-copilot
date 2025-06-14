@@ -215,6 +215,11 @@ description: 'C#コードの品質とセキュリティレビュー'
 ${file}
 ```
 
+`${file}` などの変数は、Visual Studio Code の **Variables Reference**（変数参照）という機能の一部です。
+
+公式ドキュメント: [Variables Reference - Visual Studio Code](https://code.visualstudio.com/docs/editor/variables-reference)
+
+
 ### チャレンジ課題
 
 以下のプロンプトファイルを作成してみましょう：

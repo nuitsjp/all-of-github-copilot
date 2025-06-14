@@ -5,5 +5,10 @@
         return a + b;
     }
 
-    // TODO: Subtract, Multiply, Divide メソッドを追加
+    public int Subtract(int a, int b)
+    {
+        return a - b;
+    }
+
+    // TODO: Multiply, Divide メソッドを追加
 }

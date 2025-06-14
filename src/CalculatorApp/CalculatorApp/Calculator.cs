@@ -84,4 +84,54 @@ public class Calculator
             throw new OverflowException($"Division overflow: {a} / {b} exceeds int range");
         }
     }
+
+    /// <summary>
+    /// 整数の累乗を計算します
+    /// </summary>
+    /// <param name="baseNumber">底</param>
+    /// <param name="exponent">指数（0以上の整数）</param>
+    /// <returns>累乗結果</returns>
+    /// <exception cref="ArgumentOutOfRangeException">指数が負の値の場合</exception>
+    /// <exception cref="OverflowException">演算結果がint型の範囲を超えた場合</exception>
+    public int Power(int baseNumber, int exponent)
+    {
+        if (exponent < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(exponent), "Exponent must be non-negative");
+        }
+
+        if (exponent == 0)
+        {
+            return 1;
+        }
+
+        if (baseNumber == 0)
+        {
+            return 0;
+        }
+
+        if (baseNumber == 1)
+        {
+            return 1;
+        }
+
+        if (baseNumber == -1)
+        {
+            return exponent % 2 == 0 ? 1 : -1;
+        }
+
+        try
+        {
+            int result = 1;
+            for (int i = 0; i < exponent; i++)
+            {
+                result = checked(result * baseNumber);
+            }
+            return result;
+        }
+        catch (OverflowException)
+        {
+            throw new OverflowException($"Power overflow: {baseNumber}^{exponent} exceeds int range");
+        }
+    }
 }

@@ -41,13 +41,14 @@ GitHub Copilot Chatは、チームの作業方法やプロジェクトの特性�
    ```markdown
    # プロジェクトのコーディング規約
 
-   JavaScriptコードを生成する際は、以下の規約に従ってください：
-   - インデントにはタブを使用
-   - 文字列にはダブルクォートを使用
-   - 関数名はcamelCaseで記述
-   - コメントは日本語で記述
+   C#コードを生成する際は、以下の規約に従ってください：
+   - インデントにはスペース4つを使用
+   - 文字列補間を優先的に使用
+   - メソッド名はPascalCaseで記述
+   - プライベートフィールドは_camelCaseで記述
+   - XMLドキュメントコメントを日本語で記述
    
-   テストコードを生成する際は、Jestフレームワークを使用してください。
+   テストコードを生成する際は、xUnitフレームワークを使用してください。
    ```
 
 4. **設定を有効化**
@@ -56,15 +57,15 @@ GitHub Copilot Chatは、チームの作業方法やプロジェクトの特性�
    - チェックボックスをオンにする
 
 5. **動作確認**
-   - Copilot Chatを開いて「新しい関数を作成して」と入力
+   - Copilot Chatを開いて「新しいメソッドを作成して」と入力
    - 生成されたコードが指示に従っているか確認
 
 ### チャレンジ課題
 
 プロジェクトに合わせて、以下の指示を追加してみましょう：
-- エラーハンドリングの方法
-- 命名規則（変数、定数、クラスなど）
-- コメントの書き方
+- エラーハンドリングの方法（try-catch、カスタム例外）
+- 命名規則（変数、定数、インターフェース、クラスなど）
+- XMLドキュメントコメントの書き方
 
 ## 2. インストラクションファイルの活用
 
@@ -79,30 +80,31 @@ GitHub Copilot Chatは、チームの作業方法やプロジェクトの特性�
    mkdir -p .github/instructions
    ```
 
-2. **TypeScript用インストラクションファイルを作成**
+2. **C#用インストラクションファイルを作成**
    
-   ファイル名：`.github/instructions/typescript.instructions.md`
+   ファイル名：`.github/instructions/csharp.instructions.md`
    ```markdown
    ---
-   applyTo: "**/*.ts,**/*.tsx"
-   description: "TypeScriptとReactのコーディング規約"
+   applyTo: "**/*.cs"
+   description: "C#とASP.NET Coreのコーディング規約"
    ---
    
-   # TypeScriptコーディング標準
+   # C#コーディング標準
    
-   ## 型定義
-   - インターフェースを優先的に使用
-   - 型エイリアスは共用体型や交差型に限定
-   - any型の使用は禁止
+   ## 命名規則
+   - インターフェースは'I'で始める（例：IRepository）
+   - 抽象クラスは'Base'で終わる（例：ControllerBase）
+   - 非同期メソッドは'Async'で終わる（例：GetDataAsync）
    
-   ## React コンポーネント
-   - 関数コンポーネントとHooksを使用
-   - PropsはインターフェースとしてExportする
-   - コンポーネント名はPascalCase
+   ## ASP.NET Core
+   - DIコンテナを活用する
+   - コントローラーアクションは常にIActionResultを返す
+   - [ApiController]属性を使用
    
    ## エラーハンドリング
-   - try-catchブロックで適切にエラーを処理
-   - カスタムエラークラスを使用
+   - グローバル例外ハンドラーを使用
+   - カスタム例外クラスを作成
+   - すべてのpublicメソッドで引数検証を実施
    ```
 
 3. **新しいインストラクションファイルを作成**
@@ -111,16 +113,16 @@ GitHub Copilot Chatは、チームの作業方法やプロジェクトの特性�
    - 保存場所とファイル名を指定
 
 4. **動作確認**
-   - TypeScriptファイルを開く
-   - Copilot Chatで「このファイルに新しい関数を追加」と入力
-   - 生成されたコードがTypeScript用の指示に従っているか確認
+   - C#ファイルを開く
+   - Copilot Chatで「このファイルに新しいメソッドを追加」と入力
+   - 生成されたコードがC#用の指示に従っているか確認
 
 ### チャレンジ課題
 
 以下のシナリオに対応するインストラクションファイルを作成してみましょう：
-- APIエンドポイント用（`**/api/**/*.js`）
-- テストファイル用（`**/*.test.js`）
-- 設定ファイル用（`**/*.config.js`）
+- Web APIコントローラー用（`**/Controllers/**/*.cs`）
+- テストファイル用（`**/*.Tests.cs`）
+- Entity Frameworkモデル用（`**/Models/**/*.cs`）
 
 ## 3. プロンプトファイルの作成と活用
 
@@ -128,42 +130,43 @@ GitHub Copilot Chatは、チームの作業方法やプロジェクトの特性�
 
 プロンプトファイルは、再利用可能なプロンプトテンプレートを作成し、チーム全体で共有できる強力な機能です。
 
-### 実践演習：Reactフォームコンポーネント生成プロンプト
+### 実践演習：ASP.NET Core APIコントローラー生成プロンプト
 
 1. **プロンプトフォルダを作成**
    ```bash
    mkdir -p .github/prompts
    ```
 
-2. **Reactフォーム生成プロンプトを作成**
+2. **APIコントローラー生成プロンプトを作成**
    
-   ファイル名：`.github/prompts/react-form.prompt.md`
+   ファイル名：`.github/prompts/aspnet-controller.prompt.md`
    ```markdown
    ---
    mode: 'agent'
    tools: ['codebase']
-   description: 'Reactフォームコンポーネントを生成'
+   description: 'ASP.NET Core APIコントローラーを生成'
    ---
    
-   # Reactフォームコンポーネントの生成
+   # ASP.NET Core APIコントローラーの生成
    
-   以下の要件に従ってReactフォームコンポーネントを作成してください：
+   以下の要件に従ってASP.NET Core APIコントローラーを作成してください：
    
-   ## フォーム名: ${input:formName:フォーム名を入力してください}
+   ## コントローラー名: ${input:controllerName:コントローラー名を入力してください（例：Product）}
    
-   ## 必要なフィールド:
-   ${input:fields:必要なフィールドをカンマ区切りで入力（例: name,email,age）}
+   ## 必要なアクション:
+   ${input:actions:必要なアクションをカンマ区切りで入力（例: GetAll,GetById,Create,Update,Delete）}
    
    ## 要件:
-   - React Hook Formを使用
-   - TypeScriptで型定義を作成
-   - バリデーション付き
-   - Material-UIのコンポーネントを使用
-   - エラーメッセージの表示
-   - 送信ボタンとリセットボタンを含む
+   - [ApiController]属性を使用
+   - 適切なHTTP動詞属性を使用（HttpGet, HttpPost等）
+   - DTOパターンを使用
+   - 依存性注入でサービスを注入
+   - 適切なHTTPステータスコードを返す
+   - XMLドキュメントコメントを含める
+   - 非同期メソッドとして実装
    
    ## 参照すべきカスタム指示:
-   [TypeScript規約](../instructions/typescript.instructions.md)
+   [C#規約](../instructions/csharp.instructions.md)
    ```
 
 3. **プロンプトファイルの実行**
@@ -173,34 +176,40 @@ GitHub Copilot Chatは、チームの作業方法やプロジェクトの特性�
    - 必要な情報を入力
 
 4. **Chat入力での直接実行**
-   - Copilot Chatで `/react-form` と入力
-   - 追加情報を指定：`/react-form: formName=UserRegistration`
+   - Copilot Chatで `/aspnet-controller` と入力
+   - 追加情報を指定：`/aspnet-controller: controllerName=Product`
 
-### 実践演習：コードレビュー用プロンプト
+### 実践演習：C#コードレビュー用プロンプト
 
-ファイル名：`.github/prompts/code-review.prompt.md`
+ファイル名：`.github/prompts/csharp-review.prompt.md`
 ```markdown
 ---
 mode: 'edit'
-description: 'セキュリティ重視のコードレビュー'
+description: 'C#コードの品質とセキュリティレビュー'
 ---
 
-# セキュリティ重視のコードレビュー
+# C#コードレビュー
 
 選択されたコードに対して、以下の観点でレビューを実施してください：
 
+## コード品質チェック項目:
+- SOLID原則の遵守
+- null参照の適切な処理
+- 非同期処理の正しい実装
+- メモリリークの可能性
+- パフォーマンスの問題
+
 ## セキュリティチェック項目:
 - SQLインジェクション対策
-- XSS（クロスサイトスクリプティング）対策
-- 認証・認可の実装
+- 入力値検証の実装
+- 認証・認可の適切な実装
 - 機密情報の取り扱い
-- 入力値検証
 
 ## レビュー結果の形式:
 1. 発見された問題点をリスト化
 2. 各問題の深刻度（高・中・低）を記載
 3. 修正案を提示
-4. ベストプラクティスへの参照を含める
+4. .NETのベストプラクティスへの参照を含める
 
 ## 参照ファイル:
 ${file}
@@ -209,9 +218,9 @@ ${file}
 ### チャレンジ課題
 
 以下のプロンプトファイルを作成してみましょう：
-- API テスト生成プロンプト
-- データベースマイグレーション作成プロンプト
-- ドキュメント生成プロンプト
+- xUnit テスト生成プロンプト
+- Entity Frameworkマイグレーション作成プロンプト
+- XML ドキュメントコメント生成プロンプト
 
 ## 4. VS Code設定によるカスタマイズ
 
@@ -229,20 +238,20 @@ VS Codeの設定を使用して、特定のタスクに対するカスタム指�
    {
      "github.copilot.chat.codeGeneration.instructions": [
        {
-         "text": "生成されたコードには必ず「// AI生成」というコメントを追加"
+         "text": "生成されたコードには必ず「// AI生成」というコメントを追加し、すべてのpublicメソッドにXMLドキュメントコメントを含める"
        },
        {
-         "file": "coding-standards.instructions.md"
+         "file": "csharp-standards.instructions.md"
        }
      ],
      "github.copilot.chat.testGeneration.instructions": [
        {
-         "text": "テストケース名は日本語で記述し、describe-it形式を使用"
+         "text": "xUnitを使用し、テストメソッド名は「MethodName_Scenario_ExpectedResult」形式で記述"
        }
      ],
      "github.copilot.chat.commitMessageGeneration.instructions": [
        {
-         "text": "コミットメッセージは日本語で記述し、[種別]: 内容 の形式を使用"
+         "text": "コミットメッセージは日本語で記述し、[feat/fix/docs/style/refactor/test/chore]: 内容 の形式を使用"
        }
      ]
    }
@@ -252,27 +261,27 @@ VS Codeの設定を使用して、特定のタスクに対するカスタム指�
    - コード生成、テスト生成、コミットメッセージ生成を試す
    - それぞれの指示が適用されているか確認
 
-## 5. 統合演習：プロジェクト全体のカスタマイズ
+## 5. 統合演習：C#プロジェクト全体のカスタマイズ
 
 ### シナリオ
 
-新しいWebアプリケーションプロジェクトのために、包括的なカスタマイズ設定を作成します。
+新しいASP.NET Core Web APIプロジェクトのために、包括的なカスタマイズ設定を作成します。
 
 ### 手順
 
 1. **プロジェクト構造の作成**
    ```
-   my-webapp/
+   my-csharp-api/
    ├── .github/
    │   ├── copilot-instructions.md
    │   ├── instructions/
-   │   │   ├── frontend.instructions.md
-   │   │   ├── backend.instructions.md
+   │   │   ├── controllers.instructions.md
+   │   │   ├── services.instructions.md
    │   │   └── testing.instructions.md
    │   └── prompts/
-   │       ├── create-component.prompt.md
-   │       ├── create-api-endpoint.prompt.md
-   │       └── security-review.prompt.md
+   │       ├── create-controller.prompt.md
+   │       ├── create-service.prompt.md
+   │       └── create-test.prompt.md
    └── .vscode/
        └── settings.json
    ```
@@ -280,9 +289,9 @@ VS Codeの設定を使用して、特定のタスクに対するカスタム指�
 2. **各ファイルに適切な内容を追加**
 
 3. **チーム開発のワークフロー**
-   - 新機能開発時：`/create-component`プロンプトを使用
-   - APIエンドポイント追加時：`/create-api-endpoint`プロンプトを使用
-   - コードレビュー時：`/security-review`プロンプトを使用
+   - 新しいAPIエンドポイント追加時：`/create-controller`プロンプトを使用
+   - ビジネスロジック追加時：`/create-service`プロンプトを使用
+   - テスト作成時：`/create-test`プロンプトを使用
 
 ## ベストプラクティス
 

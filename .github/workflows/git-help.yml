@@ -1,0 +1,39 @@
+name: Git Help Issue Comments
+on:
+  issues:
+    types: [opened]
+    
+permissions:
+  issues: write      # Issueにコメントを投稿するため
+  contents: read     # プロンプトファイルを読み取るため
+  models: read       # GitHub Modelsを使用するため
+
+jobs:
+  provide_git_help:
+    runs-on: ubuntu-latest
+    # タイトルに[Git Help]が含まれる場合のみ実行
+    if: contains(github.event.issue.title, '[Git Help]')
+    steps:
+      # リポジトリのコードをチェックアウト（プロンプトファイルを読み込むため）
+      - uses: actions/checkout@v4
+      
+      # GitHub Models拡張機能をインストール
+      - name: Install gh-models extension
+        run: gh extension install https://github.com/github/gh-models
+        env:
+          GH_TOKEN: ${{ github.token }}
+          
+      # AIモデルを実行してGitの使い方を説明
+      - name: Generate Git help
+        run: |
+          echo "${{ github.event.issue.body }}" | 
+          gh models run --file git-learning-assistant.prompt.yml > response.txt
+        env:
+          GH_TOKEN: ${{ github.token }}
+          
+      # AIの回答をIssueのコメントとして投稿
+      - name: Post response
+        run: |
+          gh issue comment ${{ github.event.issue.number }} --body-file response.txt
+        env:
+          GH_TOKEN: ${{ github.token }}

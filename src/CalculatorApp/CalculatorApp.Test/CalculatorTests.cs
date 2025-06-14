@@ -172,5 +172,125 @@ namespace CalculatorApp.Tests
         }
 
         #endregion
+
+        #region Power メソッドのテスト
+
+        [Theory]
+        [InlineData(2, 3, 8)]
+        [InlineData(3, 2, 9)]
+        [InlineData(5, 0, 1)]
+        [InlineData(0, 5, 0)]
+        [InlineData(1, 100, 1)]
+        [InlineData(-1, 2, 1)]
+        [InlineData(-1, 3, -1)]
+        [InlineData(-2, 3, -8)]
+        [InlineData(-3, 2, 9)]
+        [InlineData(10, 1, 10)]
+        public void 累乗_正常な値を渡した場合_正しい結果を返す(int baseNumber, int exponent, int expected)
+        {
+            // Arrange
+            // Act
+            var result = _calculator.Power(baseNumber, exponent);
+
+            // Assert
+            result.ShouldBe(expected);
+        }
+
+        [Theory]
+        [InlineData(0, 0, 1)]
+        [InlineData(-5, 0, 1)]
+        [InlineData(100, 0, 1)]
+        public void 累乗_指数が0の場合_1を返す(int baseNumber, int exponent, int expected)
+        {
+            // Arrange
+            // Act
+            var result = _calculator.Power(baseNumber, exponent);
+
+            // Assert
+            result.ShouldBe(expected);
+        }
+
+        [Theory]
+        [InlineData(0, 1, 0)]
+        [InlineData(0, 10, 0)]
+        [InlineData(0, 100, 0)]
+        public void 累乗_底が0の場合_0を返す(int baseNumber, int exponent, int expected)
+        {
+            // Arrange
+            // Act
+            var result = _calculator.Power(baseNumber, exponent);
+
+            // Assert
+            result.ShouldBe(expected);
+        }
+
+        [Theory]
+        [InlineData(1, 1, 1)]
+        [InlineData(1, 50, 1)]
+        [InlineData(1, 1000, 1)]
+        public void 累乗_底が1の場合_1を返す(int baseNumber, int exponent, int expected)
+        {
+            // Arrange
+            // Act
+            var result = _calculator.Power(baseNumber, exponent);
+
+            // Assert
+            result.ShouldBe(expected);
+        }
+
+        [Theory]
+        [InlineData(-1, 2, 1)]
+        [InlineData(-1, 4, 1)]
+        [InlineData(-1, 100, 1)]
+        public void 累乗_底がマイナス1で指数が偶数の場合_1を返す(int baseNumber, int exponent, int expected)
+        {
+            // Arrange
+            // Act
+            var result = _calculator.Power(baseNumber, exponent);
+
+            // Assert
+            result.ShouldBe(expected);
+        }
+
+        [Theory]
+        [InlineData(-1, 1, -1)]
+        [InlineData(-1, 3, -1)]
+        [InlineData(-1, 99, -1)]
+        public void 累乗_底がマイナス1で指数が奇数の場合_マイナス1を返す(int baseNumber, int exponent, int expected)
+        {
+            // Arrange
+            // Act
+            var result = _calculator.Power(baseNumber, exponent);
+
+            // Assert
+            result.ShouldBe(expected);
+        }
+
+        [Theory]
+        [InlineData(5, -1)]
+        [InlineData(10, -5)]
+        [InlineData(-3, -2)]
+        public void 累乗_負の指数を渡した場合_ArgumentOutOfRangeExceptionをスローする(int baseNumber, int exponent)
+        {
+            // Arrange
+            // Act & Assert
+            var exception = Should.Throw<ArgumentOutOfRangeException>(() => _calculator.Power(baseNumber, exponent));
+            exception.ParamName.ShouldBe("exponent");
+            exception.Message.ShouldContain("Exponent must be non-negative");
+        }
+
+        [Theory]
+        [InlineData(int.MaxValue, 2)]
+        [InlineData(1000, 10)]
+        [InlineData(100, 5)]
+        public void 累乗_オーバーフローする場合_OverflowExceptionをスローする(int baseNumber, int exponent)
+        {
+            // Arrange
+            // Act & Assert
+            var exception = Should.Throw<OverflowException>(() => _calculator.Power(baseNumber, exponent));
+            exception.Message.ShouldContain("Power overflow");
+        }
+
+        #endregion
     }
 }

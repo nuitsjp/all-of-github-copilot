@@ -284,19 +284,6 @@ git rebaseは、コミット履歴を整理するための強力なツールで�
 
 ## 基本的な使い方
 1. 現在のブランチを最新の状態に更新
-   ```bash
-   git rebase main
-   ```
-
-2. インタラクティブリベース（コミットの編集）
-   ```bash
-   git rebase -i HEAD~3
-   ```
-
-## mergeとの違い
-- **merge**: 履歴を保持したまま統合（マージコミットが作成される）
-- **rebase**: 履歴を書き換えて直線的にする（よりクリーンな履歴）
-
 ...（以下、詳細な説明が続く）
 ```
 
@@ -323,17 +310,20 @@ gh extension install https://github.com/github/gh-models
 # 基本的な使い方：単純な質問
 echo "リベースの使い方" | gh models run --file git-learning-assistant.prompt.yml
 
-# 実践的な使い方1：gitコマンドの結果を基に質問
-git status | gh models run --file git-learning-assistant.prompt.yml \
-  --prompt "このgit statusの結果を解説してください"
+# 実践的な使い方1：変数を使用した質問
+gh models run --file git-learning-assistant.prompt.yml --var topic="リベースとマージの違い"
 
-# 実践的な使い方2：エラーメッセージの解決方法を聞く
-git rebase main 2>&1 | gh models run --file git-learning-assistant.prompt.yml \
-  --prompt "このエラーの解決方法を教えてください"
+# 実践的な使い方2：システムプロンプトを指定
+gh models run openai/gpt-4o "このgit statusの結果を解説してください" --system-prompt "あなたはGitの専門家です"
 
-# 実践的な使い方3：複雑なgit logの結果を要約
-git log --graph --oneline -10 | gh models run --file git-learning-assistant.prompt.yml \
-  --prompt "このコミット履歴を要約して、何が行われたか説明してください"
+# 実践的な使い方3：gitコマンドの結果を直接パイプで渡す
+git status | gh models run openai/gpt-4o "このgit statusの結果を解説してください"
+
+# 実践的な使い方4：エラーメッセージの解決方法を聞く
+git rebase main 2>&1 | gh models run openai/gpt-4o "このエラーの解決方法を教えてください"
+
+# 実践的な使い方5：プロンプトファイルで変数を使用
+git log --oneline -10 | gh models run --file git-learning-assistant.prompt.yml --var topic="$(cat)"
 ```
 
 **具体的な使用例：**
@@ -344,9 +334,13 @@ Auto-merging src/main.js
 CONFLICT (content): Merge conflict in src/main.js
 Automatic merge failed; fix conflicts and then commit the result.
 
-# AIに解決方法を聞く
-$ git status | gh models run --file git-learning-assistant.prompt.yml \
-    --prompt "このマージコンフリクトを解決する手順を教えてください"
+# AIに解決方法を聞く（方法1：直接モデルを指定）
+$ git status | gh models run openai/gpt-4o "このマージコンフリクトを解決する手順を教えてください" \
+    --system-prompt "あなたはGitの専門家です。初心者にも分かりやすく説明してください"
+
+# AIに解決方法を聞く（方法2：プロンプトファイルを使用）
+$ git status > conflict.txt
+$ gh models run --file git-learning-assistant.prompt.yml --var topic="$(cat conflict.txt)"
 
 # AIの回答：
 マージコンフリクトが src/main.js で発生しています。以下の手順で解決してください：
@@ -373,6 +367,31 @@ $ git status | gh models run --file git-learning-assistant.prompt.yml \
 
 詳細な説明が必要な場合は、具体的なコンフリクト内容を共有してください。
 ```
+
+**プロンプトファイルのカスタマイズ例：**
+開発チーム向けに特化したプロンプトファイルを作成することも可能：
+
+```yaml
+# team-git-helper.prompt.yml
+name: team-git-helper
+description: 開発チームのGit運用ルールに基づくアシスタント
+model: gpt-4o
+modelParameters:
+  temperature: 0.3
+  max_tokens: 1500
+messages:
+  - role: system
+    content: |
+      あなたは開発チームのGit運用をサポートするアシスタントです。
+      以下のチームルールに基づいて回答してください：
+      - feature/*、bugfix/*、hotfix/* のブランチ命名規則
+      - コミットメッセージは日本語で記述
+      - プルリクエスト前にrebaseで履歴を整理
+      - mainブランチへの直接pushは禁止
+  - role: user
+    content: "{{topic}}"
+```
+
 
 **プロンプトファイルのカスタマイズ例：**
 開発チーム向けに特化したプロンプトファイルを作成することも可能：

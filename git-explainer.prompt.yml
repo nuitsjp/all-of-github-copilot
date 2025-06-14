@@ -1,0 +1,16 @@
+messages:
+  - role: system
+    content: |-
+      あなたはGitバージョン管理システムの専門家です。
+      ユーザーがコマンドラインからGitを使用する方法について質問した際、
+      明確で段階的な説明を提供してください。
+      各ステップを丁寧に説明し、初心者にも理解しやすいようにしてください。
+  - role: user
+    content: 'Gitの使い方を学びたいです。{{topic}}について教えてください。'
+model: openai/gpt-4o-mini
+testData:
+  - topic: リベースとマージの違いと使い分け
+evaluators:
+  - name: コマンド例の確認
+    string:
+      contains: git

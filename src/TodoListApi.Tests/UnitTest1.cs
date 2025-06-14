@@ -1,23 +1,61 @@
-﻿using Microsoft.AspNetCore.Mvc.Testing;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using TodoListApi.Data;
 using TodoListApi.DTOs;
 using TodoListApi.Models;
 
 namespace TodoListApi.Tests;
 
-public class TodosControllerIntegrationTests : IClassFixture<WebApplicationFactory<Program>>
+public class CustomWebApplicationFactory : WebApplicationFactory<Program>
 {
-    private readonly WebApplicationFactory<Program> _factory;
-    private readonly HttpClient _client;
+    protected override void ConfigureWebHost(IWebHostBuilder builder)
+    {
+        builder.ConfigureServices(services =>
+        {
+            // 既存のDbContextサービスを削除
+            var descriptor = services.SingleOrDefault(
+                d => d.ServiceType == typeof(DbContextOptions<TodoDbContext>));
+            if (descriptor != null)
+                services.Remove(descriptor);
 
-    public TodosControllerIntegrationTests(WebApplicationFactory<Program> factory)
+            // テスト用のInMemoryデータベースを追加
+            services.AddDbContext<TodoDbContext>(options =>
+            {
+                options.UseInMemoryDatabase("IntegrationTestDb");
+            });
+
+            // データベースの初期化
+            var sp = services.BuildServiceProvider();
+            using var scope = sp.CreateScope();
+            var context = scope.ServiceProvider.GetRequiredService<TodoDbContext>();
+            context.Database.EnsureDeleted();
+            context.Database.EnsureCreated();
+        });
+    }
+}
+
+public class TodosControllerIntegrationTests : IClassFixture<CustomWebApplicationFactory>
+{
+    private readonly CustomWebApplicationFactory _factory;
+    private readonly HttpClient _client;
+    private readonly JsonSerializerOptions _jsonOptions;
+
+    public TodosControllerIntegrationTests(CustomWebApplicationFactory factory)
     {
         _factory = factory;
         _client = _factory.CreateClient();
+        
+        // JsonSerializerOptionsを設定（EnumはStringで変換）
+        _jsonOptions = new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true,
+            Converters = { new JsonStringEnumConverter() }
+        };
     }
 
     [Fact]
@@ -30,23 +68,18 @@ public class TodosControllerIntegrationTests : IClassFixture<WebApplicationFacto
         response.EnsureSuccessStatusCode();
         Assert.Equal("application/json; charset=utf-8", 
             response.Content.Headers.ContentType?.ToString());
-    }
-
-    [Fact]
+    }    [Fact]
     public async Task GetTodos_ReturnsListOfTodos()
     {
         // Act
         var response = await _client.GetAsync("/api/todos");
         var content = await response.Content.ReadAsStringAsync();
-        var todos = JsonSerializer.Deserialize<List<TodoItemDto>>(content, new JsonSerializerOptions
-        {
-            PropertyNameCaseInsensitive = true
-        });
+        var todos = JsonSerializer.Deserialize<List<TodoItemDto>>(content, _jsonOptions);
 
         // Assert
         Assert.NotNull(todos);
         Assert.NotEmpty(todos);
-        Assert.Equal(3, todos.Count); // サンプルデータの数
+        Assert.True(todos.Count >= 3); // 最低でもサンプルデータの3つは存在
     }
 
     [Fact]
@@ -60,7 +93,7 @@ public class TodosControllerIntegrationTests : IClassFixture<WebApplicationFacto
             Priority = Priority.High
         };
 
-        var json = JsonSerializer.Serialize(newTodo);
+        var json = JsonSerializer.Serialize(newTodo, _jsonOptions);
         var content = new StringContent(json, Encoding.UTF8, "application/json");
 
         // Act
@@ -71,10 +104,7 @@ public class TodosControllerIntegrationTests : IClassFixture<WebApplicationFacto
         Assert.Equal(System.Net.HttpStatusCode.Created, response.StatusCode);
 
         var responseContent = await response.Content.ReadAsStringAsync();
-        var createdTodo = JsonSerializer.Deserialize<TodoItemDto>(responseContent, new JsonSerializerOptions
-        {
-            PropertyNameCaseInsensitive = true
-        });
+        var createdTodo = JsonSerializer.Deserialize<TodoItemDto>(responseContent, _jsonOptions);
 
         Assert.NotNull(createdTodo);
         Assert.Equal(newTodo.Title, createdTodo.Title);
@@ -94,7 +124,7 @@ public class TodosControllerIntegrationTests : IClassFixture<WebApplicationFacto
             Priority = Priority.Medium
         };
 
-        var json = JsonSerializer.Serialize(invalidTodo);
+        var json = JsonSerializer.Serialize(invalidTodo, _jsonOptions);
         var content = new StringContent(json, Encoding.UTF8, "application/json");
 
         // Act
@@ -114,10 +144,7 @@ public class TodosControllerIntegrationTests : IClassFixture<WebApplicationFacto
         response.EnsureSuccessStatusCode();
 
         var content = await response.Content.ReadAsStringAsync();
-        var todo = JsonSerializer.Deserialize<TodoItemDto>(content, new JsonSerializerOptions
-        {
-            PropertyNameCaseInsensitive = true
-        });
+        var todo = JsonSerializer.Deserialize<TodoItemDto>(content, _jsonOptions);
 
         Assert.NotNull(todo);
         Assert.Equal(1, todo.Id);
@@ -143,7 +170,7 @@ public class TodosControllerIntegrationTests : IClassFixture<WebApplicationFacto
             Priority = Priority.Low
         };
 
-        var json = JsonSerializer.Serialize(updateData);
+        var json = JsonSerializer.Serialize(updateData, _jsonOptions);
         var content = new StringContent(json, Encoding.UTF8, "application/json");
 
         // Act
@@ -153,10 +180,7 @@ public class TodosControllerIntegrationTests : IClassFixture<WebApplicationFacto
         response.EnsureSuccessStatusCode();
 
         var responseContent = await response.Content.ReadAsStringAsync();
-        var updatedTodo = JsonSerializer.Deserialize<TodoItemDto>(responseContent, new JsonSerializerOptions
-        {
-            PropertyNameCaseInsensitive = true
-        });
+        var updatedTodo = JsonSerializer.Deserialize<TodoItemDto>(responseContent, _jsonOptions);
 
         Assert.NotNull(updatedTodo);
         Assert.Equal(updateData.Title, updatedTodo.Title);
@@ -183,15 +207,12 @@ public class TodosControllerIntegrationTests : IClassFixture<WebApplicationFacto
             Description = "このタスクは削除されます"
         };
 
-        var json = JsonSerializer.Serialize(newTodo);
+        var json = JsonSerializer.Serialize(newTodo, _jsonOptions);
         var content = new StringContent(json, Encoding.UTF8, "application/json");
         var createResponse = await _client.PostAsync("/api/todos", content);
         
         var createdContent = await createResponse.Content.ReadAsStringAsync();
-        var createdTodo = JsonSerializer.Deserialize<TodoItemDto>(createdContent, new JsonSerializerOptions
-        {
-            PropertyNameCaseInsensitive = true
-        });
+        var createdTodo = JsonSerializer.Deserialize<TodoItemDto>(createdContent, _jsonOptions);
 
         // Act
         var response = await _client.DeleteAsync($"/api/todos/{createdTodo!.Id}");
@@ -210,10 +231,7 @@ public class TodosControllerIntegrationTests : IClassFixture<WebApplicationFacto
         response.EnsureSuccessStatusCode();
 
         var content = await response.Content.ReadAsStringAsync();
-        var todos = JsonSerializer.Deserialize<List<TodoItemDto>>(content, new JsonSerializerOptions
-        {
-            PropertyNameCaseInsensitive = true
-        });
+        var todos = JsonSerializer.Deserialize<List<TodoItemDto>>(content, _jsonOptions);
 
         Assert.NotNull(todos);
         Assert.All(todos, todo => Assert.True(todo.IsCompleted));
@@ -229,10 +247,7 @@ public class TodosControllerIntegrationTests : IClassFixture<WebApplicationFacto
         response.EnsureSuccessStatusCode();
 
         var content = await response.Content.ReadAsStringAsync();
-        var todos = JsonSerializer.Deserialize<List<TodoItemDto>>(content, new JsonSerializerOptions
-        {
-            PropertyNameCaseInsensitive = true
-        });
+        var todos = JsonSerializer.Deserialize<List<TodoItemDto>>(content, _jsonOptions);
 
         Assert.NotNull(todos);
         Assert.All(todos, todo => Assert.Equal(Priority.High, todo.Priority));

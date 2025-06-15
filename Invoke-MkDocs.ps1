@@ -18,11 +18,15 @@ $VenvPath = Join-Path $ScriptDir ".venv"
 
 Write-Host "=== Material for MkDocs セットアップ ===" -ForegroundColor Green
 
+# パッケージインストールが必要かどうかのフラグ
+$NeedPackageInstall = $false
+
 # WithUpdateオプションが指定された場合、既存の仮想環境を削除
 if ($WithUpdate -and (Test-Path $VenvPath)) {
     Write-Host "WithUpdateオプションが指定されました。既存の仮想環境を削除中..." -ForegroundColor Yellow
     Remove-Item $VenvPath -Recurse -Force
     Write-Host "既存の仮想環境を削除しました。" -ForegroundColor Green
+    $NeedPackageInstall = $true
 }
 
 # Python仮想環境の確認・作成
@@ -33,6 +37,7 @@ if (-not (Test-Path $VenvPath)) {
         Write-Error "Python仮想環境の作成に失敗しました。Pythonがインストールされているか確認してください。"
     }
     Write-Host "Python仮想環境を作成しました。" -ForegroundColor Green
+    $NeedPackageInstall = $true
 } else {
     Write-Host "Python仮想環境が見つかりました。" -ForegroundColor Green
 }
@@ -52,27 +57,31 @@ if (-not (Test-Path $MkDocsConfig)) {
     Write-Error "mkdocs.yml が見つかりません。"
 }
 
-# 必要なパッケージのインストール
-Write-Host "必要なパッケージをインストール中..." -ForegroundColor Yellow
+# 必要なパッケージのインストール（新規作成時のみ）
+if ($NeedPackageInstall) {
+    Write-Host "必要なパッケージをインストール中..." -ForegroundColor Yellow
 
-# 必要なパッケージを直接指定
-$RequiredPackages = @(
-    "mkdocs",
-    "mkdocs-material",
-    "mkdocs-open-in-new-tab",
-    "mkdocs-awesome-pages-plugin",
-    "pymdown-extensions"
-)
+    # 必要なパッケージを直接指定
+    $RequiredPackages = @(
+        "mkdocs",
+        "mkdocs-material",
+        "mkdocs-open-in-new-tab",
+        "mkdocs-awesome-pages-plugin",
+        "pymdown-extensions"
+    )
 
-foreach ($Package in $RequiredPackages) {
-    Write-Host "インストール中: $Package" -ForegroundColor Cyan
-    pip install $Package --quiet
-    if ($LASTEXITCODE -ne 0) {
-        Write-Warning "パッケージ '$Package' のインストールに失敗しました。"
+    foreach ($Package in $RequiredPackages) {
+        Write-Host "インストール中: $Package" -ForegroundColor Cyan
+        pip install $Package --quiet
+        if ($LASTEXITCODE -ne 0) {
+            Write-Warning "パッケージ '$Package' のインストールに失敗しました。"
+        }
     }
-}
 
-Write-Host "パッケージのインストールが完了しました。" -ForegroundColor Green
+    Write-Host "パッケージのインストールが完了しました。" -ForegroundColor Green
+} else {
+    Write-Host "既存の仮想環境を使用します。パッケージインストールをスキップします。" -ForegroundColor Green
+}
 
 # MkDocsサーバーを起動
 Write-Host "=== MkDocsサーバーを起動します ===" -ForegroundColor Green

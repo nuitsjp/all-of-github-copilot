@@ -12,11 +12,36 @@
 /* サイドバーがある場合のレイアウト調整 */
 @media screen and (min-width: 76.25em) {
   .md-sidebar--primary {
-    width: 15rem; /* サイドバーの幅を少し狭く */
+    width: 20rem; /* デフォルトは12.1remからさらに拡張 */
   }
   
   .md-sidebar--secondary {
-    width: 15rem; /* 目次サイドバーの幅を少し狭く */
+    width: 18rem; /* 目次サイドバーの幅 */
+  }
+  
+  /* サイドバー内のナビゲーションテキストを完全表示 */
+  .md-sidebar--primary .md-nav__link {
+    white-space: normal; /* 改行を許可 */
+    overflow: visible; /* テキストを完全表示 */
+    padding-left: 0.8rem; /* 左パディングを調整 */
+    padding-right: 0.2rem; /* 右パディングを最小化 */
+    word-wrap: break-word; /* 長い単語は改行 */
+  }
+  
+  /* サイドバー全体のパディングを調整 */
+  .md-sidebar--primary .md-nav {
+    padding: 0.4rem 0.2rem; /* 上下左右のパディングを調整 */
+  }
+  
+  /* サイドバーのスクロール領域内のパディングを調整 */
+  .md-sidebar--primary .md-sidebar__inner {
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+  }
+  
+  /* サイドバー内のスクロール領域を調整 */
+  .md-sidebar--primary .md-sidebar__scrollwrap {
+    overflow-x: visible;
   }
 }
 
@@ -25,11 +50,19 @@
   .md-grid {
     max-width: 1600px;
   }
+  
+  .md-sidebar--primary {
+    width: 22rem; /* より大きな画面ではさらに広く */
+  }
 }
 
 /* 超大画面でのさらなる調整 */
 @media screen and (min-width: 100em) {
   .md-grid {
     max-width: 1800px;
+  }
+  
+  .md-sidebar--primary {
+    width: 24rem; /* 超大画面では最大の幅 */
   }
 }

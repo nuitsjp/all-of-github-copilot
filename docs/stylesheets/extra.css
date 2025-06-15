@@ -1,0 +1,35 @@
+/* コンテンツの最大幅を広げる */
+.md-grid {
+  max-width: 1400px; /* デフォルトは1220px */
+}
+
+/* メインコンテンツエリアの幅を調整 */
+.md-content__inner {
+  margin-right: 1.2rem;
+  margin-left: 1.2rem;
+}
+
+/* サイドバーがある場合のレイアウト調整 */
+@media screen and (min-width: 76.25em) {
+  .md-sidebar--primary {
+    width: 15rem; /* サイドバーの幅を少し狭く */
+  }
+  
+  .md-sidebar--secondary {
+    width: 15rem; /* 目次サイドバーの幅を少し狭く */
+  }
+}
+
+/* より大きな画面でさらに幅を広げる */
+@media screen and (min-width: 88.25em) {
+  .md-grid {
+    max-width: 1600px;
+  }
+}
+
+/* 超大画面でのさらなる調整 */
+@media screen and (min-width: 100em) {
+  .md-grid {
+    max-width: 1800px;
+  }
+}

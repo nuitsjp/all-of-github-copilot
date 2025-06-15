@@ -41,12 +41,12 @@
   - 同一リポジトリで人によって異なるライセンスの適用が可能
   - ライセンスの優先順位（Enterprise > Business > Pro+）
   - 推奨される組織構成（Copilot割当用Organization分離）
-  - [参考](/research/2025-06-05-github-copilot-license.md)
+  - [参考](research/2025-06-05-github-copilot-license.md)
 - **主要競合製品との簡単な比較**
   - Cursor、Windsurf、Claude Code等との機能・価格比較
   - 各ツールの特徴と適用シーン
   - GitHub Copilotの位置づけと強み
-  - [参考](/research/Copilot最新情報と競合ツール比較_.md)
+  - [参考](research/Copilot最新情報と競合ツール比較_.md)
 
 ## デモ環境
 - VS Code + C#
@@ -54,9 +54,9 @@
 - 各機能の動作が分かる簡潔なデモ
 
 ## 準備するもの
-- Marpスライド
-- デモ用のサンプルコード（シンプルなもの）
-- 機能一覧
+- Marpスライド ([slides.md](slides.md))
+- デモ用のサンプルコード（C# Calculator アプリ）
+- 機能一覧 ([機能一覧.md](機能一覧.md))
 
 ## 学習プラン
 
@@ -72,26 +72,51 @@
 機能一覧に基づき、以下の順序で学習を進めます：
 
 1. **基本機能（Pro対応）** - 約3時間
-   - Code completion
-   - Copilot Chat
-   - Copilot in the CLI
+   - Code completion - [01-code-completion.md](curriculum/01-code-completion.md)
+   - Copilot Chat - [02-01-getting-started-chat.md](curriculum/02-01-getting-started-chat.md)
+   - Copilot in the CLI - [04-using-github-copilot-in-the-command-line.md](research/doc/04-using-github-copilot-in-the-command-line.md)
    - GitHub Copilot Extensions
-   - GitHub Models
-   - Copilot Edits
-   - Copilot custom instructions
+   - GitHub Models - [06-github-models](research/doc/06-github-models/)
+   - Copilot Edits - [02-05-copilot-edits.md](curriculum/02-05-copilot-edits.md)
+   - Copilot custom instructions - [.github/copilot-instructions.md](.github/copilot-instructions.md)
    - Copilot in GitHub Desktop
 
 2. **Pro+/Business/Enterprise機能** - 約4時間
-   - Copilot coding agent
+   - Copilot coding agent - [03-04-troubleshooting-copilot-coding-agent.md](curriculum/03-04-troubleshooting-copilot-coding-agent.md)
    - GitHub Copilot code review
    - Copilot pull request summaries
    - Copilot Workspace
    - Copilot text completion
    - Copilot Spaces
-   - Copilot knowledge bases（Enterprise限定）
+   - Copilot knowledge bases（Enterprise限定）- [10-managing-copilot-knowledge-bases.md](curriculum/10-managing-copilot-knowledge-bases.md)
 
-### 学習テキストの作成
+### 学習マニュアル
 
-[doc](doc/) フォルダー下の機能別の概略説明文書をもとに[functions](functions/)ディレクトリに学習マニュアルを作成してください。
+各機能の詳細な学習手順は、以下のディレクトリに整理されています：
 
-docの下のファイルと同じ名前でfunctionsに学習マニュアルを作成してください。
+- [curriculum/](curriculum/) - 基本機能の学習マニュアル
+- [research/doc/](research/doc/) - 機能別の概略説明文書
+
+### プロジェクト構造
+
+```
+.
+├── README.md                    # 本ファイル
+├── slides.md                    # 発表用スライド
+├── 機能一覧.md                   # GitHub Copilot機能の完全リスト
+├── .github/                     
+│   ├── copilot-instructions.md  # カスタム指示のサンプル
+│   └── workflows/               # GitHub Actions設定
+├── curriculum/                  # 学習用カリキュラム
+├── research/                    # 調査資料・ドキュメント
+│   └── doc/                     # 機能別説明文書
+└── src/                        
+    └── CalculatorApp/           # デモ用C#アプリケーション
+```
+
+## 次のステップ
+
+1. 学習マニュアルに従って各機能を実践
+2. デモ用サンプルコードの準備・検証
+3. スライドの作成と時間配分の調整
+4. リハーサルと最終調整

@@ -1,5 +1,5 @@
 site_name: GitHub Copilotのすべて
-site_url: https://github.com/nuitsjp/all-of-github-copilot
+site_url: https://foo.com
 repo_url: https://github.com/nuitsjp/all-of-github-copilot
 edit_uri: edit/main/docs/
 copyright: nuits.jp
@@ -40,3 +40,6 @@ plugins:
   - search:
       lang: ja
       separator: '[\s\-,:!=\[\]()"/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+
+extra_css:
+  - stylesheets/extra.css

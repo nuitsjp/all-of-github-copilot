@@ -2,7 +2,7 @@
 
 param(
     [string]$Port = "8000",
-    [string]$Host = "127.0.0.1",
+    [string]$Address = "127.0.0.1",
     [switch]$WithUpdate
 )
 
@@ -76,40 +76,12 @@ Write-Host "パッケージのインストールが完了しました。" -Foreg
 
 # MkDocsサーバーを起動
 Write-Host "=== MkDocsサーバーを起動します ===" -ForegroundColor Green
-Write-Host "アクセスURL: http://$Host`:$Port" -ForegroundColor Cyan
+Write-Host "アクセスURL: http://$Address`:$Port" -ForegroundColor Cyan
 Write-Host "停止するには Ctrl+C を押してください。" -ForegroundColor Yellow
 Write-Host ""
 
 try {
-    mkdocs serve --dev-addr "$Host`:$Port"
-} catch {
-    Write-Error "MkDocsサーバーの起動に失敗しました: $_"
-} finally {
-    Write-Host "MkDocsサーバーを停止しました。" -ForegroundColor Yellow
-}
-    }
-}
-
-# 全パッケージをインストール
-$AllPackages = $BasePackages + $PluginPackages | Sort-Object -Unique
-foreach ($Package in $AllPackages) {
-    Write-Host "インストール中: $Package" -ForegroundColor Cyan
-    pip install $Package --quiet
-    if ($LASTEXITCODE -ne 0) {
-        Write-Warning "パッケージ '$Package' のインストールに失敗しました。"
-    }
-}
-
-Write-Host "パッケージのインストールが完了しました。" -ForegroundColor Green
-
-# MkDocsサーバーを起動
-Write-Host "=== MkDocsサーバーを起動します ===" -ForegroundColor Green
-Write-Host "アクセスURL: http://$Host`:$Port" -ForegroundColor Cyan
-Write-Host "停止するには Ctrl+C を押してください。" -ForegroundColor Yellow
-Write-Host ""
-
-try {
-    mkdocs serve --dev-addr "$Host`:$Port"
+    mkdocs serve --dev-addr "$Address`:$Port"
 } catch {
     Write-Error "MkDocsサーバーの起動に失敗しました: $_"
 } finally {

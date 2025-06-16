@@ -8,10 +8,29 @@
 - 対象: ITエンジニア（レベル感は雑多）
 - 形式: オンラインカンファレンス
 
-## 発表の目的
-- GitHub Copilotの全機能を網羅的に紹介
-- 各機能の概要をデモで分かりやすく示す
-- 導入を検討している人に判断材料を提供
+## 発表のゴール
+- GitHub Copilotの（ほぼ）すべての機能の概略を知る
+- 本発表内容の学習の仕方を理解する
+- 本発表内容の学習コンテンツが自作できるようになる
+
+## 発表のスタイル
+1. 各機能の一覧の提示
+2. 各機能の概略の説明
+3. 各機能を実際に使って見せる
+
+## 大まかな発表の流れ
+
+1. 発表のゴール（1項目1ページ）
+2. 自己紹介
+2. 発表コンテンツの紹介
+3. デモ環境について（Pro+、Microsoft MVP特典、MSさんありがとう）
+4. 各機能の説明
+    1. [機能一覧](機能一覧.md)
+    2. 機能概略
+    3. デモ(promptファイルのところで学習教材の使い方を説明)
+5. ライセンス概略
+    1. 各ライセンスの主な相違点について
+    2. BusinessとEnterpriseの共存 - [参考](research/2025-06-05-github-copilot-license.md)
 
 ## 発表で重視するポイント
 
@@ -35,90 +54,19 @@
 - 各機能は概要レベルで説明
 - 時間配分を厳密に管理
 
-### 5. 導入判断に役立つ情報
-- 各プランの特徴と適用シーン
-- コスト（プレミアムリクエストの仕組み）
-- セキュリティ・コンプライアンス面
-- **企業内でのBusinessとEnterpriseの使い分け**
-  - 同一リポジトリで人によって異なるライセンスの適用が可能
-  - ライセンスの優先順位（Enterprise > Business > Pro+）
-  - 推奨される組織構成（Copilot割当用Organization分離）
-  - [参考](research/2025-06-05-github-copilot-license.md)
-- **主要競合製品との簡単な比較**
-  - Cursor、Windsurf、Claude Code等との機能・価格比較
-  - 各ツールの特徴と適用シーン
-  - GitHub Copilotの位置づけと強み
-  - [参考](research/Copilot最新情報と競合ツール比較_.md)
+### 5. 継続学習への誘導
+- 学習コンテンツの活用方法説明
+- 段階別学習パスの提示
+- ハンズオンへの自然な流れ
 
 ## デモ環境
 - VS Code + C#
-- GitHub Copilot Pro/Business（Pro+、Enterprise固有機能も説明）
-- 各機能の動作が分かる簡潔なデモ
+- GitHub Web site
+- GitHub Copilot Pro+
 
 ## 準備するもの
 - Marpスライド ([slides.md](slides.md))
 - デモ用のサンプルコード（C# Calculator アプリ）
 - 機能一覧 ([機能一覧.md](機能一覧.md))
-
-## 学習プラン
-
-発表前の準備として、GitHub Copilotの全機能を体系的に学習・検証します。
-
-### 学習方針
-- 1機能につき10-30分で完了する実践的な内容
-- VS Code + C#環境での実際の動作確認
-- 各機能の特徴・使用感・制限事項を記録
-- デモで使用するサンプルコードの準備
-
-### 学習スケジュール
-機能一覧に基づき、以下の順序で学習を進めます：
-
-1. **基本機能（Pro対応）** - 約3時間
-   - Code completion - [01-code-completion.md](curriculum/01-code-completion.md)
-   - Copilot Chat - [02-01-getting-started-chat.md](curriculum/02-01-getting-started-chat.md)
-   - Copilot in the CLI - [04-using-github-copilot-in-the-command-line.md](research/doc/04-using-github-copilot-in-the-command-line.md)
-   - GitHub Copilot Extensions
-   - GitHub Models - [06-github-models](research/doc/06-github-models/)
-   - Copilot Edits - [02-05-copilot-edits.md](curriculum/02-05-copilot-edits.md)
-   - Copilot custom instructions - [.github/copilot-instructions.md](.github/copilot-instructions.md)
-   - Copilot in GitHub Desktop
-
-2. **Pro+/Business/Enterprise機能** - 約4時間
-   - Copilot coding agent - [03-04-troubleshooting-copilot-coding-agent.md](curriculum/03-04-troubleshooting-copilot-coding-agent.md)
-   - GitHub Copilot code review
-   - Copilot pull request summaries
-   - Copilot Workspace
-   - Copilot text completion
-   - Copilot Spaces
-   - Copilot knowledge bases（Enterprise限定）- [10-managing-copilot-knowledge-bases.md](curriculum/10-managing-copilot-knowledge-bases.md)
-
-### 学習マニュアル
-
-各機能の詳細な学習手順は、以下のディレクトリに整理されています：
-
-- [curriculum/](curriculum/) - 基本機能の学習マニュアル
-- [research/doc/](research/doc/) - 機能別の概略説明文書
-
-### プロジェクト構造
-
-```
-.
-├── README.md                    # 本ファイル
-├── slides.md                    # 発表用スライド
-├── 機能一覧.md                   # GitHub Copilot機能の完全リスト
-├── .github/                     
-│   ├── copilot-instructions.md  # カスタム指示のサンプル
-│   └── workflows/               # GitHub Actions設定
-├── curriculum/                  # 学習用カリキュラム
-├── research/                    # 調査資料・ドキュメント
-│   └── doc/                     # 機能別説明文書
-└── src/                        
-    └── CalculatorApp/           # デモ用C#アプリケーション
-```
-
-## 次のステップ
-
-1. 学習マニュアルに従って各機能を実践
-2. デモ用サンプルコードの準備・検証
-3. スライドの作成と時間配分の調整
-4. リハーサルと最終調整
+- **事後アンケートフォーム**（ハンズオン希望調査含む）
+- **学習継続ガイド**（初級・中級・上級別）

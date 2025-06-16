@@ -1,0 +1,45 @@
+site_name: GitHub Copilotのすべて
+site_url: https://foo.com
+repo_url: https://github.com/nuitsjp/all-of-github-copilot
+edit_uri: edit/main/docs/
+copyright: nuits.jp
+use_directory_urls: false
+docs_dir: docs
+
+theme:
+  name: material
+  palette:
+    primary: deep orange
+  features:
+    - navigation.prune
+    - navigation.tracking
+    - navigation.expand
+    - navigation.indexes
+    - navigation.top
+    - toc.follow
+    - search.highlight
+    - search.share
+    - search.suggest
+    - content.action.edit
+    - content.code.copy
+
+markdown_extensions:
+  - attr_list
+  - admonition
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+
+plugins:
+  - open-in-new-tab  
+  - awesome-pages
+  - search:
+      lang: ja
+      separator: '[\s\-,:!=\[\]()"/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+
+extra_css:
+  - stylesheets/extra.css

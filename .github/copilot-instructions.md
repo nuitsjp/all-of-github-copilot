@@ -1,4 +1,4 @@
-# プロジェクト: C# Calculator アプリケーション
+# プロジェクト: C#
 
 ## コーディング規約
 - C# 命名規則 (PascalCase, camelCase) を厳守

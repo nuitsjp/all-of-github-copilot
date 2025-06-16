@@ -1,0 +1,479 @@
+# GitHub Copilot Chat レスポンスのカスタマイズ
+
+## 概要
+
+GitHub Copilot Chatは、チームの作業方法やプロジェクトの特性に合わせてカスタマイズできます。このチュートリアルでは、2つの主要なカスタマイズ方法を学習し、実際のシナリオで活用できるようになることを目指します。
+
+## 学習目標
+
+このチュートリアルを完了すると、以下のことができるようになります：
+
+- リポジトリカスタム指示ファイルを作成し、プロジェクト全体のコーディング規約を適用する
+- インストラクションファイルを使用して、特定のタスクやファイルタイプに対する指示を定義する
+- 各カスタマイズ方法の使い分けを理解する
+
+## 前提条件
+
+- Visual Studio Codeがインストールされていること
+- GitHub Copilot拡張機能が有効になっていること
+- Gitリポジトリの基本的な知識
+
+## 1. リポジトリカスタム指示の設定
+
+### 概要
+
+リポジトリカスタム指示は、プロジェクト全体に適用される一般的なルールや規約を定義するためのシンプルな方法です。
+
+### 実践演習：基本的なリポジトリカスタム指示の作成
+
+1. **リポジトリに`.github`ディレクトリを作成**
+   ```bash
+   mkdir -p .github
+   ```
+
+2. **`copilot-instructions.md`ファイルを作成**
+   ```bash
+   touch .github/copilot-instructions.md
+   ```
+
+3. **基本的な指示を追加**
+   ```markdown
+   # プロジェクトのコーディング規約
+
+   C#コードを生成する際は、以下の規約に従ってください：
+   - インデントにはスペース4つを使用
+   - 文字列補間を優先的に使用
+   - メソッド名はPascalCaseで記述
+   - プライベートフィールドは_camelCaseで記述
+   - XMLドキュメントコメントを日本語で記述
+   
+   テストコードを生成する際は、xUnitフレームワークを使用してください。
+   ```
+
+4. **設定を有効化**
+   - VS Codeで `Ctrl+,` (設定を開く)
+   - `github.copilot.chat.codeGeneration.useInstructionFiles` を検索
+   - チェックボックスをオンにする
+
+5. **動作確認**
+   - Copilot Chatを開いて「新しいメソッドを作成して」と入力
+   - 生成されたコードが指示に従っているか確認
+
+### チャレンジ課題
+
+プロジェクトに合わせて、以下の指示を追加してみましょう：
+- エラーハンドリングの方法（try-catch、カスタム例外）
+- 命名規則（変数、定数、インターフェース、クラスなど）
+- XMLドキュメントコメントの書き方
+
+## 2. インストラクションファイルの活用
+
+### 概要
+
+インストラクションファイルは、より詳細で条件付きの指示を定義できる高度なカスタマイズ方法です。
+
+### 実践演習：タイプ別インストラクションファイルの作成
+
+1. **インストラクションフォルダを作成**
+   ```bash
+   mkdir -p .github/instructions
+   ```
+
+2. **C#用インストラクションファイルを作成**
+   
+   ファイル名：`.github/instructions/csharp.instructions.md`
+   ```markdown
+   ---
+   applyTo: "**/*.cs"
+   description: "C#とASP.NET Coreのコーディング規約"
+   ---
+   
+   # C#コーディング標準
+   
+   ## 命名規則
+   - インターフェースは'I'で始める（例：IRepository）
+   - 抽象クラスは'Base'で終わる（例：ControllerBase）
+   - 非同期メソッドは'Async'で終わる（例：GetDataAsync）
+   
+   ## ASP.NET Core
+   - DIコンテナを活用する
+   - コントローラーアクションは常にIActionResultを返す
+   - [ApiController]属性を使用
+   
+   ## エラーハンドリング
+   - グローバル例外ハンドラーを使用
+   - カスタム例外クラスを作成
+   - すべてのpublicメソッドで引数検証を実施
+   ```
+
+3. **新しいインストラクションファイルを作成**
+   - VS Codeでコマンドパレット（`Ctrl+Shift+P`）を開く
+   - `Chat: New Instructions File`を実行
+   - 保存場所とファイル名を指定
+
+4. **動作確認**
+   - C#ファイルを開く
+   - Copilot Chatで「このファイルに新しいメソッドを追加」と入力
+   - 生成されたコードがC#用の指示に従っているか確認
+
+### チャレンジ課題
+
+以下のシナリオに対応するインストラクションファイルを作成してみましょう：
+- Web APIコントローラー用（`**/Controllers/**/*.cs`）
+- テストファイル用（`**/*.Tests.cs`）
+- Entity Frameworkモデル用（`**/Models/**/*.cs`）
+
+## 3. VS Code設定によるカスタマイズ
+
+### 概要
+
+VS Codeの設定を使用して、特定のタスクに対するカスタム指示を定義できます。
+
+### 実践演習：設定ファイルでのカスタム指示
+
+1. **ワークスペース設定を開く**
+   - `.vscode/settings.json`を作成または開く
+
+2. **各種タスク用の指示を追加**
+   ```json
+   {
+     "github.copilot.chat.codeGeneration.instructions": [
+       {
+         "text": "生成されたコードには必ず「// AI生成」というコメントを追加し、すべてのpublicメソッドにXMLドキュメントコメントを含める"
+       },
+       {
+         "file": "csharp-standards.instructions.md"
+       }
+     ],
+     "github.copilot.chat.testGeneration.instructions": [
+       {
+         "text": "xUnitを使用し、テストメソッド名は「MethodName_Scenario_ExpectedResult」形式で記述"
+       }
+     ],
+     "github.copilot.chat.commitMessageGeneration.instructions": [
+       {
+         "text": "コミットメッセージは日本語で記述し、[feat/fix/docs/style/refactor/test/chore]: 内容 の形式を使用"
+       }
+     ]
+   }
+   ```
+
+3. **動作確認**
+   - コード生成、テスト生成、コミットメッセージ生成を試す
+   - それぞれの指示が適用されているか確認
+
+## 4. 統合演習：C#プロジェクト全体のカスタマイズ
+
+### シナリオ
+
+新しいASP.NET Core Web APIプロジェクトのために、包括的なカスタマイズ設定を作成します。
+
+### 手順
+
+1. **プロジェクト構造の作成**
+   ```
+   my-csharp-api/
+   ├── .github/
+   │   ├── copilot-instructions.md
+   │   └── instructions/
+   │       ├── controllers.instructions.md
+   │       ├── services.instructions.md
+   │       └── testing.instructions.md
+   └── .vscode/
+       └── settings.json
+   ```
+
+2. **各ファイルに適切な内容を追加**
+
+3. **チーム開発のワークフロー**
+   - 新しいAPIエンドポイント追加時：適切なインストラクションファイルが自動適用
+   - ビジネスロジック追加時：サービス層の規約に従った実装
+   - テスト作成時：テスト用の指示に基づいた単体テスト生成
+
+## ベストプラクティス
+
+1. **指示の書き方**
+   - 短く明確な文章を使用
+   - 矛盾する指示を避ける
+   - 具体的な例を含める
+
+2. **ファイルの整理**
+   - 目的別にファイルを分割
+   - 命名規則を統一
+   - ドキュメントを充実させる
+
+3. **チーム共有**
+   - リポジトリにコミット
+   - READMEに使用方法を記載
+   - 定期的に見直しと更新
+
+## トラブルシューティング
+
+### よくある問題と解決方法
+
+1. **カスタム指示が適用されない**
+   - 設定が有効になっているか確認
+   - ファイルパスが正しいか確認
+   - VS Codeを再起動
+
+2. **インストラクションファイルが特定のファイルに適用されない**
+   - `applyTo`のglob パターンを確認
+   - ファイルパスがパターンにマッチするか確認
+
+## まとめ
+
+このチュートリアルでは、GitHub Copilot Chatの2つの主要なカスタマイズ方法を学習しました：
+
+1. **リポジトリカスタム指示** - プロジェクト全体の基本ルール
+2. **インストラクションファイル** - 条件付きの詳細な指示
+
+これらを組み合わせることで、チームの生産性を大幅に向上させることができます。プロンプトファイルの詳細については、次のチュートリアルで学習します。
+
+## 次のステップ
+
+- プロンプトファイルの作成方法を学ぶ
+- カスタムチャットモードの作成方法を探求
+- チーム固有のベストプラクティスを確立
+
+## 参考リソース
+
+- [GitHub Copilot Chat カスタマイズドキュメント](https://docs.github.com/ja/copilot/customizing-copilot)
+- [VS Code Copilot カスタマイズガイド](https://code.visualstudio.com/docs/copilot/copilot-customization)
+   ```json
+   {
+     "github.copilot.chat.codeGeneration.instructions": [
+       {
+         "text": "生成されたコードには必ず「// AI生成」というコメントを追加し、すべてのpublicメソッドにXMLドキュメントコメントを含める"
+       },
+       {
+         "file": "csharp-standards.instructions.md"
+       }
+     ],
+     "github.copilot.chat.testGeneration.instructions": [
+       {
+         "text": "xUnitを使用し、テストメソッド名は「MethodName_Scenario_ExpectedResult」形式で記述"
+       }
+     ],
+     "github.copilot.chat.commitMessageGeneration.instructions": [
+       {
+         "text": "コミットメッセージは日本語で記述し、[feat/fix/docs/style/refactor/test/chore]: 内容 の形式を使用"
+       }
+     ]
+   }
+   ```
+
+3. **動作確認**
+   - コード生成、テスト生成、コミットメッセージ生成を試す
+   - それぞれの指示が適用されているか確認
+
+## 5. 統合演習：C#プロジェクト全体のカスタマイズ
+
+### シナリオ
+
+新しいASP.NET Core Web APIプロジェクトのために、包括的なカスタマイズ設定を作成します。
+
+### 手順
+
+1. **プロジェクト構造の作成**
+   ```
+   my-csharp-api/
+   ├── .github/
+   │   ├── copilot-instructions.md
+   │   ├── instructions/
+   │   │   ├── controllers.instructions.md
+   │   │   ├── services.instructions.md
+   │   │   └── testing.instructions.md
+   │   └── prompts/
+   │       ├── create-controller.prompt.md
+   │       ├── create-service.prompt.md
+   │       └── create-test.prompt.md
+   └── .vscode/
+       └── settings.json
+   ```
+
+2. **各ファイルに適切な内容を追加**
+
+3. **チーム開発のワークフロー**
+   - 新しいAPIエンドポイント追加時：`/create-controller`プロンプトを使用
+   - ビジネスロジック追加時：`/create-service`プロンプトを使用
+   - テスト作成時：`/create-test`プロンプトを使用
+
+## ベストプラクティス
+
+1. **指示の書き方**
+   - 短く明確な文章を使用
+   - 矛盾する指示を避ける
+   - 具体的な例を含める
+
+2. **ファイルの整理**
+   - 目的別にファイルを分割
+   - 命名規則を統一
+   - ドキュメントを充実させる
+
+3. **チーム共有**
+   - リポジトリにコミット
+   - READMEに使用方法を記載
+   - 定期的に見直しと更新
+
+## トラブルシューティング
+
+### よくある問題と解決方法
+
+1. **カスタム指示が適用されない**
+   - 設定が有効になっているか確認
+   - ファイルパスが正しいか確認
+   - VS Codeを再起動
+
+2. **プロンプトファイルが見つからない**
+   - `chat.promptFilesLocations`設定を確認
+   - ファイルの拡張子が`.prompt.md`か確認
+
+3. **インストラクションファイルが特定のファイルに適用されない**
+   - `applyTo`のglob パターンを確認
+   - ファイルパスがパターンにマッチするか確認
+
+## まとめ
+
+このチュートリアルでは、GitHub Copilot Chatの3つの主要なカスタマイズ方法を学習しました：
+
+1. **リポジトリカスタム指示** - プロジェクト全体の基本ルール
+2. **インストラクションファイル** - 条件付きの詳細な指示
+3. **プロンプトファイル** - 再利用可能なタスクテンプレート
+
+これらを組み合わせることで、チームの生産性を大幅に向上させることができます。
+
+## 6. 新機能：Copilot コードレビューのカスタマイズ（2025年6月追加）
+
+### 概要
+
+2025年6月13日に発表された新機能により、GitHub Copilot Code Reviewでも同じカスタム指示ファイル（`copilot-instructions.md`）を使用できるようになりました。これにより、Copilot Chat、Coding Agent、Code Reviewで一貫したカスタマイズが可能になります。
+
+### 特徴
+
+- **統一されたカスタマイズ**：`.github/copilot-instructions.md`ファイルを使用
+- **自動適用**：プルリクエストごとの手動設定は不要
+- **パブリックプレビュー**：すべての有料Copilotユーザーが利用可能
+
+### 実践演習：コードレビュー用カスタム指示の設定
+
+1. **既存の`copilot-instructions.md`ファイルを拡張**
+   ```markdown
+   # プロジェクトのコーディング規約
+
+   ## コード生成・チャット・コードレビュー共通
+   
+   C#コードを生成・レビューする際は、以下の規約に従ってください：
+   - インデントにはスペース4つを使用
+   - 文字列補間を優先的に使用
+   - メソッド名はPascalCaseで記述
+   - プライベートフィールドは_camelCaseで記述
+   - XMLドキュメントコメントを日本語で記述
+   
+   ## コードレビュー専用指示
+   
+   - レビューコメントは日本語で記述
+   - 可読性とネストした三項演算子の回避に重点を置く
+   - パブリックAPIへのフィードバックを優先
+   - セキュリティとパフォーマンスの観点から重要な変更を特定
+   
+   テストコードを生成・レビューする際は、xUnitフレームワークを使用してください。
+   ```
+
+2. **多言語チーム向けの設定例**
+   ```markdown
+   # プロジェクトのコーディング規約
+   
+   レビューコメントは英語で記述してください。
+   
+   C#コードのレビューでは以下に重点を置いてください：
+   - SOLID原則の遵守
+   - 適切な例外ハンドリング
+   - メモリリークの防止
+   - 非同期プログラミングのベストプラクティス
+   ```
+
+3. **企業向け設定の有効化**
+   - 組織管理者がCopilotプレビュー機能にオプトインする必要があります
+   - リポジトリ設定 > Copilot Code Review で管理可能（近日公開予定）
+
+### 活用例
+
+**シナリオ1：多言語チーム**
+```markdown
+"Respond in Spanish"
+```
+
+**シナリオ2：スタイルガイドの徹底**
+```markdown
+"Focus on readability and avoid nested ternaries"
+```
+
+**シナリオ3：API重視のレビュー**
+```markdown
+"Prioritize feedback on our public APIs"
+```
+
+### C#プロジェクト用の実践的な設定例
+
+```markdown
+# C# ASP.NET Core プロジェクト コードレビュー指示
+
+## コードレビューの重点項目
+
+### セキュリティ
+- SQL インジェクション対策の確認
+- XSS 攻撃対策の確認
+- 適切な認証・認可の実装
+
+### パフォーマンス
+- 非同期メソッドの適切な使用（async/await）
+- データベースクエリの最適化
+- メモリリークの防止
+
+### コード品質
+- SOLID 原則の遵守
+- 適切な例外ハンドリング
+- XMLドキュメントコメントの完備
+- 単体テストのカバレッジ
+
+### ASP.NET Core 固有
+- DIコンテナの適切な活用
+- ミドルウェアの正しい実装
+- APIバージョニングの考慮
+
+すべてのレビューコメントは日本語で記述し、改善提案には具体的なコード例を含めてください。
+```
+
+### ベストプラクティス
+
+1. **段階的な導入**
+   - まず基本的な指示から開始
+   - チームのフィードバックを基に段階的に拡張
+
+2. **チーム合意の形成**
+   - レビュー基準をチーム全体で合意
+   - 定期的な見直しと改善
+
+3. **具体性を重視**
+   - 抽象的な指示よりも具体的な例を含める
+   - プロジェクト固有の要件を明確に記載
+
+### トラブルシューティング
+
+**問題：コードレビューにカスタム指示が適用されない**
+- 組織でプレビュー機能が有効になっているか確認
+- `.github/copilot-instructions.md`ファイルが正しく配置されているか確認
+- ファイルの内容が有効なMarkdown形式か確認
+
+## 次のステップ
+
+- カスタムチャットモードの作成方法を学ぶ
+- より高度なプロンプトファイルのテクニックを探求
+- チーム固有のベストプラクティスを確立
+
+## 参考リソース
+
+- [GitHub Copilot Chat カスタマイズドキュメント](https://docs.github.com/ja/copilot/customizing-copilot)
+- [VS Code Copilot カスタマイズガイド](https://code.visualstudio.com/docs/copilot/copilot-customization)
+- [Copilot Code Review カスタマイズ公式発表](https://github.blog/changelog/2025-06-13-copilot-code-review-customization-for-all)
+- [GitHub Community Copilot Conversations](https://github.com/orgs/community/discussions/categories/copilot-conversations)

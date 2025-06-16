@@ -78,7 +78,6 @@ jobs:
           
           # アプリケーション設定（Azure Static Web Appsのビルド設定）
           app_location: "/site"   # MkDocsがビルドした静的サイトのディレクトリパス
-          api_location: ""        # APIのソースディレクトリ（使用しない場合は空）
           output_location: ""     # ビルド出力先（既にビルド済みのため空に設定）
           skip_app_build: true    # MkDocsで既にビルド済みのため、Azure側でのビルドプロセスをスキップ
 

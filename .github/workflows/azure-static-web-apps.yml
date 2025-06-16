@@ -7,13 +7,13 @@ on:
     branches:
       - main  # mainブランチへのプッシュ時に実行
     paths:
-      - 'docs/**'  # docsフォルダ内のファイルが変更された場合のみ実行
+      - 'docs/**, .github/**'  # docsフォルダ内のファイルが変更された場合のみ実行
   pull_request:
     types: [opened, synchronize, reopened, closed]  # PR作成・更新・再オープン・クローズ時に実行
     branches:
       - main  # mainブランチに対するPRの場合に実行
     paths:
-      - 'docs/**'  # docsフォルダ内のファイルが変更された場合のみ実行
+      - 'docs/**, .github/**'  # docsフォルダ内のファイルが変更された場合のみ実行
 
 permissions:
   contents: read

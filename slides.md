@@ -673,9 +673,9 @@ https://agreeable-island-0c8e4d900.6.azurestaticapps.net/
 ### 🎯 学習のポイント
 - 正直学習コンテンツとしての精度は微妙
 - 発表資料のリポジトリーをクローンしてCopilot Chatで適宜質問・修正しながら実行するのがお勧め
+- 別に完璧な教材なんて必要がない
 
 ### 📂 **発表資料**
-発表資料を保管しているリポジトリーにプロンプトの例があるので参考にどうぞ。
 
 🔗 https://github.com/nuitsjp/all-of-github-copilot
 

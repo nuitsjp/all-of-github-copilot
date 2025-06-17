@@ -1,3 +1,7 @@
+# リポジトリー
+
+URL: https://github.com/nuitsjp/all-of-github-copilot
+
 # プロジェクト: C#
 
 ## コーディング規約

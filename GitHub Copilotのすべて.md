@@ -55,8 +55,6 @@ style: |
 
 # 本日のゴール1️⃣
 
-<br>
-
 ## （ほぼ）すべての機能の概略を知る
 
 ※ 管理機能およびEnterprise限定などの一部機能を除く
@@ -65,15 +63,11 @@ style: |
 
 # 本日のゴール2️⃣
 
-<br>
-
 ## 本発表内容の学習の仕方を理解する
 
 ---
 
 # 本日のゴール
-
-<br>
 
 ## 本発表内容の学習コンテンツが自作できるようになる3️⃣
 
@@ -159,8 +153,6 @@ https://github.com/nuitsjp/all-of-github-copilot
 
 # 🤔 BusinessとEnterpriseの共存は可能か？
 
-<br>
-
 ### 💭 よくある疑問
 - ユーザーによって利用頻度が異なり、使い分けたいことがある
 - コスト最適化を図りたい
@@ -172,8 +164,6 @@ https://github.com/nuitsjp/all-of-github-copilot
 ---
 
 # ✅ BusinessとEnterpriseの共存可能
-
-<br>
 
 ### 🔄 **混在のメリット**
 - <span class="highlight">同一リポジトリで異なるライセンスユーザーの混在は可能</span>
@@ -203,8 +193,6 @@ https://github.com/nuitsjp/all-of-github-copilot
 ---
 
 # 🎯 Biz/Entの混在おすすめ設定
-
-<br>
 
 ### 💡 **ベストプラクティス**
 <span class="highlight">リポジトリー管理Organizationとライセンス管理Organizationを分ける</span>
@@ -262,8 +250,6 @@ https://github.com/nuitsjp/all-of-github-copilot
 ---
 
 # ⚠️ 最初にお断り
-
-<br>
 
 ### 🚫 **本日デモできない機能**
 
@@ -341,8 +327,6 @@ https://github.com/nuitsjp/all-of-github-copilot
 
 ## 自動実装エージェント
 
-<br>
-
 ### 🤖 機能
 - GitHub IssueからPRまでの自動実装
 - コードの自動生成と検証
@@ -368,8 +352,6 @@ https://github.com/nuitsjp/all-of-github-copilot
 # 4. Copilot in the CLI
 
 ## コマンドライン支援
-
-<br>
 
 ### 🖥️ 機能
 - コマンドの提案
@@ -397,8 +379,6 @@ gh copilot explain "git rebase -i HEAD~3"
 
 ## AIによるコードレビュー
 
-<br>
-
 ### 🔍 機能
 - PRの自動レビュー
 - 改善提案の生成
@@ -423,8 +403,6 @@ gh copilot explain "git rebase -i HEAD~3"
 # 6. GitHub Models
 
 ## AI言語モデルへのアクセス
-
-<br>
 
 ### 🤖 機能
 - 業界をリードする大規模・小規模言語モデルへの直接アクセス
@@ -476,8 +454,6 @@ gh copilot explain "git rebase -i HEAD~3"
 
 ## 組織レベルのカスタマイズ
 
-<br>
-
 ### 🏢 機能
 - 組織全体での統一された応答設定
 - 企業のコーディング規約の適用
@@ -503,8 +479,6 @@ gh copilot explain "git rebase -i HEAD~3"
 
 ## プロンプトファイルの活用
 
-<br>
-
 ### 📁 機能
 - 再利用可能なプロンプトの定義
 - プロジェクト固有の設定
@@ -529,8 +503,6 @@ gh copilot explain "git rebase -i HEAD~3"
 # 10. Copilot Pull Request Summaries
 
 ## PR要約の自動生成
-
-<br>
 
 ### 📝 機能
 - PR変更内容の自動要約
@@ -580,8 +552,6 @@ gh copilot explain "git rebase -i HEAD~3"
 
 ## 外部ツールの統合
 
-<br>
-
 ### 🔌 機能
 - 外部ツールのCopilot Chatへの統合
 - サードパーティサービスとの連携
@@ -606,8 +576,6 @@ gh copilot explain "git rebase -i HEAD~3"
 # 13. Copilot Workspace
 
 ## 統合開発環境
-
-<br>
 
 ### 🏗️ 機能
 - IssueからPRまでの統合フロー
@@ -635,8 +603,6 @@ gh copilot explain "git rebase -i HEAD~3"
 
 ## コンテンツ管理・共有
 
-<br>
-
 ### 📁 機能
 - 関連コンテンツの整理・集中化
 - コンテキストの共有
@@ -662,8 +628,6 @@ gh copilot explain "git rebase -i HEAD~3"
 
 ## 組織知識の統合
 
-<br>
-
 ### 📚 機能
 - 組織ドキュメントのコレクション作成・管理
 - 内部ナレッジベースとの統合
@@ -688,8 +652,6 @@ gh copilot explain "git rebase -i HEAD~3"
 # 管理者向け機能
 
 ## Business/Enterprise プラン
-
-<br>
 
 ### 🔐 アクセス管理
 - メンバーのライセンス管理
@@ -725,8 +687,6 @@ https://agreeable-island-0c8e4d900.6.azurestaticapps.net/
 
 # 💡 学習コンテンツの作成のポイント
 
-<br>
-
 ### 🚀 **効率的な教材作成フロー**
 
 1. **📖 ソース活用**: 公式ドキュメントなどからプロンプトで学習教材を作成する
@@ -744,8 +704,6 @@ https://agreeable-island-0c8e4d900.6.azurestaticapps.net/
 ---
 
 # まとめ
-
-<br>
 
 ## 🎯 本日お伝えしたこと
 
@@ -771,19 +729,5 @@ https://agreeable-island-0c8e4d900.6.azurestaticapps.net/
 - 学習コンテンツ: https://agreeable-island-0c8e4d900.6.azurestaticapps.net/
 - 公式ドキュメント: https://docs.github.com/copilot
 - VS Code ドキュメント: https://code.visualstudio.com/docs/copilot/
-
-<br>
-
-### 🚀 Happy Coding with GitHub Copilot!
-# ありがとうございました！
-
-## 🎉 GitHub Copilotで開発を加速しましょう！
-
-### 📚 リソース
-- 学習コンテンツ: https://agreeable-island-0c8e4d900.6.azurestaticapps.net/
-- 公式ドキュメント: https://docs.github.com/copilot
-- VS Code ドキュメント: https://code.visualstudio.com/docs/copilot/
-
-<br>
 
 ### 🚀 Happy Coding with GitHub Copilot!

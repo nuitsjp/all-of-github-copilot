@@ -19,21 +19,26 @@ style: |
     background-color: #ffeb3b;
   }
   /* プランアイコンのスタイル定義 */
-  .plan-icons {
-    display: inline-flex;
+  .plan-indicators {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    display: flex;
     gap: 8px;
-    margin-left: 10px;
-    vertical-align: middle;
   }
-  .plan-icon {
+  .plan-badge {
     display: inline-block;
     padding: 6px 12px 3px 12px;
     border-radius: 16px;
     font-size: 0.7em;
     font-weight: bold;
     color: white;
+  }
+  .plan-active {
     background-color: #7c4dff;
-    vertical-align: middle;
+  }
+  .plan-inactive {
+    background-color: #cccccc;
   }
 ---
 # GitHub Copilotのすべて
@@ -275,7 +280,16 @@ https://github.com/nuitsjp/all-of-github-copilot
 
 ---
 
-# 1. Code Completion <span class="plan-icons"><span class="plan-icon">Free</span><span class="plan-icon">Pro</span><span class="plan-icon">Pro+</span><span class="plan-icon">Biz</span><span class="plan-icon">Ent</span></span>
+<!-- 1. Code Completion のヘッダーに計画アイコンを追加 -->
+<div class="plan-indicators">
+  <span class="plan-badge plan-active">Free</span>
+  <span class="plan-badge plan-active">Pro</span>
+  <span class="plan-badge plan-active">Pro+</span>
+  <span class="plan-badge plan-active">Biz</span>
+  <span class="plan-badge plan-active">Ent</span>
+</div>
+
+# 1. Code Completion
 
 ## リアルタイムコード補完
 
@@ -288,11 +302,18 @@ https://github.com/nuitsjp/all-of-github-copilot
 
 ---
 
-# 2. Copilot Chat <span class="plan-icons"><span class="plan-icon">Free</span><span class="plan-icon">Pro</span><span class="plan-icon">Pro+</span><span class="plan-icon">Biz</span><span class="plan-icon">Ent</span></span>
+<!-- 2. Copilot Chat -->
+<div class="plan-indicators">
+  <span class="plan-badge plan-active">Free</span>
+  <span class="plan-badge plan-active">Pro</span>
+  <span class="plan-badge plan-active">Pro+</span>
+  <span class="plan-badge plan-active">Biz</span>
+  <span class="plan-badge plan-active">Ent</span>
+</div>
+
+# 2. Copilot Chat
 
 ## 対話型コーディングアシスタント
-
-<br>
 
 ### 🗣️ 3つのモード
 
@@ -307,69 +328,16 @@ https://github.com/nuitsjp/all-of-github-copilot
 
 ---
 
-# デモ: Copilot Chat - Ask Mode
+<!-- 3. Copilot Coding Agent -->
+<div class="plan-indicators">
+  <span class="plan-badge plan-inactive">Free</span>
+  <span class="plan-badge plan-inactive">Pro</span>
+  <span class="plan-badge plan-active">Pro+</span>
+  <span class="plan-badge plan-inactive">Biz</span>
+  <span class="plan-badge plan-active">Ent</span>
+</div>
 
-<br>
-
-## 🎯 実演内容
-
-1. **コードの説明を求める**
-   ```
-   このCalculatorクラスの機能を説明してください
-   ```
-
-2. **ベストプラクティスの質問**
-   ```
-   C#でのエラーハンドリングのベストプラクティスは？
-   ```
-
-3. **コンテキストを使った質問**
-   ```
-   #file:Calculator.cs このファイルの改善点は？
-   ```
-
----
-
-# デモ: Copilot Chat - Edit Mode
-
-<br>
-
-## 🎯 実演内容
-
-1. **複数ファイルの編集**
-   - Calculator.cs と CalculatorTests.cs の同時更新
-
-2. **リファクタリング**
-   ```
-   Calculatorクラスをインターフェースに分離して
-   ```
-
-3. **段階的な変更の実行**
-   - 提案の確認
-   - 選択的な適用
-
----
-
-# デモ: Copilot Chat - Agent Mode
-
-<br>
-
-## 🎯 実演内容
-
-1. **自律的なタスク実行**
-   ```
-   新しい機能「平方根計算」を実装して、テストも書いて
-   ```
-
-2. **エラーの自動修正**
-   - ビルドエラーの検出と修正
-
-3. **テストの実行と修正**
-   - 失敗したテストの自動修正
-
----
-
-# 3. Copilot Coding Agent <span class="plan-icons"><span class="plan-icon">Pro+</span><span class="plan-icon">Ent</span></span>
+# 3. Copilot Coding Agent
 
 ## 自動実装エージェント
 
@@ -388,7 +356,16 @@ https://github.com/nuitsjp/all-of-github-copilot
 
 ---
 
-# 4. Copilot in the CLI <span class="plan-icons"><span class="plan-icon">Free</span><span class="plan-icon">Pro</span><span class="plan-icon">Pro+</span><span class="plan-icon">Biz</span><span class="plan-icon">Ent</span></span>
+<!-- 4. Copilot in the CLI -->
+<div class="plan-indicators">
+  <span class="plan-badge plan-active">Free</span>
+  <span class="plan-badge plan-active">Pro</span>
+  <span class="plan-badge plan-active">Pro+</span>
+  <span class="plan-badge plan-active">Biz</span>
+  <span class="plan-badge plan-active">Ent</span>
+</div>
+
+# 4. Copilot in the CLI
 
 ## コマンドライン支援
 
@@ -407,7 +384,16 @@ gh copilot explain "git rebase -i HEAD~3"
 
 ---
 
-# 5. GitHub Copilot Code Review <span class="plan-icons"><span class="plan-icon">Free</span><span class="plan-icon">Pro</span><span class="plan-icon">Pro+</span><span class="plan-icon">Biz</span><span class="plan-icon">Ent</span></span>
+<!-- 5. GitHub Copilot Code Review -->
+<div class="plan-indicators">
+  <span class="plan-badge plan-active">Free</span>
+  <span class="plan-badge plan-active">Pro</span>
+  <span class="plan-badge plan-active">Pro+</span>
+  <span class="plan-badge plan-active">Biz</span>
+  <span class="plan-badge plan-active">Ent</span>
+</div>
+
+# 5. GitHub Copilot Code Review
 
 ## AIによるコードレビュー
 
@@ -425,7 +411,16 @@ gh copilot explain "git rebase -i HEAD~3"
 
 ---
 
-# 6. GitHub Models <span class="plan-icons"><span class="plan-icon">Pro+</span><span class="plan-icon">Biz</span><span class="plan-icon">Ent</span></span>
+<!-- 6. GitHub Models -->
+<div class="plan-indicators">
+  <span class="plan-badge plan-inactive">Free</span>
+  <span class="plan-badge plan-inactive">Pro</span>
+  <span class="plan-badge plan-active">Pro+</span>
+  <span class="plan-badge plan-active">Biz</span>
+  <span class="plan-badge plan-active">Ent</span>
+</div>
+
+# 6. GitHub Models
 
 ## AI言語モデルへのアクセス
 
@@ -443,7 +438,16 @@ gh copilot explain "git rebase -i HEAD~3"
 
 ---
 
-# 7. Repository and Personal Custom Instructions <span class="plan-icons"><span class="plan-icon">Free</span><span class="plan-icon">Pro</span><span class="plan-icon">Pro+</span><span class="plan-icon">Biz</span><span class="plan-icon">Ent</span></span>
+<!-- 7. Repository and Personal Custom Instructions -->
+<div class="plan-indicators">
+  <span class="plan-badge plan-active">Free</span>
+  <span class="plan-badge plan-active">Pro</span>
+  <span class="plan-badge plan-active">Pro+</span>
+  <span class="plan-badge plan-active">Biz</span>
+  <span class="plan-badge plan-active">Ent</span>
+</div>
+
+# 7. Repository and Personal Custom Instructions
 
 ## 応答のカスタマイズ
 
@@ -459,7 +463,16 @@ gh copilot explain "git rebase -i HEAD~3"
 
 ---
 
-# 8. Organization Custom Instructions <span class="plan-icons"><span class="plan-icon">Biz</span><span class="plan-icon">Ent</span></span>
+<!-- 8. Organization Custom Instructions -->
+<div class="plan-indicators">
+  <span class="plan-badge plan-inactive">Free</span>
+  <span class="plan-badge plan-inactive">Pro</span>
+  <span class="plan-badge plan-inactive">Pro+</span>
+  <span class="plan-badge plan-active">Biz</span>
+  <span class="plan-badge plan-active">Ent</span>
+</div>
+
+# 8. Organization Custom Instructions
 
 ## 組織レベルのカスタマイズ
 
@@ -477,7 +490,16 @@ gh copilot explain "git rebase -i HEAD~3"
 
 ---
 
-# 9. Copilot Prompt Files <span class="plan-icons"><span class="plan-icon">Free</span><span class="plan-icon">Pro</span><span class="plan-icon">Pro+</span><span class="plan-icon">Biz</span><span class="plan-icon">Ent</span></span>
+<!-- 9. Copilot Prompt Files -->
+<div class="plan-indicators">
+  <span class="plan-badge plan-active">Free</span>
+  <span class="plan-badge plan-active">Pro</span>
+  <span class="plan-badge plan-active">Pro+</span>
+  <span class="plan-badge plan-active">Biz</span>
+  <span class="plan-badge plan-active">Ent</span>
+</div>
+
+# 9. Copilot Prompt Files
 
 ## プロンプトファイルの活用
 
@@ -495,7 +517,16 @@ gh copilot explain "git rebase -i HEAD~3"
 
 ---
 
-# 10. Copilot Pull Request Summaries <span class="plan-icons"><span class="plan-icon">Pro</span><span class="plan-icon">Pro+</span><span class="plan-icon">Biz</span><span class="plan-icon">Ent</span></span>
+<!-- 10. Copilot Pull Request Summaries -->
+<div class="plan-indicators">
+  <span class="plan-badge plan-inactive">Free</span>
+  <span class="plan-badge plan-active">Pro</span>
+  <span class="plan-badge plan-active">Pro+</span>
+  <span class="plan-badge plan-active">Biz</span>
+  <span class="plan-badge plan-active">Ent</span>
+</div>
+
+# 10. Copilot Pull Request Summaries
 
 ## PR要約の自動生成
 
@@ -513,7 +544,16 @@ gh copilot explain "git rebase -i HEAD~3"
 
 ---
 
-# 11. Copilot Text Completion <span class="plan-icons"><span class="plan-icon">Ent</span></span>
+<!-- 11. Copilot Text Completion -->
+<div class="plan-indicators">
+  <span class="plan-badge plan-inactive">Free</span>
+  <span class="plan-badge plan-inactive">Pro</span>
+  <span class="plan-badge plan-inactive">Pro+</span>
+  <span class="plan-badge plan-inactive">Biz</span>
+  <span class="plan-badge plan-active">Ent</span>
+</div>
+
+# 11. Copilot Text Completion
 
 ## テキスト補完支援
 
@@ -527,7 +567,16 @@ gh copilot explain "git rebase -i HEAD~3"
 
 ---
 
-# 12. GitHub Copilot Extensions <span class="plan-icons"><span class="plan-icon">Free</span><span class="plan-icon">Pro</span><span class="plan-icon">Pro+</span><span class="plan-icon">Biz</span><span class="plan-icon">Ent</span></span>
+<!-- 12. GitHub Copilot Extensions -->
+<div class="plan-indicators">
+  <span class="plan-badge plan-active">Free</span>
+  <span class="plan-badge plan-active">Pro</span>
+  <span class="plan-badge plan-active">Pro+</span>
+  <span class="plan-badge plan-active">Biz</span>
+  <span class="plan-badge plan-active">Ent</span>
+</div>
+
+# 12. GitHub Copilot Extensions
 
 ## 外部ツールの統合
 
@@ -545,7 +594,16 @@ gh copilot explain "git rebase -i HEAD~3"
 
 ---
 
-# 13. Copilot Workspace <span class="plan-icons"><span class="plan-icon">Pro</span><span class="plan-icon">Pro+</span><span class="plan-icon">Biz</span><span class="plan-icon">Ent</span></span>
+<!-- 13. Copilot Workspace -->
+<div class="plan-indicators">
+  <span class="plan-badge plan-inactive">Free</span>
+  <span class="plan-badge plan-active">Pro</span>
+  <span class="plan-badge plan-active">Pro+</span>
+  <span class="plan-badge plan-active">Biz</span>
+  <span class="plan-badge plan-active">Ent</span>
+</div>
+
+# 13. Copilot Workspace
 
 ## 統合開発環境
 
@@ -564,7 +622,16 @@ gh copilot explain "git rebase -i HEAD~3"
 
 ---
 
-# 14. Copilot Spaces <span class="plan-icons"><span class="plan-icon">Free</span><span class="plan-icon">Pro</span><span class="plan-icon">Pro+</span><span class="plan-icon">Biz</span><span class="plan-icon">Ent</span></span>
+<!-- 14. Copilot Spaces -->
+<div class="plan-indicators">
+  <span class="plan-badge plan-active">Free</span>
+  <span class="plan-badge plan-active">Pro</span>
+  <span class="plan-badge plan-active">Pro+</span>
+  <span class="plan-badge plan-active">Biz</span>
+  <span class="plan-badge plan-active">Ent</span>
+</div>
+
+# 14. Copilot Spaces
 
 ## コンテンツ管理・共有
 
@@ -582,7 +649,16 @@ gh copilot explain "git rebase -i HEAD~3"
 
 ---
 
-# 15. Copilot Knowledge Bases <span class="plan-icons"><span class="plan-icon">Ent</span></span>
+<!-- 15. Copilot Knowledge Bases -->
+<div class="plan-indicators">
+  <span class="plan-badge plan-inactive">Free</span>
+  <span class="plan-badge plan-inactive">Pro</span>
+  <span class="plan-badge plan-inactive">Pro+</span>
+  <span class="plan-badge plan-inactive">Biz</span>
+  <span class="plan-badge plan-active">Ent</span>
+</div>
+
+# 15. Copilot Knowledge Bases
 
 ## 組織知識の統合
 
@@ -599,6 +675,15 @@ gh copilot explain "git rebase -i HEAD~3"
 - プロジェクト固有情報の参照
 
 ---
+
+<!-- 管理者向け機能 -->
+<div class="plan-indicators">
+  <span class="plan-badge plan-inactive">Free</span>
+  <span class="plan-badge plan-inactive">Pro</span>
+  <span class="plan-badge plan-inactive">Pro+</span>
+  <span class="plan-badge plan-active">Biz</span>
+  <span class="plan-badge plan-active">Ent</span>
+</div>
 
 # 管理者向け機能
 

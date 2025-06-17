@@ -302,14 +302,16 @@ https://github.com/nuitsjp/all-of-github-copilot
 
 # 1. Code Completion
 
-## リアルタイムコード補完
-
-<br>
+## <span style="color:#0366d6; font-weight:bold;">⚡ リアルタイムコード補完</span>
 
 ### 📝 概要
 - AIによる自動的なコード提案
 - 文脈を理解した賢い補完
 - 複数行の提案も可能
+
+### チートシート
+
+- [GitHub Copilot Chat チート シート](https://docs.github.com/ja/copilot/using-github-copilot/copilot-chat/github-copilot-chat-cheat-sheet?tool=vscode#chat-variables)
 
 ---
 
@@ -333,9 +335,6 @@ https://github.com/nuitsjp/all-of-github-copilot
 | **Ask** | 質問・説明 | コードの理解、技術的な質問 |
 | **Edit** | ファイル編集 | 複数ファイルの制御された編集 |
 | **Agent** | 自律的実行 | タスクの自動完了、ツール実行 |
-
-### 💡 コンテキスト指定
-`#file`, `#codebase`, `#selection`, `@workspace`
 
 ---
 

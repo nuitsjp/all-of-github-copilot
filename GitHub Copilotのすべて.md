@@ -18,6 +18,23 @@ style: |
   .highlight {
     background-color: #ffeb3b;
   }
+  /* プランアイコンのスタイル定義 */
+  .plan-icons {
+    display: inline-flex;
+    gap: 8px;
+    margin-left: 10px;
+    vertical-align: middle;
+  }
+  .plan-icon {
+    display: inline-block;
+    padding: 6px 12px 3px 12px;
+    border-radius: 16px;
+    font-size: 0.7em;
+    font-weight: bold;
+    color: white;
+    background-color: #7c4dff;
+    vertical-align: middle;
+  }
 ---
 # GitHub Copilotのすべて
 
@@ -258,7 +275,7 @@ https://github.com/nuitsjp/all-of-github-copilot
 
 ---
 
-# 1. Code Completion
+# 1. Code Completion <span class="plan-icons"><span class="plan-icon">Free</span><span class="plan-icon">Pro</span><span class="plan-icon">Pro+</span><span class="plan-icon">Biz</span><span class="plan-icon">Ent</span></span>
 
 ## リアルタイムコード補完
 
@@ -269,33 +286,9 @@ https://github.com/nuitsjp/all-of-github-copilot
 - 文脈を理解した賢い補完
 - 複数行の提案も可能
 
-### ✅ 利用可能プラン
-Free, Pro, Pro+, Business, Enterprise
-
 ---
 
-# デモ: Code Completion
-
-<br>
-
-## 🎯 実演内容
-
-1. **基本的なコード補完**
-   - メソッドの自動生成
-   - パターンの認識
-
-2. **コメントからのコード生成**
-   ```csharp
-   // 2つの数値を足し算するメソッド
-   ```
-
-3. **複雑なロジックの提案**
-   - エラーハンドリング
-   - LINQ式の生成
-
----
-
-# 2. Copilot Chat
+# 2. Copilot Chat <span class="plan-icons"><span class="plan-icon">Free</span><span class="plan-icon">Pro</span><span class="plan-icon">Pro+</span><span class="plan-icon">Biz</span><span class="plan-icon">Ent</span></span>
 
 ## 対話型コーディングアシスタント
 
@@ -311,9 +304,6 @@ Free, Pro, Pro+, Business, Enterprise
 
 ### 💡 コンテキスト指定
 `#file`, `#codebase`, `#selection`, `@workspace`
-
-### ✅ 利用可能プラン
-Free, Pro, Pro+, Business, Enterprise
 
 ---
 
@@ -379,137 +369,7 @@ Free, Pro, Pro+, Business, Enterprise
 
 ---
 
-# 3. Inline Chat
-
-## エディタ内チャット機能
-
-<br>
-
-### 💬 特徴
-- コードを離れずに質問
-- Ctrl+I (Cmd+I) で起動
-- 選択範囲での操作
-
-### 🎯 使用例
-- 選択コードの説明
-- インライン修正
-- リファクタリング提案
-
-### ✅ 対応IDE
-VS Code, Visual Studio, JetBrains
-
-### ✅ 利用可能プラン
-Free, Pro, Pro+, Business, Enterprise
-
----
-
-# 4. Copilot in the CLI
-
-## コマンドライン支援
-
-<br>
-
-### 🖥️ 機能
-- コマンドの提案
-- コマンドの説明
-- エラーの解決支援
-
-### 💡 使用例
-```bash
-gh copilot suggest "ファイルを再帰的に検索"
-gh copilot explain "git rebase -i HEAD~3"
-```
-
-### ✅ 利用可能プラン
-Free, Pro, Pro+, Business, Enterprise
-
----
-
-# 5. Code Review (AI生成)
-
-## AIによるコードレビュー
-
-<br>
-
-### 🔍 機能
-- PRの自動レビュー
-- 改善提案の生成
-- セキュリティ問題の検出
-
-### 📊 レビュー内容
-- コード品質
-- ベストプラクティス
-- 潜在的なバグ
-
-### ✅ 利用可能プラン
-Free, Pro, Pro+, Business, Enterprise
-
----
-
-# 6. GitHub Models
-
-## AI言語モデルへのアクセス
-
-<br>
-
-### 🤖 機能
-- 業界をリードする大規模・小規模言語モデルへの直接アクセス
-- 様々なAIモデルの試用と比較
-- プロトタイピングと実験
-
-### 🎯 用途
-- モデルの選定
-- APIの事前検証
-- 性能比較
-
-### ✅ 利用可能プラン
-Pro+, Business, Enterprise
-
----
-
-# 7. Copilot Custom Instructions
-
-## 応答のカスタマイズ
-
-<br>
-
-### ⚙️ 機能
-- 個人の好みに基づく応答調整
-- 使用ツール・フレームワークの指定
-- プロジェクト固有の要件設定
-
-### 📝 設定例
-- コーディング規約の指定
-- 優先言語/フレームワーク
-- セキュリティ要件
-
-### ✅ 利用可能プラン
-Free, Pro, Pro+, Business, Enterprise
-
----
-
-# 8. GitHub Copilot Extensions
-
-## 外部ツールの統合
-
-<br>
-
-### 🔌 機能
-- 外部ツールのCopilot Chatへの統合
-- サードパーティサービスとの連携
-- カスタム拡張の利用
-
-### 🛠️ 対応ツール例
-- Docker
-- Azure
-- データベース管理ツール
-
-### ✅ 利用可能プラン
-Free, Pro, Pro+, Business, Enterprise
-
----
-
-# 10. Copilot Coding Agent
+# 3. Copilot Coding Agent <span class="plan-icons"><span class="plan-icon">Pro+</span><span class="plan-icon">Ent</span></span>
 
 ## 自動実装エージェント
 
@@ -526,12 +386,116 @@ Free, Pro, Pro+, Business, Enterprise
 3. コードの自動生成
 4. PRの作成
 
-### ✅ 利用可能プラン
-Pro+, Enterprise
+---
+
+# 4. Copilot in the CLI <span class="plan-icons"><span class="plan-icon">Free</span><span class="plan-icon">Pro</span><span class="plan-icon">Pro+</span><span class="plan-icon">Biz</span><span class="plan-icon">Ent</span></span>
+
+## コマンドライン支援
+
+<br>
+
+### 🖥️ 機能
+- コマンドの提案
+- コマンドの説明
+- エラーの解決支援
+
+### 💡 使用例
+```bash
+gh copilot suggest "ファイルを再帰的に検索"
+gh copilot explain "git rebase -i HEAD~3"
+```
 
 ---
 
-# 11. Copilot Pull Request Summaries
+# 5. GitHub Copilot Code Review <span class="plan-icons"><span class="plan-icon">Free</span><span class="plan-icon">Pro</span><span class="plan-icon">Pro+</span><span class="plan-icon">Biz</span><span class="plan-icon">Ent</span></span>
+
+## AIによるコードレビュー
+
+<br>
+
+### 🔍 機能
+- PRの自動レビュー
+- 改善提案の生成
+- セキュリティ問題の検出
+
+### 📊 レビュー内容
+- コード品質
+- ベストプラクティス
+- 潜在的なバグ
+
+---
+
+# 6. GitHub Models <span class="plan-icons"><span class="plan-icon">Pro+</span><span class="plan-icon">Biz</span><span class="plan-icon">Ent</span></span>
+
+## AI言語モデルへのアクセス
+
+<br>
+
+### 🤖 機能
+- 業界をリードする大規模・小規模言語モデルへの直接アクセス
+- 様々なAIモデルの試用と比較
+- プロトタイピングと実験
+
+### 🎯 用途
+- モデルの選定
+- APIの事前検証
+- 性能比較
+
+---
+
+# 7. Repository and Personal Custom Instructions <span class="plan-icons"><span class="plan-icon">Free</span><span class="plan-icon">Pro</span><span class="plan-icon">Pro+</span><span class="plan-icon">Biz</span><span class="plan-icon">Ent</span></span>
+
+## 応答のカスタマイズ
+
+### ⚙️ 機能
+- 個人の好みに基づく応答調整
+- 使用ツール・フレームワークの指定
+- プロジェクト固有の要件設定
+
+### 📝 設定例
+- コーディング規約の指定
+- 優先言語/フレームワーク
+- セキュリティ要件
+
+---
+
+# 8. Organization Custom Instructions <span class="plan-icons"><span class="plan-icon">Biz</span><span class="plan-icon">Ent</span></span>
+
+## 組織レベルのカスタマイズ
+
+<br>
+
+### 🏢 機能
+- 組織全体での統一された応答設定
+- 企業のコーディング規約の適用
+- セキュリティポリシーの強制
+
+### 🎯 メリット
+- 一貫性のあるコード生成
+- 組織標準の自動適用
+- 品質の統一化
+
+---
+
+# 9. Copilot Prompt Files <span class="plan-icons"><span class="plan-icon">Free</span><span class="plan-icon">Pro</span><span class="plan-icon">Pro+</span><span class="plan-icon">Biz</span><span class="plan-icon">Ent</span></span>
+
+## プロンプトファイルの活用
+
+<br>
+
+### 📁 機能
+- 再利用可能なプロンプトの定義
+- プロジェクト固有の設定
+- チーム間での共有
+
+### 💡 使用例
+- `.github/copilot-prompts.md`
+- テンプレートの定義
+- ベストプラクティスの共有
+
+---
+
+# 10. Copilot Pull Request Summaries <span class="plan-icons"><span class="plan-icon">Pro</span><span class="plan-icon">Pro+</span><span class="plan-icon">Biz</span><span class="plan-icon">Ent</span></span>
 
 ## PR要約の自動生成
 
@@ -547,12 +511,41 @@ Pro+, Enterprise
 - 変更内容の明確化
 - コミュニケーションの改善
 
-### ✅ 利用可能プラン
-Pro, Pro+, Business, Enterprise
+---
+
+# 11. Copilot Text Completion <span class="plan-icons"><span class="plan-icon">Ent</span></span>
+
+## テキスト補完支援
+
+### ✍️ 機能
+- PR説明文の迅速・正確な作成支援
+
+### 🎯 メリット
+- 一貫性のある文書作成
+- 時間の節約
+- 品質の向上
 
 ---
 
-# 12. Copilot Workspace
+# 12. GitHub Copilot Extensions <span class="plan-icons"><span class="plan-icon">Free</span><span class="plan-icon">Pro</span><span class="plan-icon">Pro+</span><span class="plan-icon">Biz</span><span class="plan-icon">Ent</span></span>
+
+## 外部ツールの統合
+
+<br>
+
+### 🔌 機能
+- 外部ツールのCopilot Chatへの統合
+- サードパーティサービスとの連携
+- カスタム拡張の利用
+
+### 🛠️ 対応ツール例
+- Docker
+- Azure
+- データベース管理ツール
+
+---
+
+# 13. Copilot Workspace <span class="plan-icons"><span class="plan-icon">Pro</span><span class="plan-icon">Pro+</span><span class="plan-icon">Biz</span><span class="plan-icon">Ent</span></span>
 
 ## 統合開発環境
 
@@ -569,12 +562,9 @@ Pro, Pro+, Business, Enterprise
 3. コードの自動実装
 4. テストとレビュー
 
-### ✅ 利用可能プラン
-Pro, Pro+, Business, Enterprise
-
 ---
 
-# 13. Copilot Spaces
+# 14. Copilot Spaces <span class="plan-icons"><span class="plan-icon">Free</span><span class="plan-icon">Pro</span><span class="plan-icon">Pro+</span><span class="plan-icon">Biz</span><span class="plan-icon">Ent</span></span>
 
 ## コンテンツ管理・共有
 
@@ -590,29 +580,9 @@ Pro, Pro+, Business, Enterprise
 - コードスニペットの共有
 - ベストプラクティスの蓄積
 
-### ✅ 利用可能プラン
-Free, Pro, Pro+, Business, Enterprise
-
 ---
 
-# 14. Copilot Text Completion
-
-## テキスト補完支援
-
-### ✍️ 機能
-- PR説明文の迅速・正確な作成支援
-
-### 🎯 メリット
-- 一貫性のある文書作成
-- 時間の節約
-- 品質の向上
-
-### ✅ 利用可能プラン
-Enterprise
-
----
-
-# 15. Copilot Knowledge Bases
+# 15. Copilot Knowledge Bases <span class="plan-icons"><span class="plan-icon">Ent</span></span>
 
 ## 組織知識の統合
 
@@ -627,9 +597,6 @@ Enterprise
 - 社内コーディング規約の適用
 - ドメイン知識の活用
 - プロジェクト固有情報の参照
-
-### ✅ 利用可能プラン
-Enterprise
 
 ---
 
@@ -698,7 +665,7 @@ https://agreeable-island-0c8e4d900.6.azurestaticapps.net/
 ## 🎯 本日お伝えしたこと
 
 ### ✅ GitHub Copilotの全機能概要
-- 14の主要機能
+- 15の主要機能
 - プラン別の利用可能機能
 
 ### ✅ 効果的な学習方法
@@ -711,52 +678,21 @@ https://agreeable-island-0c8e4d900.6.azurestaticapps.net/
 
 ---
 
-# 次のステップ
-
-<br>
-
-## 🚀 今すぐできること
-
-1. **無料トライアルの開始**
-   - 30日間の無料体験
-
-2. **学習コンテンツへのアクセス**
-   - デモコードのダウンロード
-   - ハンズオンの実施
-
-3. **コミュニティへの参加**
-   - 質問・情報交換
-   - ベストプラクティスの共有
-
----
-
-# Q&A
-
-<br>
-
-## 🙋 ご質問をどうぞ！
-
-<br>
-
-### 📝 アンケートのお願い
-- ハンズオン開催の希望調査
-- 興味のある機能の確認
-- フィードバック
-
-<br>
-
-### 📧 お問い合わせ
-[連絡先情報]
-
----
-
 # ありがとうございました！
-
-<br>
 
 ## 🎉 GitHub Copilotで開発を加速しましょう！
 
+### 📚 リソース
+- 学習コンテンツ: https://agreeable-island-0c8e4d900.6.azurestaticapps.net/
+- 公式ドキュメント: https://docs.github.com/copilot
+- VS Code ドキュメント: https://code.visualstudio.com/docs/copilot/
+
 <br>
+
+### 🚀 Happy Coding with GitHub Copilot!
+# ありがとうございました！
+
+## 🎉 GitHub Copilotで開発を加速しましょう！
 
 ### 📚 リソース
 - 学習コンテンツ: https://agreeable-island-0c8e4d900.6.azurestaticapps.net/

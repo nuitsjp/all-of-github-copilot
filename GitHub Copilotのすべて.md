@@ -254,7 +254,6 @@ https://github.com/nuitsjp/all-of-github-copilot
 
 <br>
 
-### 📝 **対応方法**
 これらは簡単な解説のみとなります。
 
 ---

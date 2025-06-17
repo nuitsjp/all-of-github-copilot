@@ -312,6 +312,9 @@ Free, Pro, Pro+, Business, Enterprise
 ### 💡 コンテキスト指定
 `#file`, `#codebase`, `#selection`, `@workspace`
 
+### ✅ 利用可能プラン
+Free, Pro, Pro+, Business, Enterprise
+
 ---
 
 # デモ: Copilot Chat - Ask Mode
@@ -395,6 +398,9 @@ Free, Pro, Pro+, Business, Enterprise
 ### ✅ 対応IDE
 VS Code, Visual Studio, JetBrains
 
+### ✅ 利用可能プラン
+Free, Pro, Pro+, Business, Enterprise
+
 ---
 
 # 4. Copilot in the CLI
@@ -414,8 +420,8 @@ gh copilot suggest "ファイルを再帰的に検索"
 gh copilot explain "git rebase -i HEAD~3"
 ```
 
-### ✅ 利用可能
-全プラン（Pro, Pro+, Business, Enterprise）
+### ✅ 利用可能プラン
+Free, Pro, Pro+, Business, Enterprise
 
 ---
 
@@ -435,8 +441,8 @@ gh copilot explain "git rebase -i HEAD~3"
 - ベストプラクティス
 - 潜在的なバグ
 
-### ⚠️ 利用制限
-Pro+ 以上のプランで利用可能
+### ✅ 利用可能プラン
+Free, Pro, Pro+, Business, Enterprise
 
 ---
 
@@ -456,8 +462,8 @@ Pro+ 以上のプランで利用可能
 - APIの事前検証
 - 性能比較
 
-### ✅ 利用可能
-全プラン（Pro, Pro+, Business, Enterprise）
+### ✅ 利用可能プラン
+Pro+, Business, Enterprise
 
 ---
 
@@ -477,8 +483,8 @@ Pro+ 以上のプランで利用可能
 - 優先言語/フレームワーク
 - セキュリティ要件
 
-### ✅ 利用可能
-全プラン（Pro, Pro+, Business, Enterprise）
+### ✅ 利用可能プラン
+Free, Pro, Pro+, Business, Enterprise
 
 ---
 
@@ -498,29 +504,8 @@ Pro+ 以上のプランで利用可能
 - Azure
 - データベース管理ツール
 
-### ✅ 利用可能
-全プラン（Pro, Pro+, Business, Enterprise）
-
----
-
-# 9. Copilot in GitHub Desktop
-
-## デスクトップアプリ統合
-
-<br>
-
-### 💻 機能
-- コミットメッセージの自動生成
-- 変更内容の要約
-- Git操作の支援
-
-### 🎯 メリット
-- 一貫性のあるコミットメッセージ
-- 時間の節約
-- ベストプラクティスの適用
-
-### ✅ 利用可能
-全プラン（Pro, Pro+, Business, Enterprise）
+### ✅ 利用可能プラン
+Free, Pro, Pro+, Business, Enterprise
 
 ---
 
@@ -541,8 +526,8 @@ Pro+ 以上のプランで利用可能
 3. コードの自動生成
 4. PRの作成
 
-### ⚠️ 利用制限
-Pro+ 以上のプランで利用可能
+### ✅ 利用可能プラン
+Pro+, Enterprise
 
 ---
 
@@ -562,8 +547,8 @@ Pro+ 以上のプランで利用可能
 - 変更内容の明確化
 - コミュニケーションの改善
 
-### ⚠️ 利用制限
-Pro+ 以上のプランで利用可能
+### ✅ 利用可能プラン
+Pro, Pro+, Business, Enterprise
 
 ---
 
@@ -584,8 +569,8 @@ Pro+ 以上のプランで利用可能
 3. コードの自動実装
 4. テストとレビュー
 
-### ⚠️ 利用制限
-Pro+ 以上のプランで利用可能
+### ✅ 利用可能プラン
+Pro, Pro+, Business, Enterprise
 
 ---
 
@@ -605,6 +590,9 @@ Pro+ 以上のプランで利用可能
 - コードスニペットの共有
 - ベストプラクティスの蓄積
 
+### ✅ 利用可能プラン
+Free, Pro, Pro+, Business, Enterprise
+
 ---
 
 # 14. Copilot Text Completion
@@ -619,8 +607,8 @@ Pro+ 以上のプランで利用可能
 - 時間の節約
 - 品質の向上
 
-### ⚠️ 利用制限
-Enterprise プラン限定
+### ✅ 利用可能プラン
+Enterprise
 
 ---
 
@@ -640,8 +628,8 @@ Enterprise プラン限定
 - ドメイン知識の活用
 - プロジェクト固有情報の参照
 
-### ⚠️ 利用制限
-Enterprise プラン限定
+### ✅ 利用可能プラン
+Enterprise
 
 ---
 

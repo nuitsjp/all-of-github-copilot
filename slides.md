@@ -4,37 +4,19 @@ paginate: true
 style: |
   section {
     font-family: 'メイリオ', 'Meiryo', sans-serif;
-    font-size: 2.4em;
   }
   h1 {
     color: #0366d6;
-    font-size: 1.8em;
   }
   h2 {
     color: #0366d6;
     border-bottom: 2px solid #0366d6;
-    padding-bottom: 0.3em;
-    font-size: 1.4em;
-  }
-  h3 {
-    font-size: 1.1em;
   }
   table {
-    font-size: 0.8em;
-  }
-  .small {
-    font-size: 0.6em;
+    font-size: 0.7em;
   }
   .highlight {
     background-color: #ffeb3b;
-    padding: 2px 4px;
-    border-radius: 3px;
-  }
-  ul, ol {
-    font-size: 0.95em;
-  }
-  p {
-    font-size: 0.95em;
   }
 ---
 # GitHub Copilotのすべて
@@ -140,6 +122,80 @@ https://github.com/nuitsjp/all-of-github-copilot
 |o3|1|
 |o4-mini|0.33|
 
+---
+
+# 🤔 BusinessとEnterpriseの共存は可能か？
+
+<br>
+
+### 💭 よくある疑問
+- ユーザーによって利用頻度が異なり、使い分けたいことがある
+- コスト最適化を図りたい
+
+<br>
+
+### 🎯 答え: **共存可能です！**
+
+---
+
+# ✅ BusinessとEnterpriseの共存可能
+
+<br>
+
+### 🔄 **混在のメリット**
+- <span class="highlight">同一リポジトリで異なるライセンスユーザーの混在は可能</span>
+- ユーザーの役割に応じたライセンス割り当て
+
+### ⚠️ **注意点**
+- ただ現状のライセンス設計にだいぶ無理がある
+- 将来変わる可能性はあり
+
+---
+
+# 📋 重要なポイント
+
+### 🏢 **Organization制限**
+- <span class="highlight">OrganizationにはBusinessまたはEnterprise何れかのみ設定可能</span>
+   - 例: BusinessレベルのOrganizationでライセンスを割り当てるとBusinessに
+
+### 👥 **Team単位の管理**
+- CopilotライセンスはOrganization内のTeamごとに割り当てられる
+   - Copilotが有効なユーザーと無効なユーザーが混在可能
+
+### 🏆 **ライセンス優先度**
+- ライセンスを重複割当した場合、有効ライセンスは優先度によって決定
+   - **Enterprise** > **Business** > **Pro+** > **Pro**
+   - おそらくガバナンスを優先するため
+
+---
+
+# 🎯 Biz/Entの混在おすすめ設定
+
+<br>
+
+### 💡 **ベストプラクティス**
+<span class="highlight">リポジトリー管理Organizationとライセンス管理Organizationを分ける</span>
+
+<br>
+
+### 📊 **構成例**
+
+| Organization | ユーザー | 用途 |
+|---|---|---|
+| 🏢 **Business License Org** | User B1, User B2 | ライセンス管理専用 |
+| 🚀 **Enterprise License Org** | User E1, User E2 | ライセンス管理専用 |
+| 📁 **Repository Org** | 全ユーザー | 実際の開発作業 |
+
+<br>
+
+### 🔧 **設定のポイント**
+- ライセンス用Organizationにはリポジトリーを持たせない
+- リポジトリーは別Organizationに配置
+- 上記の割り当てに従ったレベルで利用可能
+
+---
+
+# 機能紹介
 
 ---
 
@@ -155,45 +211,6 @@ https://github.com/nuitsjp/all-of-github-copilot
 |6|GitHub Models | ❌ | ❌ | ✅ | ✅ | ✅ |
 |7|Repository and personal custom instructions| ✅ | ✅ | ✅ | ✅ | ✅ |
 |8|Organization custom instructions (public preview)| ❌ | ❌ | ❌ | ✅ | ✅ |
-
----
-
-# BusinessとEnterpriseの共存は可能か？
-
-- ユーザーによって利用頻度が異なり、使い分けたいことがある
-
----
-
-# BusinessとEnterpriseの共存可能
-
-- 同一リポジトリで異なるライセンスユーザーの混在は可能
-- ただ現状のライセンス設計にだいぶ無理がある
-- 将来変わる可能性はあり
-
----
-
-# 重要なポイント
-
-- OrganizationにはBusinessまたはEnterprise何れかのみ設定可能
-   - 例: BusinessレベルのOrganizationでライセンスを割り当てるとBusinessに
-- CopilotライセンスはOrganization内のTeamごとに割り当てられる
-   - Copilotが有効なユーザーと無効なユーザーが混在可能
-- ライセンスを重複割当した場合、有効ライセンスは優先度によって決定
-   - Enterprise > Business > Pro+ > Pro > Free
-   - おそらくガバナンスを優先するため
-
----
-
-# Biz/Entの混在おすすめ設定
-
-リポジトリー管理Organizationとライセンス管理Organizationを分ける
-
-- Business License Organization
-   - User B1, User B2
-- Enterprise License Organization
-   - User E1, User E2
-
-これらにはリポジトリーを持たせず、リポジトリーは別Organizationに置くことでリポジトリーの設定とは関係なく、上記の割り当てに従ったレベルで利用可能
 
 ---
 
@@ -654,14 +671,33 @@ Enterprise プラン限定
 https://agreeable-island-0c8e4d900.6.azurestaticapps.net/
 
 ### 🎯 学習のポイント
-1. **段階的に学ぶ** - 基本機能から順に
-2. **実践で試す** - デモコードで練習
-3. **カスタマイズ** - 自分の環境に適用
+- 正直学習コンテンツとしての精度は微妙
+- 発表資料のリポジトリーをクローンしてCopilot Chatで適宜質問・修正しながら実行するのがお勧め
 
-### 💡 教材の自作
-- Markdownで記述
-- プロンプトファイルの活用
-- チームでの共有
+### 📂 **発表資料**
+発表資料を保管しているリポジトリーにプロンプトの例があるので参考にどうぞ。
+
+🔗 https://github.com/nuitsjp/all-of-github-copilot
+
+---
+
+# 💡 学習コンテンツの作成のポイント
+
+<br>
+
+### 🚀 **効率的な教材作成フロー**
+
+1. **📖 ソース活用**: 公式ドキュメントなどからプロンプトで学習教材を作成する
+2. **🔗 直接参照**: `#fetch`で直接参照させる方法が楽
+3. **💾 ローカル保管**: ただローカルにMarkdownで保管してからプロンプトかけたほうがコンテキスト長の圧迫が少なくてすみそう
+   - <span class="highlight">Chrome拡張（Webpage to Markdownなど）の併用がお勧め</span>
+
+<br>
+
+### 📂 **発表資料**
+発表資料を保管しているリポジトリーにプロンプトの例があるので参考にどうぞ。
+
+🔗 https://github.com/nuitsjp/all-of-github-copilot
 
 ---
 

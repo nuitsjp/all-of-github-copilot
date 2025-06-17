@@ -102,9 +102,18 @@ style: |
 
 ---
 
-### 📌 本日の環境
+# 📌 本日の環境
+
+### 🛠️ **使用環境**
 - GitHub Copilot Pro+ (Microsoft MVP特典)
 - VS Code + C#
+
+<br>
+
+### 🙏 **Special Thanks**
+<span class="highlight">**Microsoftさんありがとう！**</span> 🎉
+
+MVP特典でPro+を使わせていただいています！
 
 ---
 

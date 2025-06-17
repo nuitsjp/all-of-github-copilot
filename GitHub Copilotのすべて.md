@@ -485,7 +485,7 @@ gh copilot explain "git rebase -i HEAD~3"
 - チーム間での共有
 
 ### 💡 使用例
-- `.github/copilot-prompts.md`
+- `.github/prompts/foo-prompts.md`
 - テンプレートの定義
 - ベストプラクティスの共有
 
@@ -669,8 +669,6 @@ gh copilot explain "git rebase -i HEAD~3"
 
 # 学習コンテンツの活用方法
 
-<br>
-
 ## 📚 オンライン教材
 https://agreeable-island-0c8e4d900.6.azurestaticapps.net/
 
@@ -685,20 +683,35 @@ https://agreeable-island-0c8e4d900.6.azurestaticapps.net/
 
 ---
 
-# 💡 学習コンテンツの作成のポイント
+# 💡 学習コンテンツの作成方法
 
-### 🚀 **効率的な教材作成フロー**
+### 🚀 **効率的な作成フロー**
 
-1. **📖 ソース活用**: 公式ドキュメントなどからプロンプトで学習教材を作成する
-2. **🔗 直接参照**: `#fetch`で直接参照させる方法が楽
-3. **💾 ローカル保管**: ただローカルにMarkdownで保管してからプロンプトかけたほうがコンテキスト長の圧迫が少なくてすみそう
-   - <span class="highlight">Chrome拡張（Webpage to Markdownなど）の併用がお勧め</span>
+#### 1️⃣ **公式ドキュメントの活用**
+- プロンプトで学習教材を自動生成
 
-<br>
+#### 2️⃣ **`#fetch`で直接参照**
+- URLを直接指定して効率化
 
-### 📂 **発表資料**
-発表資料を保管しているリポジトリーにプロンプトの例があるので参考にどうぞ。
+#### 3️⃣ **Markdownでローカル保存**
+- コンテキスト長の節約
+- Chrome拡張（Webpage to Markdown）の活用
 
+---
+
+# 📝 学習コンテンツ作成のコツ
+
+### 💭 **重要な考え方**
+
+#### ✅ **完璧を求めない**
+- 「こんなんで十分」の精神
+- 作り込みより実践を優先
+
+#### ✅ **プロンプトに時間をかけない**
+- モデルが変われば最適解も変わる
+- 学習時間を最優先に
+
+### 📂 **参考資料**
 🔗 https://github.com/nuitsjp/all-of-github-copilot
 
 ---

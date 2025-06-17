@@ -1,3 +1,7 @@
+---
+marp: true
+---
+
 # GitHub Copilotのすべて
 
 - [学習コンテンツ](https://agreeable-island-0c8e4d900.6.azurestaticapps.net/index.html)

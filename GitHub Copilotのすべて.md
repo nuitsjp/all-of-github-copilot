@@ -223,10 +223,7 @@ https://github.com/nuitsjp/all-of-github-copilot
 
 # 🎯 Biz/Entの混在おすすめ設定
 
-### 💡 **ベストプラクティス**
-<span class="highlight">リポジトリー管理Organizationとライセンス管理Organizationを分ける</span>
-
-<br>
+### 💡 <span class="highlight">リポジトリー管理Organizationとライセンス管理Organizationを分ける</span>
 
 ### 📊 **構成例**
 
@@ -236,12 +233,9 @@ https://github.com/nuitsjp/all-of-github-copilot
 | 🚀 **Enterprise License Org** | User E1, User E2 | ライセンス管理専用 |
 | 📁 **Repository Org** | 全ユーザー | 実際の開発作業 |
 
-<br>
-
 ### 🔧 **設定のポイント**
 - ライセンス用Organizationにはリポジトリーを持たせない
 - リポジトリーは別Organizationに配置
-- 上記の割り当てに従ったレベルで利用可能
 
 ---
 

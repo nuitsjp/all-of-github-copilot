@@ -1,5 +1,5 @@
 ---
-marp: true
+marp: false
 paginate: true
 style: |
   section {
@@ -26,8 +26,8 @@ style: |
 <br>
 <br>
 
-### 2025年6月
-#### Azure DevOpsオンライン Vol.13 ～ Agentic DevOpsって何?～
+## Azure DevOpsオンライン Vol.13 Agentic DevOpsって何？
+### 2025年6月21日
 
 ---
 
@@ -575,21 +575,14 @@ Pro+ 以上のプランで利用可能
 - コードスニペットの共有
 - ベストプラクティスの蓄積
 
-### ⚠️ 利用制限
-Pro+ 以上のプランで利用可能
-
 ---
 
 # 14. Copilot Text Completion
 
 ## テキスト補完支援
 
-<br>
-
 ### ✍️ 機能
 - PR説明文の迅速・正確な作成支援
-- Issue説明の自動補完
-- ドキュメントの作成支援
 
 ### 🎯 メリット
 - 一貫性のある文書作成
@@ -639,27 +632,6 @@ Enterprise プラン限定
 ### 🛡️ セキュリティ
 - ファイルの除外設定
 - 監査ログ
-
----
-
-# 学習パスの提案
-
-<br>
-
-## 🎯 初級者向け
-1. Code Completion の基本
-2. Copilot Chat (Ask mode)
-3. コミットメッセージ生成
-
-## 🚀 中級者向け
-1. Edit/Agent mode の活用
-2. CLI 統合
-3. カスタム指示の設定
-
-## 💎 上級者向け
-1. Workspace/Spaces の活用
-2. Knowledge bases の構築
-3. 組織全体での最適化
 
 ---
 

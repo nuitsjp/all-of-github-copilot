@@ -1,59 +1,69 @@
 ---
 marp: true
-theme: gaia
 paginate: true
-backgroundColor: #fff
 style: |
   section {
     font-family: 'メイリオ', 'Meiryo', sans-serif;
+    font-size: 2.4em;
   }
   h1 {
     color: #0366d6;
+    font-size: 1.8em;
   }
   h2 {
     color: #0366d6;
     border-bottom: 2px solid #0366d6;
     padding-bottom: 0.3em;
+    font-size: 1.4em;
+  }
+  h3 {
+    font-size: 1.1em;
   }
   table {
     font-size: 0.8em;
   }
   .small {
-    font-size: 0.7em;
+    font-size: 0.6em;
   }
   .highlight {
     background-color: #ffeb3b;
     padding: 2px 4px;
     border-radius: 3px;
   }
+  ul, ol {
+    font-size: 0.95em;
+  }
+  p {
+    font-size: 0.95em;
+  }
 ---
-
 # GitHub Copilotのすべて
 
-## AIペアプログラミングの完全ガイド
-
+<br>
+<br>
+<br>
 <br>
 
 ### 2025年6月
-### オンラインカンファレンス
+#### Azure DevOpsオンライン Vol.13 ～ Agentic DevOpsって何?～
 
 ---
 
-# 本日のゴール
+# 本日のゴール1️⃣
 
 <br>
 
-## 1️⃣ （ほぼ）すべての機能の概略を知る
+## （ほぼ）すべての機能の概略を知る
 
 ※ 管理機能およびEnterprise限定などの一部機能を除く
 
 ---
 
-# 本日のゴール
+# 本日のゴール2️⃣
 
 <br>
 
-## 2️⃣ 本発表内容の学習の仕方を理解する
+## 本発表内容の学習の仕方を理解する
 
 ---
 
@@ -61,7 +71,7 @@ style: |
 
 <br>
 
-## 3️⃣ 本発表内容の学習コンテンツが自作できるようになる
+## 本発表内容の学習コンテンツが自作できるようになる3️⃣
 
 ---
 
@@ -87,47 +97,117 @@ style: |
 ## 📚 学習コンテンツ
 https://agreeable-island-0c8e4d900.6.azurestaticapps.net/
 
----
+## 📂 発表資料
+https://github.com/nuitsjp/all-of-github-copilot
 
+---
 # GitHub Copilot プラン比較
 
-| プラン | 月額 | 主な対象 | 特徴 |
-|--------|------|----------|------|
-| **Pro** | $10 | 個人開発者 | 基本機能すべて |
-| **Pro+** | $20 | 個人開発者 | Pro + 高度な機能 |
-| **Business** | $39 | チーム・組織 | 管理機能付き |
-| **Enterprise** | $39 | 大規模組織 | 全機能 + カスタマイズ |
-
-<div class="small">
-
-※ BusinessとEnterpriseの共存が可能（組織によって使い分け）
-
-</div>
+| プラン | 月額 | 主な対象 | プレミアムリクエスト |
+|--|--|--|--|
+| **Free** | 無料 | 個人開発者 | 50/月 |
+| **Pro** | $10 | 個人開発者 | 300/月 |
+| **Pro+** | $39 | AIパワーユーザー | 1,500/月 |
+| **Business** | $19/ユーザー | チーム・組織 | 300/ユーザー/月 |
+| **Enterprise** | $39/ユーザー | 大規模組織 | 1,000/ユーザー/月 |
 
 ---
 
-# 機能カテゴリー
+# プレミアムリクエストとは
+
+
+## 📊 基本概念
+
+### 🔄 リクエストの定義
+- Copilotへのすべての依頼
+- チャットでの質問、コード生成、拡張機能の利用など
+
+### 💰 課金モデル
+- **基本**: プランに含まれる月間許可量
+- **追加**: 許可量超過時は **$0.04/リクエスト**
+
+---
+
+# モデル別プレミアムリクエスト消費量
 
 <br>
 
-## 🎯 コード生成・編集
-- Code completion
-- Copilot Chat (Ask/Edit/Agent mode)
-- Inline Chat
+| モデル |Premium リクエスト|
+|--|--|
+|基本モデル（現在はGPT-4.1）|0（有料ユーザー）、1（Free）|
+|Claude Sonnet 4|1|
+|Claude Opus 4|10|
+|o3|1|
+|o4-mini|0.33|
 
-## 🔍 レビュー・分析
-- Code review
-- Pull request summaries
 
-## 🛠️ 開発環境統合
-- CLI integration
-- GitHub Desktop
-- Windows Terminal
+---
 
-## 🚀 高度な機能
-- Copilot Workspace
-- Copilot Spaces
-- Knowledge bases
+# 機能①
+
+|#| 機能名 |Free| Pro | Pro+ | Business | Enterprise |
+|--|--|:-:|:-:|:-:|:-:|:-:|
+|1|Code completion | ✅ | ✅ | ✅ | ✅ | ✅ |
+|2|Copilot Chat | ✅ | ✅ | ✅ | ✅ | ✅ |
+|3|Copilot coding agent | ❌ | ❌ | ✅ | ❌ | ✅ |
+|4|Copilot in the CLI | ✅ | ✅ | ✅ | ✅ | ✅ |
+|5|GitHub Copilot code review | ✅³| ✅ | ✅ | ✅ | ✅ |
+|6|GitHub Models | ❌ | ❌ | ✅ | ✅ | ✅ |
+|7|Repository and personal custom instructions| ✅ | ✅ | ✅ | ✅ | ✅ |
+|8|Organization custom instructions (public preview)| ❌ | ❌ | ❌ | ✅ | ✅ |
+
+---
+
+# BusinessとEnterpriseの共存は可能か？
+
+- ユーザーによって利用頻度が異なり、使い分けたいことがある
+
+---
+
+# BusinessとEnterpriseの共存可能
+
+- 同一リポジトリで異なるライセンスユーザーの混在は可能
+- ただ現状のライセンス設計にだいぶ無理がある
+- 将来変わる可能性はあり
+
+---
+
+# 重要なポイント
+
+- OrganizationにはBusinessまたはEnterprise何れかのみ設定可能
+   - 例: BusinessレベルのOrganizationでライセンスを割り当てるとBusinessに
+- CopilotライセンスはOrganization内のTeamごとに割り当てられる
+   - Copilotが有効なユーザーと無効なユーザーが混在可能
+- ライセンスを重複割当した場合、有効ライセンスは優先度によって決定
+   - Enterprise > Business > Pro+ > Pro > Free
+   - おそらくガバナンスを優先するため
+
+---
+
+# Biz/Entの混在おすすめ設定
+
+リポジトリー管理Organizationとライセンス管理Organizationを分ける
+
+- Business License Organization
+   - User B1, User B2
+- Enterprise License Organization
+   - User E1, User E2
+
+これらにはリポジトリーを持たせず、リポジトリーは別Organizationに置くことでリポジトリーの設定とは関係なく、上記の割り当てに従ったレベルで利用可能
+
+---
+
+# 機能②
+
+|#| 機能名 |Free| Pro | Pro+ | Business | Enterprise |
+|--|--|:-:|:-:|:-:|:-:|:-:|
+|9|Copilot prompt files| ✅ | ✅ | ✅ | ✅ | ✅ |
+|10|Copilot pull request summaries | ❌ | ✅ | ✅ | ✅ | ✅ |
+|11|Copilot text completion | ❌ | ❌ | ❌ | ❌ | ✅ |
+|12|GitHub Copilot Extensions | ✅ | ✅ | ✅ | ✅ | ✅ |
+|13|Copilot Workspace | ❌ | ✅ | ✅ | ✅ | ✅ |
+|14|Copilot Spaces | ✅ | ✅ | ✅ | ✅ | ✅ |
+|15|Copilot knowledge bases | ❌ | ❌ | ❌ | ❌ | ✅ |
 
 ---
 
@@ -142,11 +222,8 @@ https://agreeable-island-0c8e4d900.6.azurestaticapps.net/
 - 文脈を理解した賢い補完
 - 複数行の提案も可能
 
-### 💻 対応環境
-VS Code, Visual Studio, JetBrains, Xcode, Vim/Neovim, Eclipse
-
 ### ✅ 利用可能プラン
-Pro, Pro+, Business, Enterprise
+Free, Pro, Pro+, Business, Enterprise
 
 ---
 

@@ -1,5 +1,5 @@
 ---
-marp: false
+marp: true
 paginate: true
 style: |
   section {
@@ -13,7 +13,7 @@ style: |
     border-bottom: 2px solid #0366d6;
   }
   table {
-    font-size: 0.7em;
+    font-size: 0.9em;
   }
   .highlight {
     background-color: #ffeb3b;
@@ -83,7 +83,14 @@ https://agreeable-island-0c8e4d900.6.azurestaticapps.net/
 https://github.com/nuitsjp/all-of-github-copilot
 
 ---
+
+# たのしい話（機能）の前に楽しくない（お金）の話
+
+
+---
 # GitHub Copilot プラン比較
+
+<br>
 
 | プラン | 月額 | 主な対象 | プレミアムリクエスト |
 |--|--|--|--|
@@ -92,6 +99,10 @@ https://github.com/nuitsjp/all-of-github-copilot
 | **Pro+** | $39 | AIパワーユーザー | 1,500/月 |
 | **Business** | $19/ユーザー | チーム・組織 | 300/ユーザー/月 |
 | **Enterprise** | $39/ユーザー | 大規模組織 | 1,000/ユーザー/月 |
+
+<br>
+
+一部機能の制限とプレミアムリクエストのリミットの相違
 
 ---
 
@@ -207,10 +218,10 @@ https://github.com/nuitsjp/all-of-github-copilot
 |2|Copilot Chat | ✅ | ✅ | ✅ | ✅ | ✅ |
 |3|Copilot coding agent | ❌ | ❌ | ✅ | ❌ | ✅ |
 |4|Copilot in the CLI | ✅ | ✅ | ✅ | ✅ | ✅ |
-|5|GitHub Copilot code review | ✅³| ✅ | ✅ | ✅ | ✅ |
+|5|GitHub Copilot code review | ✅| ✅ | ✅ | ✅ | ✅ |
 |6|GitHub Models | ❌ | ❌ | ✅ | ✅ | ✅ |
 |7|Repository and personal custom instructions| ✅ | ✅ | ✅ | ✅ | ✅ |
-|8|Organization custom instructions (public preview)| ❌ | ❌ | ❌ | ✅ | ✅ |
+|8|Organization custom instructions | ❌ | ❌ | ❌ | ✅ | ✅ |
 
 ---
 
@@ -225,6 +236,26 @@ https://github.com/nuitsjp/all-of-github-copilot
 |13|Copilot Workspace | ❌ | ✅ | ✅ | ✅ | ✅ |
 |14|Copilot Spaces | ✅ | ✅ | ✅ | ✅ | ✅ |
 |15|Copilot knowledge bases | ❌ | ❌ | ❌ | ❌ | ✅ |
+
+---
+
+# ⚠️ 最初にお断り
+
+<br>
+
+### 🚫 **本日デモできない機能**
+
+<span class="highlight">次の機能は本日お見せできません。</span>
+
+<br>
+
+1. **🔒 制限Preview機能** - 現在募集されていないもの
+2. **🏢 Enterprise限定機能** - 高度な管理・統合機能
+
+<br>
+
+### 📝 **対応方法**
+これらは簡単な解説のみとなります。
 
 ---
 

@@ -4,13 +4,16 @@ paginate: true
 style: |
   section {
     font-family: 'メイリオ', 'Meiryo', sans-serif;
+    font-size: 26px; /* デフォルト29px→26pxに縮小 */
   }
   h1 {
     color: #0366d6;
+    font-size: 1.3em; /* デフォルト1.6em→1.3emに縮小 */
   }
   h2 {
     color: #0366d6;
     border-bottom: 2px solid #0366d6;
+    font-size: 1.1em; /* デフォルト1.3em→1.1emに縮小 */
   }
   table {
     font-size: 0.9em;
@@ -25,12 +28,13 @@ style: |
     right: 40px;
     display: flex;
     gap: 8px;
+    font-size: 0.92em; /* バッジもやや小さく */
   }
   .plan-badge {
     display: inline-block;
     padding: 6px 12px 3px 12px;
     border-radius: 16px;
-    font-size: 0.7em;
+    font-size: 0.62em; /* さらに小さく */
     font-weight: bold;
     color: white;
   }
@@ -309,10 +313,6 @@ https://github.com/nuitsjp/all-of-github-copilot
 - 文脈を理解した賢い補完
 - 複数行の提案も可能
 
-### チートシート
-
-- [GitHub Copilot Chat チート シート](https://docs.github.com/ja/copilot/using-github-copilot/copilot-chat/github-copilot-chat-cheat-sheet?tool=vscode#chat-variables)
-
 ---
 
 <!-- 2. Copilot Chat -->
@@ -335,6 +335,8 @@ https://github.com/nuitsjp/all-of-github-copilot
 | **Ask** | 質問・説明 | コードの理解、技術的な質問 |
 | **Edit** | ファイル編集 | 複数ファイルの制御された編集 |
 | **Agent** | 自律的実行 | タスクの自動完了、ツール実行 |
+
+- [GitHub Copilot Chat チート シート](https://docs.github.com/ja/copilot/using-github-copilot/copilot-chat/github-copilot-chat-cheat-sheet?tool=vscode#chat-variables)
 
 ---
 
@@ -373,6 +375,7 @@ tools: ['tool1', 'tool2', 'tool3']
 ここにAIへの具体的な指示を記述
 ```
 
+---
 # なぜ機能の少ないモードを選ぶのか？
 
 ### 🎯 **Ask モードを選ぶ理由**

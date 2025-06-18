@@ -2,7 +2,7 @@
 
 URL: https://github.com/nuitsjp/all-of-github-copilot
 
-# プロジェクト: C#
+# 開発: C#
 
 ## コーディング規約
 - C# 命名規則 (PascalCase, camelCase) を厳守

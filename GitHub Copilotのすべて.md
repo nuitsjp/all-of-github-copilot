@@ -624,17 +624,19 @@ gh copilot explain "git rebase -i HEAD~3"
 
 # 12. GitHub Copilot Extensions
 
-## 外部ツールの統合
+## Copilot Extensions 概要
 
-### 🔌 機能
-- 外部ツールのCopilot Chatへの統合
-- サードパーティサービスとの連携
-- カスタム拡張の利用
+- Copilot Chatに外部ツールやサービスを統合できる拡張機能
+- GitHub Appとして提供、Marketplaceからインストール
 
-### 🛠️ 対応ツール例
-- Docker
-- Azure
-- データベース管理ツール
+### 主な用途
+- クラウド管理（Azure等）、CI/CD連携、社内システム操作
+- チャットからAPI呼び出しや自動化が可能
+
+### ポイント
+- 個人・組織どちらでも利用可（組織リソース利用時は管理者承認）
+- 公開/非公開や権限管理が柔軟
+- セキュリティ・プライバシーに配慮
 
 ---
 
@@ -649,18 +651,17 @@ gh copilot explain "git rebase -i HEAD~3"
 
 # 13. Copilot Workspace
 
-## 統合開発環境
+## AIによる統合開発フロー自動化
 
-### 🏗️ 機能
-- IssueからPRまでの統合フロー
-- コードの自動生成と検証
-- レビューと改良の統合
+### 📝 概要
+- Issueやタスクを自然言語で書くと、仕様検討・計画・実装・テスト・PR作成
+- チャットや直接編集やCodespaces連携で即ビルド・テストもOK
 
 ### 🔄 ワークフロー
-1. Issueの理解
-2. 実装計画の生成
-3. コードの自動実装
-4. テストとレビュー
+1. Issue作成→Workspace起動
+2. AIが計画・実装案を自動生成
+3. 差分を確認しつつ修正・テスト
+4. PR作成も自動化、追加修正もAIで反映
 
 ---
 
@@ -813,6 +814,23 @@ https://agreeable-island-0c8e4d900.6.azurestaticapps.net/
 ## 🎉 GitHub Copilotで開発を加速しましょう！
 
 ### 📚 リソース
+- 学習コンテンツ: https://agreeable-island-0c8e4d900.6.azurestaticapps.net/
+- 公式ドキュメント: https://docs.github.com/copilot
+- VS Code ドキュメント: https://code.visualstudio.com/docs/copilot/
+
+### 🚀 Happy Coding with GitHub Copilot!
+---
+
+# ありがとうございました！
+
+## 🎉 GitHub Copilotで開発を加速しましょう！
+
+### 📚 リソース
+- 学習コンテンツ: https://agreeable-island-0c8e4d900.6.azurestaticapps.net/
+- 公式ドキュメント: https://docs.github.com/copilot
+- VS Code ドキュメント: https://code.visualstudio.com/docs/copilot/
+
+### 🚀 Happy Coding with GitHub Copilot!
 - 学習コンテンツ: https://agreeable-island-0c8e4d900.6.azurestaticapps.net/
 - 公式ドキュメント: https://docs.github.com/copilot
 - VS Code ドキュメント: https://code.visualstudio.com/docs/copilot/

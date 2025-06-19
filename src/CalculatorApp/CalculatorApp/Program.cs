@@ -1,3 +1,1 @@
-﻿using CalculatorApp;
-
-var calc = new Calculator();
+﻿Console.WriteLine("Welcome to the Calculator App!");

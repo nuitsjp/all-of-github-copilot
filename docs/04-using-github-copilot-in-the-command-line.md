@@ -48,7 +48,7 @@ GitHub Copilotは、IDE内でのコード補完だけでなく、コマンドラ
 まず、Copilotにプロジェクト作成コマンドを提案してもらいましょう：
 
 ```shell
-gh copilot suggest "Create a new C# console application named Calculator"
+gh copilot suggest "Calculatorという名前のC#ソリューションの作り方"
 ```
 
 Copilotは以下のようなコマンドを提案します：

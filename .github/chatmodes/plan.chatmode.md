@@ -1,6 +1,6 @@
 ---
 description: 新機能の実装計画を生成します
-tools: ['codebase', 'fetch', 'search']
+tools: ['codebase', 'fetch', 'search', 'create_issue']
 ---
 # 計画モード
 

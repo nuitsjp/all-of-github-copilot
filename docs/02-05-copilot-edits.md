@@ -48,6 +48,7 @@ Edit モードを使って、複数のファイルにまたがる変更を効率
        public decimal Price { get; set; }
    }
    
+   
    // Author.cs
    public class Author
    {

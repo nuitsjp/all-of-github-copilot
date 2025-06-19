@@ -77,25 +77,13 @@ style: |
 
 ---
 
-# 本日のゴール1️⃣
+# 本日のゴール
 
 ## （ほぼ）すべての機能の概略を知る
 
 デモ中心に解説します
 
 ※ 管理機能およびEnterprise限定などの一部機能を除く
-
----
-
-# 本日のゴール2️⃣
-
-## 本発表内容の学習の仕方を理解する
-
----
-
-# 本日のゴール
-
-## 本発表内容の学習コンテンツが自作できるようになる3️⃣
 
 ---
 
@@ -127,11 +115,14 @@ MVP特典でPro+を使わせていただいています！
 
 <br>
 
+## 📂 発表コンテンツ
+https://github.com/nuitsjp/all-of-github-copilot
+
+## 📑 スライド
+https://www.docswell.com/s/nuits_jp/K6VXPX-2025-06-18-all-of-github-copilot
+
 ## 📚 学習コンテンツ
 https://agreeable-island-0c8e4d900.6.azurestaticapps.net/
-
-## 📂 発表資料
-https://github.com/nuitsjp/all-of-github-copilot
 
 ---
 
@@ -222,7 +213,7 @@ https://github.com/nuitsjp/all-of-github-copilot
 
 ### 🏆 **ライセンス優先度**
 - ライセンスを重複割当した場合、有効ライセンスは優先度によって決定
-   - **Enterprise** > **Business** > **Pro+** > **Pro**
+   - **Enterprise** > **Business** > **Pro+・Pro**
    - おそらくガバナンスを優先するため
 
 ---
@@ -679,17 +670,17 @@ gh copilot explain "git rebase -i HEAD~3"
 
 # 14. Copilot Spaces
 
-## コンテンツ管理・共有
+## コードと知識の一元化・共有
 
-### 📁 機能
-- 関連コンテンツの整理・集中化
-- コンテキストの共有
-- チーム間のナレッジ共有
+### 📝 概要
+- プロジェクトやチームの「文脈」をスペースに集約
+- コード・ドキュメント・カスタム命令などを追加
+- Copilotがそのスペースの専門家として応答
 
-### 🎯 用途
-- プロジェクトドキュメントの管理
-- コードスニペットの共有
-- ベストプラクティスの蓄積
+### 📦 主な機能
+- **リポジトリやファイルをスペースに直接アタッチ**（常に最新）
+- **カスタム命令・メモの追加**（応答を最適化）
+- **スペースの共有**（チーム全体で活用）
 
 ---
 
@@ -704,17 +695,29 @@ gh copilot explain "git rebase -i HEAD~3"
 
 # 15. Copilot Knowledge Bases
 
-## 組織知識の統合
+### 📝 概要
+- 複数リポジトリのMarkdownドキュメントをまとめて「ナレッジベース」として管理
+- Copilot Chatでナレッジベースを指定し、組織の技術情報をAI応答に活用
 
-### 📚 機能
-- 組織ドキュメントのコレクション作成・管理
-- 内部ナレッジベースとの統合
-- カスタムコンテキストの提供
+### 📦 主な機能
+- **リポジトリやパス単位でナレッジベースを作成・編集・削除**
+- **Enterpriseユーザー全員が利用可能**
 
-### 🏢 用途
-- 社内コーディング規約の適用
-- ドメイン知識の活用
-- プロジェクト固有情報の参照
+### 💡 利用イメージ
+- 組織標準の技術情報・FAQ・設計書を一元化
+- 社内ガイドラインや運用手順をナレッジベース化し、Copilot Chatで即参照
+
+---
+
+# Copilot SpacesとKnowledge Basesの違い
+
+| 項目 | Copilot Spaces | Copilot Knowledge Bases |
+|------|:--------------|:-----------------------|
+| 作成権限 | 全ユーザー | 組織管理者のみ |
+| 対象 | コード・ドキュメント・カスタム命令 | Markdownドキュメントのみ |
+| 共有範囲 | チーム/個人/組織 | 組織全体 |
+| 用途 | プロジェクト/タスク単位の文脈共有 | 組織標準ナレッジの集約 |
+| プラン | Free以上 | Enterprise限定 |
 
 ---
 
@@ -838,4 +841,13 @@ https://agreeable-island-0c8e4d900.6.azurestaticapps.net/
 - 公式ドキュメント: https://docs.github.com/copilot
 - VS Code ドキュメント: https://code.visualstudio.com/docs/copilot/
 
+### 🚀 Happy Coding with GitHub Copilot!
+- VS Code ドキュメント: https://code.visualstudio.com/docs/copilot/
+
+### 🚀 Happy Coding with GitHub Copilot!
+- 学習コンテンツ: https://agreeable-island-0c8e4d900.6.azurestaticapps.net/
+- 公式ドキュメント: https://docs.github.com/copilot
+- VS Code ドキュメント: https://code.visualstudio.com/docs/copilot/
+
+### 🚀 Happy Coding with GitHub Copilot!
 ### 🚀 Happy Coding with GitHub Copilot!

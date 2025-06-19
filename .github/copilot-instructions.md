@@ -22,13 +22,64 @@ URL: https://github.com/nuitsjp/all-of-github-copilot
 - テスト: `dotnet test`
 - フォーマット: `dotnet format`
 
+ソリューションディレクトリは #file:../src/CalculatorApp です。
+
 ### テスト要件
 - 新機能には必ず単体テストを追加
-- テスト対象のメソッド一つに対して、1つのテストクラスを作成
 - テストメソッド名は日本語で記述
 - Arrange-Act-Assert パターンを使用
 - xUnit, Shouldlyを使用
 - パラメーター違いのテストはTheory属性を使用
+
+#### 例
+
+テスト対象
+```csharp
+public class Calculator
+{
+    public int Add(int a, int b) => a + b;
+}
+```
+
+テスト対象の関数に対して、内部クラスを使用してテストをグループ化し、メソッド名は日本語で記述します。
+
+Arrange-Act-Assertパターンに従い、xUnitのTheory属性とShouldlyを使用して引数のバリエーションをテストします。
+
+テストコード
+```csharp
+using Xunit;
+using Shouldly;
+using CalculatorApp;
+
+public class CalculatorTests
+{
+    public class Add
+    {
+        [Theory]
+        [InlineData(1, 2, 3)]
+        [InlineData(-1, -2, -3)]
+        public void Add_正しい引数を渡した場合_正しい結果を返す(int a, int b, int expected)
+        {
+            ////////////////////////////////////////////////////////////////////////
+            // Arrange
+            ////////////////////////////////////////////////////////////////////////
+            var calculator = new Calculator();
+
+            ////////////////////////////////////////////////////////////////////////
+            // Act
+            ////////////////////////////////////////////////////////////////////////
+            var result = calculator.Add(a, b);
+
+            ////////////////////////////////////////////////////////////////////////
+            // Assert
+            ////////////////////////////////////////////////////////////////////////
+            result.ShouldBe(expected);
+        }
+    }
+}
+```
+
+
 
 ## プロジェクト構造
 - メインアプリケーションコード: [src](../src/CalculatorApp/CalculatorApp.csproj)

@@ -509,6 +509,28 @@ gh copilot explain "git rebase -i HEAD~3"
 
 ---
 
+# `.instructions.md` files について
+
+## 柔軟なカスタム命令ファイル
+
+### 📝 概要
+- 複数の`.instructions.md`ファイルで細かく命令を分割・管理
+- ファイル単位・言語単位などで適用範囲を指定可能
+
+### 🏗️ ファイル例
+```markdown
+---
+applyTo: "**/*.ts,**/*.tsx"
+description: TypeScript/React用コーディング規約
+---
+# TypeScript/React標準
+- 新規コードはTypeScriptを使用
+- Reactは関数コンポーネント＋Hooks
+- 不変データを推奨
+```
+
+---
+
 <!-- 8. Organization Custom Instructions -->
 <div class="plan-indicators">
   <span class="plan-badge plan-inactive">Free</span>

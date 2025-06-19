@@ -1,0 +1,1 @@
+npx @marp-team/marp-cli@latest "$PScriptRoot\GitHub Copilotのすべて.md" --pptx

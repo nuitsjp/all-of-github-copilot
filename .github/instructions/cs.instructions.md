@@ -15,7 +15,7 @@ applyTo: "**.cs"
 - テスト: `dotnet test`
 - フォーマット: `dotnet format`
 
-- ソリューションファイル: [CalculatorApp.sln](../src/CalculatorApp/CalculatorApp.sln)
+- ソリューションファイル: [CalculatorApp.sln](../../src/CalculatorApp/CalculatorApp.sln)
 
 ### テスト要件
 - 新機能には必ず単体テストを追加

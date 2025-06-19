@@ -22,7 +22,7 @@ URL: https://github.com/nuitsjp/all-of-github-copilot
 - テスト: `dotnet test`
 - フォーマット: `dotnet format`
 
-ソリューションディレクトリは #file:../src/CalculatorApp です。
+- ソリューションファイル: [CalculatorApp.sln](../src/CalculatorApp/CalculatorApp.sln)
 
 ### テスト要件
 - 新機能には必ず単体テストを追加

@@ -1,1 +1,3 @@
-﻿var calc = new Calculator();
+﻿using CalculatorApp;
+
+var calc = new Calculator();

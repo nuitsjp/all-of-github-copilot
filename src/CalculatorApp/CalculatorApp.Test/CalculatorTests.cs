@@ -15,19 +15,8 @@ namespace CalculatorApp.Test
             [InlineData(int.MaxValue - 1, 1, int.MaxValue)]
             public void Add_正しい引数を渡した場合_正しい結果を返す(int a, int b, int expected)
             {
-                ////////////////////////////////////////////////////////////////////////
-                // Arrange
-                ////////////////////////////////////////////////////////////////////////
                 var calculator = new Calculator();
-
-                ////////////////////////////////////////////////////////////////////////
-                // Act
-                ////////////////////////////////////////////////////////////////////////
                 var result = calculator.Add(a, b);
-
-                ////////////////////////////////////////////////////////////////////////
-                // Assert
-                ////////////////////////////////////////////////////////////////////////
                 result.ShouldBe(expected);
             }
 
@@ -36,15 +25,33 @@ namespace CalculatorApp.Test
             [InlineData(int.MinValue, -1)]
             public void Add_オーバーフローが発生する場合_OverflowExceptionをスローする(int a, int b)
             {
-                ////////////////////////////////////////////////////////////////////////
-                // Arrange
-                ////////////////////////////////////////////////////////////////////////
                 var calculator = new Calculator();
-
-                ////////////////////////////////////////////////////////////////////////
-                // Act & Assert
-                ////////////////////////////////////////////////////////////////////////
                 Should.Throw<OverflowException>(() => calculator.Add(a, b));
+            }
+        }
+
+        public class Subtract
+        {
+            [Theory]
+            [InlineData(5, 3, 2)]
+            [InlineData(0, 0, 0)]
+            [InlineData(-1, -1, 0)]
+            [InlineData(int.MaxValue, 1, int.MaxValue - 1)]
+            [InlineData(int.MinValue, 0, int.MinValue)]
+            public void Subtract_正しい引数を渡した場合_正しい結果を返す(int a, int b, int expected)
+            {
+                var calculator = new Calculator();
+                var result = calculator.Subtract(a, b);
+                result.ShouldBe(expected);
+            }
+
+            [Theory]
+            [InlineData(int.MaxValue, -1)]
+            [InlineData(int.MinValue, 1)]
+            public void Subtract_オーバーフローが発生する場合_OverflowExceptionをスローする(int a, int b)
+            {
+                var calculator = new Calculator();
+                Should.Throw<OverflowException>(() => calculator.Subtract(a, b));
             }
         }
     }

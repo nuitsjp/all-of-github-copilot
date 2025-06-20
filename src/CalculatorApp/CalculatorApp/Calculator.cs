@@ -1,20 +1,39 @@
-﻿/// <summary>
+namespace CalculatorApp;
+
+/// <summary>
 /// 四則演算などの計算機能を提供するクラスです。
 /// </summary>
 public class Calculator
 {
     /// <summary>
-    /// 2つの整数を加算します。
+    /// 2つの整数値を加算します。
     /// </summary>
-    /// <param name="a">加算する最初の整数</param>
-    /// <param name="b">加算する2番目の整数</param>
-    /// <returns>2つの整数の合計</returns>
-    /// <exception cref="OverflowException">加算結果がintの範囲を超えた場合にスローされます。</exception>
+    /// <param name="a">1つ目の加算対象</param>
+    /// <param name="b">2つ目の加算対象</param>
+    /// <returns>加算結果</returns>
+    /// <exception cref="OverflowException">加算結果がintの範囲を超えた場合</exception>
     public int Add(int a, int b)
     {
+        // checkedブロックでオーバーフローを検出
         checked
         {
             return a + b;
+        }
+    }
+
+    /// <summary>
+    /// 2つの整数値を減算します。
+    /// </summary>
+    /// <param name="a">減算される値</param>
+    /// <param name="b">減算する値</param>
+    /// <returns>減算結果</returns>
+    /// <exception cref="OverflowException">減算結果がintの範囲を超えた場合</exception>
+    public int Subtract(int a, int b)
+    {
+        // checkedブロックでオーバーフローを検出
+        checked
+        {
+            return a - b;
         }
     }
 }

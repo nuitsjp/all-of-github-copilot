@@ -57,6 +57,14 @@ style: |
 
 ---
 
+# Claude Code全盛期になぜGitHub Copilotなのか？
+
+---
+
+# GitHub Copilotには最強のポイントがあるから
+
+---
+
 # GitHub Copilotの最強なポイントは？
 
 ---
@@ -74,6 +82,10 @@ style: |
 - クレジットカード必須
 - 企業での新規決済は承認が大変
 - 経理処理が・・・
+
+---
+
+# 生成AI関連各社 請求書払いしやすくさせて・・・
 
 ---
 
@@ -205,7 +217,6 @@ https://agreeable-island-0c8e4d900.6.azurestaticapps.net/
 
 ### 🏢 **Organization制限**
 - <span class="highlight">OrganizationにはBusinessまたはEnterprise何れかのみ設定可能</span>
-   - 例: BusinessレベルのOrganizationでライセンスを割り当てるとBusinessに
 
 ### 👥 **Team単位の管理**
 - CopilotライセンスはOrganization内のTeamごとに割り当てられる
@@ -215,6 +226,7 @@ https://agreeable-island-0c8e4d900.6.azurestaticapps.net/
 - ライセンスを重複割当した場合、有効ライセンスは優先度によって決定
    - **Enterprise** > **Business** > **Pro+・Pro**
    - おそらくガバナンスを優先するため
+   - Pro/Pro+契約後にBusinessが適用されると未使用分は払い戻されます(@sikebeさん情報提供ありがとう)
 
 ---
 
@@ -506,6 +518,28 @@ gh copilot explain "git rebase -i HEAD~3"
 - コーディング規約の指定
 - 優先言語/フレームワーク
 - セキュリティ要件
+
+---
+
+# `.instructions.md` files について
+
+## 柔軟なカスタム命令ファイル
+
+### 📝 概要
+- 複数の`.instructions.md`ファイルで細かく命令を分割・管理
+- ファイル単位・言語単位などで適用範囲を指定可能
+
+### 🏗️ ファイル例
+```markdown
+---
+applyTo: "**/*.ts,**/*.tsx"
+description: TypeScript/React用コーディング規約
+---
+# TypeScript/React標準
+- 新規コードはTypeScriptを使用
+- Reactは関数コンポーネント＋Hooks
+- 不変データを推奨
+```
 
 ---
 

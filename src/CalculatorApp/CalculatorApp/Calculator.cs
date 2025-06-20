@@ -21,6 +21,13 @@ public class Calculator
         }
     }
 
+    /// <summary>
+    /// 2つの整数値を減算します。
+    /// </summary>
+    /// <param name="a">減算される値</param>
+    /// <param name="b">減算する値</param>
+    /// <returns>減算結果</returns>
+    /// <exception cref="OverflowException">減算結果がintの範囲を超えた場合</exception>
     public int Subtract(int a, int b)
     {
         // checkedブロックでオーバーフローを検出

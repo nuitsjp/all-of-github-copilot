@@ -30,7 +30,7 @@ namespace CalculatorApp.Test
             }
         }
 
-        public class Multiply
+        public class MultiplyTests
         {
             [Theory]
             [InlineData(2, 3, 6)]

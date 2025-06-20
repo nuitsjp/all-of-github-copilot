@@ -205,7 +205,6 @@ https://agreeable-island-0c8e4d900.6.azurestaticapps.net/
 
 ### 🏢 **Organization制限**
 - <span class="highlight">OrganizationにはBusinessまたはEnterprise何れかのみ設定可能</span>
-   - 例: BusinessレベルのOrganizationでライセンスを割り当てるとBusinessに
 
 ### 👥 **Team単位の管理**
 - CopilotライセンスはOrganization内のTeamごとに割り当てられる
@@ -215,6 +214,7 @@ https://agreeable-island-0c8e4d900.6.azurestaticapps.net/
 - ライセンスを重複割当した場合、有効ライセンスは優先度によって決定
    - **Enterprise** > **Business** > **Pro+・Pro**
    - おそらくガバナンスを優先するため
+   - Pro/Pro+契約後にBusinessが適用されると未使用分は払い戻されます
 
 ---
 

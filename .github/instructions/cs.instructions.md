@@ -74,8 +74,8 @@ public class CalculatorTests
 
 
 ## プロジェクト構造
-- メインアプリケーションコード: [src](../src/CalculatorApp/CalculatorApp.csproj)
-- 単体テストコード: [tests](../tests/CalculatorApp.Tests/CalculatorApp.Tests.csproj)
+- メインアプリケーションコード: [src](..\..\src\CalculatorApp\CalculatorApp\CalculatorApp.csproj)
+- 単体テストコード: [tests](..\..\src\CalculatorApp\CalculatorApp.Tests\CalculatorApp.Tests.csproj)
 
 ## 品質基準
 1. すべてのpublicメソッドにXMLコメント

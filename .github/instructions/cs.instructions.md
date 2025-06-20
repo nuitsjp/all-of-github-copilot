@@ -45,7 +45,7 @@ using Xunit;
 using Shouldly;
 using CalculatorApp;
 
-public class CalculatorTests
+public class CalculatorTest
 {
     public class Add
     {

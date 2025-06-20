@@ -1,1 +1,1 @@
-﻿Console.WriteLine("Welcome to the Calculator App!");
+﻿Console.WriteLine("Hello, GitHub Copilot!");

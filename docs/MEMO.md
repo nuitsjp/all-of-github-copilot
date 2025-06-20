@@ -1,6 +1,6 @@
 # Code Completion
 
-足し算のついか
+Program.csに公開鍵暗号化方式のデモ
 
 # Copilot Chat
 

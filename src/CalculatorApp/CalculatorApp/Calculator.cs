@@ -20,4 +20,13 @@ public class Calculator
             return a + b;
         }
     }
+
+    public int Subtract(int a, int b)
+    {
+        // checkedブロックでオーバーフローを検出
+        checked
+        {
+            return a - b;
+        }
+    }
 }

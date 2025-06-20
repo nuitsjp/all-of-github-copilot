@@ -214,7 +214,7 @@ https://agreeable-island-0c8e4d900.6.azurestaticapps.net/
 - ライセンスを重複割当した場合、有効ライセンスは優先度によって決定
    - **Enterprise** > **Business** > **Pro+・Pro**
    - おそらくガバナンスを優先するため
-   - Pro/Pro+契約後にBusinessが適用されると未使用分は払い戻されます
+   - Pro/Pro+契約後にBusinessが適用されると未使用分は払い戻されます(@sikebeさん情報提供ありがとう)
 
 ---
 

@@ -8,6 +8,7 @@ applyTo: "**.cs"
 - C# 命名規則 (PascalCase, camelCase) を厳守
 - XML ドキュメントコメントを全publicメソッドに追加
 - 引数検証をメソッド冒頭で実施
+- Program.csはトップレベルステートメントを使用
 
 ## 開発フロー
 ### ビルド・テスト

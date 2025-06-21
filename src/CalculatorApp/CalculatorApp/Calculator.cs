@@ -23,26 +23,6 @@ public class Calculator
 
     public int Subtract(int a, int b)
     {
-        // checkedブロックでオーバーフローを検出
-        checked
-        {
             return a - b;
-        }
-    }
-
-    /// <summary>
-    /// 2つの整数値を乗算します。
-    /// </summary>
-    /// <param name="a">1つ目の乗算対象</param>
-    /// <param name="b">2つ目の乗算対象</param>
-    /// <returns>乗算結果</returns>
-    /// <exception cref="OverflowException">乗算結果がintの範囲を超えた場合</exception>
-    public int Multiply(int a, int b)
-    {
-        // checkedブロックでオーバーフローを検出
-        checked
-        {
-            return a * b;
-        }
     }
 }

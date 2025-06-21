@@ -435,12 +435,12 @@ tools: ['tool1', 'tool2', 'tool3']
 
 ### 🖥️ 機能
 - コマンドの提案
-- コマンドの説明
-- エラーの解決支援
+- コマンドの説明などなど
+- GiHub CLIにcopilotのExtensionを追加して利用する
 
 ### 💡 使用例
 ```bash
-gh copilot suggest "ファイルを再帰的に検索"
+gh copilot suggest "PowerShellでファイルを再帰的に検索"
 gh copilot explain "git rebase -i HEAD~3"
 ```
 

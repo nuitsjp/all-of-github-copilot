@@ -1,9 +1,9 @@
 # 準備
 
 - VS Codeを開く
-- https://github.com/nuitsjp/all-of-github-copilot
-- https://github.com/nuitsjp/all-of-github-copilot-private
-- https://github.com/copilot
+- [https://github.com/nuitsjp/all-of-github-copilot](https://github.com/nuitsjp/all-of-github-copilot)
+- [https://github.com/nuitsjp/all-of-github-copilot-private](https://github.com/nuitsjp/all-of-github-copilot-private)
+- [https://github.com/copilot](https://github.com/copilot)
 
 
 # Code Completion

@@ -1,0 +1,25 @@
+Summary
+  Generated on: 2025/06/21 - 12:49:58
+  Coverage date: 2025/06/21 - 4:50:55 - 2025/06/21 - 12:49:36
+  Parser: MultiReport (9x Cobertura)
+  Assemblies: 1
+  Classes: 3
+  Files: 2
+  Line coverage: 95.1%
+  Covered lines: 39
+  Uncovered lines: 2
+  Coverable lines: 41
+  Total lines: 55
+  Branch coverage: 100% (20 of 20)
+  Covered branches: 20
+  Total branches: 20
+  Method coverage: 87.5% (7 of 8)
+  Full method coverage: 62.5% (5 of 8)
+  Covered methods: 7
+  Fully covered methods: 5
+  Total methods: 8
+
+CalculatorApp                95.1%
+  Calculator                  100%
+  CalculatorApp.Calculator   96.4%
+  Program                       0%

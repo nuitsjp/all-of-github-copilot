@@ -85,7 +85,10 @@ Issueからのワークフローを見せる
 
 https://docs.github.com/ja/copilot/using-github-copilot/best-practices-for-using-github-copilot
 
+# Copilot Pull Request Summaries
 
+作成したPRで試す。
+custom instructionsが設定できるようになれば実用的になるかも
 
 # Copilot Text Completion
 

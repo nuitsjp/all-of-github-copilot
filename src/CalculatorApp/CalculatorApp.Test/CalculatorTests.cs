@@ -29,5 +29,32 @@ namespace CalculatorApp.Test
                 Should.Throw<OverflowException>(() => calculator.Add(a, b));
             }
         }
+
+        public class Multiply
+        {
+            [Theory]
+            [InlineData(2, 3, 6)]
+            [InlineData(-2, 3, -6)]
+            [InlineData(-2, -3, 6)]
+            [InlineData(0, 5, 0)]
+            [InlineData(5, 0, 0)]
+            [InlineData(1, int.MaxValue, int.MaxValue)]
+            public void Multiply_正しい引数を渡した場合_正しい結果を返す(int a, int b, int expected)
+            {
+                var calculator = new Calculator();
+                var result = calculator.Multiply(a, b);
+                result.ShouldBe(expected);
+            }
+
+            [Theory]
+            [InlineData(int.MaxValue, 2)]
+            [InlineData(int.MinValue, 2)]
+            [InlineData(int.MaxValue, int.MaxValue)]
+            public void Multiply_オーバーフローが発生する場合_OverflowExceptionをスローする(int a, int b)
+            {
+                var calculator = new Calculator();
+                Should.Throw<OverflowException>(() => calculator.Multiply(a, b));
+            }
+        }
     }
 }

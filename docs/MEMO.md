@@ -89,7 +89,28 @@ https://docs.github.com/ja/copilot/using-github-copilot/best-practices-for-using
 
 作成したPRで試す。
 custom instructionsが設定できるようになれば実用的になるかも
+Copilot Code Reviewに対するCustom Instructionの有効化も先週
 
 # Copilot Text Completion
 
 説明のみ
+
+# GitHub Copilot Extensions
+
+https://github.com/marketplace?type=apps&copilot_app=true
+
+MCPが盛況だから・・・
+GitHub Appsとして作成するので、GitHubと連携する機能なんかは作りやすいかも
+
+# Copilot Workspace
+
+非公開プレビュー
+
+# Copilot Spaces
+
+- https://github.com/copilot
+
+例えばプロダクトのDDLとかを食わせておいて、DB構造について相談したりするのが良いかもしれません。
+
+# Copilot Knowledge Bases
+

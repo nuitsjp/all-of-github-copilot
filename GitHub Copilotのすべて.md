@@ -689,7 +689,7 @@ description: TypeScript/React用コーディング規約
 1. Issue作成→Workspace起動
 2. AIが計画・実装案を自動生成
 3. 差分を確認しつつ修正・テスト
-4. PR作成も自動化、追加修正もAIで反映
+- https://www.youtube.com/watch?v=pkotufZchjE
 
 ---
 
@@ -833,19 +833,9 @@ https://agreeable-island-0c8e4d900.6.azurestaticapps.net/
 
 # まとめ
 
-## 🎯 本日お伝えしたこと
+---
 
-### ✅ GitHub Copilotの全機能概要
-- 15の主要機能
-- プラン別の利用可能機能
-
-### ✅ 効果的な学習方法
-- 段階的アプローチ
-- 実践的な練習
-
-### ✅ 継続的な活用
-- 学習コンテンツの活用
-- チームでの展開
+# GitHub Copilotは最高の「ずんだもん」環境を提供します
 
 ---
 
@@ -858,30 +848,4 @@ https://agreeable-island-0c8e4d900.6.azurestaticapps.net/
 - 公式ドキュメント: https://docs.github.com/copilot
 - VS Code ドキュメント: https://code.visualstudio.com/docs/copilot/
 
-### 🚀 Happy Coding with GitHub Copilot!
----
-
-# ありがとうございました！
-
-## 🎉 GitHub Copilotで開発を加速しましょう！
-
-### 📚 リソース
-- 学習コンテンツ: https://agreeable-island-0c8e4d900.6.azurestaticapps.net/
-- 公式ドキュメント: https://docs.github.com/copilot
-- VS Code ドキュメント: https://code.visualstudio.com/docs/copilot/
-
-### 🚀 Happy Coding with GitHub Copilot!
-- 学習コンテンツ: https://agreeable-island-0c8e4d900.6.azurestaticapps.net/
-- 公式ドキュメント: https://docs.github.com/copilot
-- VS Code ドキュメント: https://code.visualstudio.com/docs/copilot/
-
-### 🚀 Happy Coding with GitHub Copilot!
-- VS Code ドキュメント: https://code.visualstudio.com/docs/copilot/
-
-### 🚀 Happy Coding with GitHub Copilot!
-- 学習コンテンツ: https://agreeable-island-0c8e4d900.6.azurestaticapps.net/
-- 公式ドキュメント: https://docs.github.com/copilot
-- VS Code ドキュメント: https://code.visualstudio.com/docs/copilot/
-
-### 🚀 Happy Coding with GitHub Copilot!
 ### 🚀 Happy Coding with GitHub Copilot!

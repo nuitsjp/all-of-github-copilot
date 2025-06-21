@@ -71,4 +71,22 @@ Issueからのワークフローを見せる
 
 # Repository and Personal Custom Instructions
 
-リポジトリーカスタムインストラクション
+リポジトリー
+パーソナル
+個別カスタマイズ
+
+# Organization Custom Instructions
+
+組織全体
+
+# Copilot Prompt Files
+
+学習カリキュラムの作成プロンプト
+
+https://docs.github.com/ja/copilot/using-github-copilot/best-practices-for-using-github-copilot
+
+
+
+# Copilot Text Completion
+
+説明のみ

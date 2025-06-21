@@ -1,3 +1,11 @@
+# 準備
+
+- VS Codeを開く
+- https://github.com/nuitsjp/all-of-github-copilot
+- https://github.com/nuitsjp/all-of-github-copilot-private
+- https://github.com/copilot
+
+
 # Code Completion
 
 Program.csに公開鍵暗号化方式のデモ
@@ -28,6 +36,39 @@ gh copilot suggest "PowerShellでファイルを再帰的に検索"
 1. VS Code
     1. Ctrl+Shift+P
     2. コマンド パレットで、[GitHub Copilot: Review and Comment] を検索して選びます。
-2. GitHub上でCoding AgentのPRから
+2. GitHub上でCoding AgentのPRからレビュー割り当て
 
+# GitHub Models
 
+```prompt
+あなたはGitバージョン管理システムの専門家です。
+ユーザーがコマンドラインからGitを使用する方法について質問した際、200文字以内で例を挙げて説明してください。
+```
+
+```prompt
+Gitの使い方を学びたいです。ブランチの作成と切り替えについて教えてください。
+```
+
+```prompt
+Gitの使い方を学びたいです。{{topic}}について教えてください。
+```
+
+```variable
+ブランチの作成と切り替え
+```
+
+```variable
+リベースとマージの違いと使い分け
+```
+
+```text
+git-learning-assistant
+```
+
+Issueからのワークフローを見せる
+あくまでModelを利用する何らかのサービスの開発に利用する
+別の開発のためにModelを利用するのは用途外なので注意
+
+# Repository and Personal Custom Instructions
+
+リポジトリーカスタムインストラクション
